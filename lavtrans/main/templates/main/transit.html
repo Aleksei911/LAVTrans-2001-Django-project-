@@ -1,0 +1,258 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}
+ЧТУП ЛАВТРАНС-2001 - Перевозки
+{% endblock %}
+
+{% block content %}
+<img
+        src="{% static 'main/img/perevozki.jpg' %}"
+        class="img-fluid"
+        alt="перевозки"
+/>
+
+<!-- Мы выполняем -->
+<div class="row justify-content-around bg-dark text-white">
+    <div class="col-6">
+        <img src="{% static 'main/img/gruzi.jpg' %}" class="img-fluid" alt="gruzi"/>
+    </div>
+    <div class="col-6">
+        <br/>
+        <h2 class="text-center lh-lg"><strong>Мы выполняем:</strong></h2>
+        <br/>
+        <h5>
+            <li>Полнокомплектные перевозки</li>
+        </h5>
+        <h5>
+            <li>Перевозки дорогостоящих грузов</li>
+        </h5>
+        <h5>
+            <li>Международные перевозки фармацевтики</li>
+        </h5>
+        <h5>
+            <li>Перевозки опасных грузов</li>
+        </h5>
+        <h5>
+            <li>Рефрижераторные перевозки</li>
+        </h5>
+        <h5>
+            <li>Международные перевозки сборных грузов</li>
+        </h5>
+        <h5>
+            <li>Экспедирование грузов</li>
+        </h5>
+        <h5>
+            <li>Ежедневный мониторинг местоположения груза</li>
+        </h5>
+        <h5>
+            <li>Таможенное оформление при перевозке собственным транспортом</li>
+        </h5>
+    </div>
+</div>
+<!-- Конец блока Мы выполняем -->
+
+<!-- Виды транспорта -->
+<div class="row justify-content-around bg-dark text-white">
+    <div class="col-6">
+        <br/>
+        <h2 class="text-center lh-lg"><strong>Наш транспорт:</strong></h2>
+        <br/>
+        <h5 style="margin-left: 20px">
+            <li>Тентованные бортовые полуприцепы 20т</li>
+        </h5>
+        <h5 style="margin-left: 20px">
+            <li>Шторные полуприцепы 20т</li>
+        </h5>
+        <h5 style="margin-left: 20px">
+            <li>Рефрижераторы 20т</li>
+        </h5>
+        <h5 style="margin-left: 20px">
+            <li>Мегатрейлеры (низкорамные полуприцепы)</li>
+        </h5>
+        <h5 style="margin-left: 20px">
+            <li>Контейнеровозы</li>
+        </h5>
+        <h5 style="margin-left: 20px">
+            <li>Грузовые автомобили 9т</li>
+        </h5>
+        <h5 style="margin-left: 20px">
+            <li>Грузовые автомобили 10т</li>
+        </h5>
+        <br/>
+        <br/>
+        <h6 class="text-center lh-lg">
+            (Страны регистрации транспортных средств: BY, RU, LV)
+        </h6>
+    </div>
+    <div class="col-6">
+        <img
+                src="{% static 'main/img/transport.jpg' %}"
+                class="img-fluid"
+                alt="transport"
+        />
+    </div>
+</div>
+<!-- Конец блока Виды транспорта -->
+
+<!-- Почему мы -->
+<div class="row justify-content-around bg-black text-white">
+    <div class="row">
+        <h2 class="text-center lh-lg bg-black">
+            <strong>Почему стоит обратиться именно к нам?</strong>
+        </h2>
+        <div class="container bg-black">
+            <div class="row row-cols-2">
+                <div class="col">
+                    <div class="p-3 border bg-dark bg-gradient text-center">
+                        <h4>
+                            <li>Исключительная надежность</li>
+                        </h4>
+                    </div>
+                    <p>
+                        Доверяя нам свои ценности, Вы получаете гарантию надежности и
+                        уверенности в сохранности груза не зависимо от сложности
+                        перевозки
+                    </p>
+                    <p>
+                    <li style="margin-left: 20px">Собственный подвижной состав</li>
+                    </p>
+                    <p>
+                    <li style="margin-left: 20px">Собственное СТО</li>
+                    </p>
+                    <p>
+                    <li style="margin-left: 20px">
+                        Улучшенная система крепления груза
+                    </li>
+                    </p>
+                    <p>
+                    <li style="margin-left: 20px">
+                        Оборудование противоаварийными системами
+                    </li>
+                    </p>
+                    <p>
+                    <li style="margin-left: 20px">
+                        Постоянный спутниковый мониторинг
+                    </li>
+                    </p>
+                    <p>
+                    <li style="margin-left: 20px">
+                        Страхование всех возможных рисков
+                    </li>
+                    </p>
+                    <p>
+                    <li style="margin-left: 20px">Нам доверяют профессионалы</li>
+                    </p>
+                </div>
+                <div class="col">
+                    <div class="p-3 border bg-dark bg-gradient text-center">
+                        <h4>
+                            <li>Выдающаяся скорость</li>
+                        </h4>
+                    </div>
+                    <p>
+                        Время доставки груза Вас приятно удивит. Максимальное
+                        использование временного ресурса и предупреждение возможных
+                        проблем при продвижении по маршруту позволяет добиться
+                        выдающихся результатов в сокращении времени доставки.
+                    </p>
+                    <br/>
+                    <p>
+                        Наши специалисты ежедневно информируют заказчика о
+                        месторасположении груза и планируемой дате прибытия, а
+                        сформированный заранее пакет документов позволяет готовиться к
+                        таможенному оформлению в то время, когда груз еще в пути.
+                    </p>
+                </div>
+                <div class="col">
+                    <div class="p-3 border bg-dark bg-gradient text-center">
+                        <h4>
+                            <li>Максимальная самостоятельность</li>
+                        </h4>
+                    </div>
+                    <p>
+                        Высокий профессиональный уровень всех работников компании
+                        позволяет решать любые задачи самостоятельно, не беспокоя
+                        клиента. Все сложности процесса поставки – наша забота. Наш
+                        клиент не остается один на один с проблемой. Желая организовать
+                        поставку Вам нужно лишь предоставить нам информацию о грузе и
+                        заявку на перевозку. Сложная логистика с нами – это просто.
+                    </p>
+                </div>
+                <div class="col">
+                    <div class="p-3 border bg-dark bg-gradient text-center">
+                        <h4>
+                            <li>Полная универсальность</li>
+                        </h4>
+                    </div>
+                    <p>
+                        Одним из важнейших направлений в развитии нашей компании
+                        является стремление к достижению максимальной универсальности.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Конец блока Почему мы -->
+
+<div class="grid">
+    <div>
+        <h1 class="text-center lh-lg"><strong>Нам доверяют</strong></h1>
+        <br/>
+        <div class="row">
+            <div class="col">
+                <img
+                        src="{% static 'main/img/asstra.png' %}"
+                        class="rounded mx-auto"
+                        alt="..."
+                />
+            </div>
+            <div class="col">
+                <img
+                        src="{% static 'main/img/kraft.jpg' %}"
+                        class="rounded mx-auto"
+                        alt="..."
+                />
+            </div>
+            <div class="col">
+                <img
+                        src="{% static 'main/img/sta.jpg' %}"
+                        class="rounded mx-auto"
+                        alt="..."
+                />
+            </div>
+            <div class="col">
+                <img
+                        src="{% static 'main/img/adrem.jpg' %}"
+                        class="rounded mx-auto"
+                        alt="..."
+                />
+            </div>
+            <div class="col">
+                <img
+                        src="{% static 'main/img/tels.jpg' %}"
+                        class="rounded mx-auto"
+                        alt="..."
+                />
+            </div>
+            <div class="col">
+                <img
+                        src="{% static 'main/img/tgl.jpg' %}"
+                        class="rounded mx-auto"
+                        alt="..."
+                />
+            </div>
+            <div class="col">
+                <img
+                        src="{% static 'main/img/tnt.png' %}"
+                        class="rounded mx-auto"
+                        alt="..."
+                />
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+<br/>
+{% endblock %}

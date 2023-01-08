@@ -1,0 +1,46 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}
+ЧТУП ЛАВТРАНС-2001 - Реквизиты
+{% endblock %}
+
+{% block content %}
+<img
+      src="{% static 'main/img/rekviziti.jpg' %}"
+      class="img-fluid. max-width: 100%; height: auto;"
+      alt="реквизиты"
+    />
+
+    <!-- Реквизиты -->
+    <div id="content" class="bg-dark text-white">
+      <br>
+      <br>
+      <h1 class="text-center">Наши реквизиты:</h1>
+      <br>
+      <div class="container">
+        <div class="row row-cols-2">
+          <div class="col-4 border"><h5 class="lh-lg">Полное наименование:</h5></div>
+          <div class="col-8 border lh-lg">Частное транспортное унитарное предприятие «ЛАВТранс-2001»</div>
+          <div class="col-4 border"><h5 class="lh-lg">Сокращенное наименование:</h5></div>
+          <div class="col-8 border lh-lg">ЧТУП «ЛАВТранс-2001»</div>
+          <div class="col-4 border"><h5 class="lh-lg">Юридический адрес:</h5></div>
+          <div class="col-8 border lh-lg">231337 Гродненская обл. г.Ивье, ул. Пески д.3 «А» ком 1</div>
+          <div class="col-4 border"><h5 class="lh-lg">Почтовый адрес:</h5></div>
+          <div class="col-8 border lh-lg">231337 Гродненская обл. г.Ивье, ул. Пески д.3 «А» ком 1</div>
+          <div class="col-4 border"><h5 class="lh-lg">УНП:</h5></div>
+          <div class="col-8 border lh-lg">590723014</div>
+          <div class="col-4 border"><h5 class="lh-lg">Телефон/факс:</h5></div>
+          <div class="col-8 border lh-lg">+375293520228</div>
+          <div class="col-4 border"><h5 class="lh-lg">Р/счет:</h5></div>
+          <div class="col-8 border lh-lg">р/с (BYN) BY25SOMA30120179680101000933</div>
+          <div class="col-4 border"><h5 class="lh-lg">БИК:</h5></div>
+          <div class="col-8 border lh-lg">SOMABY22</div>
+          <div class="col-4 border"><h5 class="lh-lg">Банк:</h5></div>
+          <div class="col-8 border lh-lg">ЗАО «Идея Банк»</div>
+        </div>
+      </div>
+      <br>
+    </div>
+    <!-- Конец блока Реквизиты -->
+{% endblock %}

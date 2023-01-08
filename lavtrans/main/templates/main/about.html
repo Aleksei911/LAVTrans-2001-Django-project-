@@ -1,0 +1,161 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}
+ЧТУП ЛАВТРАНС-2001 - О НАС
+{% endblock %}
+
+{% block content %}
+<img
+      src="{% static 'main/img/imprint-gcf4c83a5c_1920.jpg' %}"
+      class="img-fluid"
+      alt="О НАС"
+    />
+
+    <!-- Карточка о нас -->
+    <div class="card bg-dark text-white">
+      <img src="{% static 'main/img/фон_о_нас.jpg' %}" class="card-img" alt="..." />
+      <div class="card-img-overlay text-center">
+        <p class="card-text h4">
+          <strong
+            >История ЧТУП ЛАВТранс-2001 началась в 2001 году. Мы осуществляем
+            грузоперевозки уже более 20 лет.</strong
+          >
+        </p>
+        <p class="card-text h4">
+          Компания сразу же зарекомендовала себя как успешный международный
+          грузоперевозчик и за эти годы накопила уникальный опыт организации
+          крупных логистических проектов.
+        </p>
+        <p class="card-text h4">
+          ЧТУП ЛАВТранс-2001 владеет современным автопарком из 40 единиц
+          транспортных средств в отличном техническом состоянии класса Евро-5 и
+          Евро-6
+        </p>
+      </div>
+    </div>
+    <!-- Конец карточки о нас -->
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <img
+            src="{% static 'main/img/автопарк.jpg' %}"
+            class="card-img-top"
+            height="450"
+            alt="..."
+          />
+          <div class="card-body">
+            <h4 class="card-title">Автопарк</h4>
+            <p class="card-text">
+              Наш автопарк насчитывает 40 единиц оборудованных и обслуженных
+              транспортных средств не старше 5 лет под управлением опытных
+              водителей, полность подготовленных для международной перевозки
+              грузов любой сложности, что гарантирует исполнение перевозок
+              согласно заявке.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img
+            src="{% static 'main/img/GPS.jpg' %}"
+            class="card-img-top"
+            height="450"
+            alt="..."
+          />
+          <div class="card-body">
+            <h4 class="card-title">GPS-трекинг</h4>
+            <p class="card-text">
+              Абсолютно все транспортные средства оборудованы навигацией GPS,
+              что позволяет 24/7 отслеживать местоположение груза, предоставлять
+              отчетность о его передвижении, прохождении границы, заезда на
+              таможню.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img
+            src="{% static 'main/img/let_na_rinke.jpg' %}"
+            class="card-img-top"
+            height="450"
+            alt="..."
+          />
+          <div class="card-body">
+            <h4 class="card-title">Более 20 лет на рынке</h4>
+            <p class="card-text">
+              Мы работаем на рынке международных грузоперевозок уже более 20
+              лет. Нам нравится находить самые красивые логистические решения
+              для наших клиентов. Сегодня нашими услугами пользуются сотни
+              компаний: от молодых амбициозных предпринимателей до международных
+              европейских корпораций.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div class="grid">
+      <div>
+        <h1 class="text-center lh-lg"><strong>Нам доверяют</strong></h1>
+        <br>
+        <div class="row">
+          <div class="col">
+            <img
+              src="{% static 'main/img/asstra.png' %}"
+              class="rounded mx-auto"
+              alt="..."
+            />
+          </div>
+          <div class="col">
+            <img
+              src="{% static 'main/img/kraft.jpg' %}"
+              class="rounded mx-auto"
+              alt="..."
+            />
+          </div>
+          <div class="col">
+            <img
+              src="{% static 'main/img/sta.jpg' %}"
+              class="rounded mx-auto"
+              alt="..."
+            />
+          </div>
+          <div class="col">
+          <img
+            src="{% static 'main/img/adrem.jpg' %}"
+            class="rounded mx-auto"
+            alt="..."
+          />
+        </div>
+          <div class="col">
+          <img
+            src="{% static 'main/img/tels.jpg' %}"
+            class="rounded mx-auto"
+            alt="..."
+          />
+        </div>
+          <div class="col">
+          <img
+            src="{% static 'main/img/tgl.jpg' %}"
+            class="rounded mx-auto"
+            alt="..."
+          />
+        </div>
+          <div class="col">
+          <img
+            src="{% static 'main/img/tnt.png' %}"
+            class="rounded mx-auto"
+            alt="..."
+          />
+        </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+{% endblock %}
