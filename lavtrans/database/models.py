@@ -13,6 +13,10 @@ class Car(models.Model):
     def __str__(self):
         return self.number
 
+    class Meta:
+        verbose_name = 'Авто'
+        verbose_name_plural ='Авто'
+
 
 class Driver(models.Model):
     name = models.CharField(verbose_name='Имя', max_length=20)
@@ -24,3 +28,7 @@ class Driver(models.Model):
 
     def __str__(self):
         return f'{self.name} {self.last_name}'
+
+    class Meta:
+        verbose_name = 'Водитель'
+        verbose_name_plural = 'Водители'

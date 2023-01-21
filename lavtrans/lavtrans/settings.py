@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'database.apps.DatabaseConfig',
     'rest_framework',
+    'taskmanager.apps.TaskmanagerConfig'
 ]
 
 MIDDLEWARE = [

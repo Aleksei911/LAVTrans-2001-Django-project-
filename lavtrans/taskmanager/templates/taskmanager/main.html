@@ -1,0 +1,22 @@
+{% extends 'taskmanager/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+    <h1>Задачи</h1>
+    {% if tasks %}
+        {% for task in tasks %}
+            <div class="alert alert-warning mt-2">
+                <h3>{{ task.title }}</h3>
+                <p>{{ task.description }}</p>
+                <p>Выполнить до: {{ task.complete_to }}</p>
+                <p>Сотрудник: {{ task.worker }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>На данный момент активных задач нет!</p>
+    {% endif %}
+{% endblock %}

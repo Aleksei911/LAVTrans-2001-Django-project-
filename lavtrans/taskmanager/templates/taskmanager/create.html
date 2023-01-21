@@ -1,0 +1,20 @@
+{% extends 'taskmanager/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+    <h1>Добавить задачу</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.title }}<br>
+        {{ form.description }}<br>
+        {{ form.complete_to }}<br>
+        {{ form.worker }}<br><br>
+        <button type="submit" class="btn btn-success">Добавить</button>
+        <span>{{ error }}</span>
+    </form>
+
+{% endblock %}
