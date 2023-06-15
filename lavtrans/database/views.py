@@ -9,9 +9,12 @@ from django.db.models import Q
 class CarViewSet(viewsets.ModelViewSet):
     queryset = Car.objects.filter(
         Q(tehosmotr__lte=(datetime.date.today() + datetime.timedelta(days=20))) |
+        Q(green_card__lte=(datetime.date.today() + datetime.timedelta(days=20))) |
         Q(strahovka__lte=(datetime.date.today() + datetime.timedelta(days=20))) |
         Q(tamogennoye__lte=(datetime.date.today() + datetime.timedelta(days=20))) |
-        Q(tahograf__lte=(datetime.date.today() + datetime.timedelta(days=20))),
+        Q(tahograf__lte=(datetime.date.today() + datetime.timedelta(days=20))) |
+        Q(kasko__lte=(datetime.date.today() + datetime.timedelta(days=20))) |
+        Q(cmr_strahovka__lte=(datetime.date.today() + datetime.timedelta(days=20))),
         active=True
     )
     serializer_class = CarSerializer

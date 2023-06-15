@@ -4,25 +4,28 @@ from django.db import models
 # Create your models here.
 class Car(models.Model):
     number = models.CharField(verbose_name='Номер авто', max_length=10)
-    tehosmotr = models.DateField(verbose_name='Техосмотр')
-    strahovka = models.DateField(verbose_name='Страховка')
-    tamogennoye = models.DateField(verbose_name='Таможенное')
-    tahograf = models.DateField(verbose_name='Тахограф')
+    green_card = models.DateField(verbose_name='Зелёнка', blank=True, null=True)
+    strahovka = models.DateField(verbose_name='Страховка', blank=True, null=True)
+    tehosmotr = models.DateField(verbose_name='Техосмотр', blank=True, null=True)
+    tahograf = models.DateField(verbose_name='Тахограф', blank=True, null=True)
+    tamogennoye = models.DateField(verbose_name='Таможенное', blank=True, null=True)
+    kasko = models.DateField(verbose_name='КАСКО', blank=True, null=True)
+    cmr_strahovka = models.DateField(verbose_name='CMR-страховка', blank=True, null=True)
     active = models.BooleanField(verbose_name='Отслеживать?', default=True)
 
     def __str__(self):
         return self.number
 
     class Meta:
-        verbose_name = 'Авто'
-        verbose_name_plural ='Авто'
+        verbose_name = 'Транспортное средство'
+        verbose_name_plural = 'Транспортные средства'
 
 
 class Driver(models.Model):
     name = models.CharField(verbose_name='Имя', max_length=20)
     last_name = models.CharField(verbose_name='Фамилия', max_length=20)
     passport = models.DateField(verbose_name='Паспорт')
-    visa = models.DateField(verbose_name='Виза')
+    visa = models.DateField(verbose_name='Виза', blank=True, null=True)
     driver_card = models.DateField(verbose_name='Водительское удостоверение')
     active = models.BooleanField(verbose_name='Отслеживать?', default=True)
 
