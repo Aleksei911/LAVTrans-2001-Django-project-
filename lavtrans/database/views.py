@@ -46,6 +46,23 @@ def cars(request):
     return render(request, 'database/cars.html', {'cars': cars})
 
 
+def add_car(request):
+    if request.method == 'POST':
+        form = AddCarForm(request.POST)
+
+        if form.is_valid():
+            car = form.save()
+            car.save()
+
+            messages.success(request, 'Новое транспортное средство было успешно добавлено.')
+
+            return redirect('cars')
+    else:
+        form = AddCarForm()
+
+    return render(request, 'database/add_car.html', {'form': form})
+
+
 def car_edit(request, pk):
     car = Car.objects.get(pk=pk)
 
