@@ -6,7 +6,7 @@ from .forms import TaskForm
 # Create your views here.
 def main(request):
     tasks = Task.objects.all().order_by('complete_to')
-    return render(request, 'taskmanager/main.html', {'title': 'Задачи', 'tasks': tasks})
+    return render(request, 'taskmanager/cars.html', {'title': 'Задачи', 'tasks': tasks})
 
 
 def create(request):

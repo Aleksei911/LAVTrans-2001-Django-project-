@@ -1,4 +1,5 @@
 import datetime
+from django.shortcuts import render
 from rest_framework import viewsets
 from .serializers import CarSerializer, DriverSerializer
 from .models import Car, Driver
@@ -28,3 +29,16 @@ class DriverViewSet(viewsets.ModelViewSet):
         active=True
     )
     serializer_class = DriverSerializer
+
+
+def cars(request):
+    search_by = request.GET.get('search_by')
+    query = request.GET.get('query')
+
+    if query:
+        if search_by == "number":
+            cars = Car.objects.filter(number__icontains=query)
+    else:
+        cars = Car.objects.all()
+
+    return render(request, 'database/cars.html', {'cars': cars})
