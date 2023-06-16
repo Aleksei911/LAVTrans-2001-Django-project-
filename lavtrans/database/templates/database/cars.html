@@ -9,26 +9,28 @@ Transportnie sredstva
 
         {% if cars %}
             <div class="mt-6 flex justify-between">
-                <p class="py-4 text-center bg-gray-200 font-semibold w-full">nomer avto</p>
-                <p class="py-4 text-center bg-gray-200 font-semibold w-full">zelenka</p>
-                <p class="py-4 text-center bg-gray-200 font-semibold w-full">strahovka</p>
-                <p class="py-4 text-center bg-gray-200 font-semibold w-full">tehosmotr</p>
-                <p class="py-4 text-center bg-gray-200 font-semibold w-full">tamojennoe</p>
-                <p class="py-4 text-center bg-gray-200 font-semibold w-full">tahograf</p>
-                <p class="py-4 text-center bg-gray-200 font-semibold w-full">kasko</p>
-                <p class="py-4 text-center bg-gray-200 font-semibold w-full">CMR-strahovka</p>
-                <p class="py-4 text-center bg-gray-200 font-semibold w-full">status</p>
+                <p class="py-4 text-center bg-gray-200 font-semibold w-full">Номер ТС</p>
+                <p class="py-4 text-center bg-gray-200 font-semibold w-full">Зелёная карта</p>
+                <p class="py-4 text-center bg-gray-200 font-semibold w-full">Национальная страховка</p>
+                <p class="py-4 text-center bg-gray-200 font-semibold w-full">Техосмотр</p>
+                <p class="py-4 text-center bg-gray-200 font-semibold w-full">Таможенное свидетельство</p>
+                <p class="py-4 text-center bg-gray-200 font-semibold w-full">Тахограф</p>
+                <p class="py-4 text-center bg-gray-200 font-semibold w-full">КАСКО</p>
+                <p class="py-4 text-center bg-gray-200 font-semibold w-full">CMR-страховка</p>
+                <p class="py-4 text-center bg-gray-200 font-semibold w-full">Статус</p>
             </div>
             <div class="mt-4 flex justify-between">
                 <form class="form-inline py-4 px-8 bg-yellow-200 font-semibold w-full" action="{% url 'cars' %}">
                     <input class="form-control py-1 px-2" type="search" placeholder="Search" aria-label="Search" name="query">
                     <input type="hidden" name="search_by" value="number">
-                    <button class="btn btn-success py-1 px-8 bg-teal-500 text-white rounded-xl" type="submit">Search</button>
+                    <button class="btn btn-success py-1 px-8 bg-teal-500 text-white rounded-xl" type="submit">Поиск</button>
                 </form>
             </div>
             {% for car in cars %}
                 <div class="flex justify-between">
-                    <p class="py-2 text-center w-full">{{ car.number }}</p>
+                    <p class="py-2 text-center w-full">
+                        <a href="{% url 'car_edit' car.id %}"> {{ car.number }} </a>
+                    </p>
                     <p class="py-2 text-center w-full">{{ car.green_card|date:"d.m.Y" }}</p>
                     <p class="py-2 text-center w-full">{{ car.strahovka|date:"d.m.Y" }}</p>
                     <p class="py-2 text-center w-full">{{ car.tehosmotr|date:"d.m.Y" }}</p>
@@ -37,9 +39,9 @@ Transportnie sredstva
                     <p class="py-2 text-center w-full">{{ car.kasko|date:"d.m.Y" }}</p>
                     <p class="py-2 text-center w-full">{{ car.cmr_strahovka|date:"d.m.Y" }}</p>
                     {% if car.active == True %}
-                        <p class="py-2 text-center w-full">otslegivaetsa</p>
+                        <p class="py-2 text-center w-full">Отслеживается</p>
                     {% else %}
-                        <p class="py-2 text-center bg-red-500 w-full">ne otslegivaetsa</p>
+                        <p class="py-2 text-center bg-red-500 w-full">Не отслеживается</p>
                     {% endif %}
                 </div>
             {% endfor %}

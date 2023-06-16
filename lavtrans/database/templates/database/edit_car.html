@@ -5,15 +5,72 @@ Edit Car
 {% endblock %}
 
 {% block content %}
-  <div class="py-6 px-6">
-    <h1 class="mb-4 text-xl">Edit Car</h1>
+<div class="py-6 px-6">
+    <h1 class="mb-4 text-xl">Редактирование данных</h1>
 
     <form method="post" action=".">
-      {% csrf_token %}
+        {% csrf_token %}
 
-      {{ form.as_p }}
+        <table>
+            <tbody>
+            <tr>
+                <th><label for="id_number">Номер авто:</label></th>
+                <td>
+                    <input type="text" name="number" value="{{ form.number.value }}" maxlength="10" required="" id="id_number">
+                </td>
+            </tr>
+            <tr>
+                <th><label for="id_green_card">Зелёнка:</label></th>
+                <td>
+                    <input type="date" name="green_card" value="{{ form.green_card.value | date:'Y-m-d' }}" id="id_green_card">
+                </td>
+            </tr>
+            <tr>
+                <th><label for="id_strahovka">Страховка:</label></th>
+                <td>
+                    <input type="date" name="strahovka" value="{{ form.strahovka.value | date:'Y-m-d' }}" id="id_strahovka">
+                </td>
+            </tr>
+            <tr>
+                <th><label for="id_tehosmotr">Техосмотр:</label></th>
+                <td>
+                    <input type="date" name="tehosmotr" value="{{ form.tehosmotr.value | date:'Y-m-d' }}" id="id_tehosmotr">
+                </td>
+            </tr>
+            <tr>
+                <th><label for="id_tahograf">Тахограф:</label></th>
+                <td>
+                    <input type="date" name="tahograf" value="{{ form.tahograf.value | date:'Y-m-d' }}" id="id_tahograf">
+                </td>
+            </tr>
+            <tr>
+                <th><label for="id_tamogennoye">Таможенное:</label></th>
+                <td>
+                    <input type="date" name="tamogennoye" value="{{ form.tamogennoye.value | date:'Y-m-d' }}" id="id_tamogennoye">
+                </td>
+            </tr>
+            <tr>
+                <th><label for="id_kasko">КАСКО:</label></th>
+                <td>
+                    <input type="date" name="kasko" value="{{ form.kasko.value | date:'Y-m-d' }}" id="id_kasko">
+                </td>
+            </tr>
+            <tr>
+                <th><label for="id_cmr_strahovka">CMR-страховка:</label></th>
+                <td>
+                    <input type="date" name="cmr_strahovka" value="{{ form.cmr_strahovka.value | date:'Y-m-d' }}" id="id_cmr_strahovka">
+                </td>
+            </tr>
+            <tr>
+                <th><label for="id_active">Отслеживать?</label></th>
+                <td>
+                    <input type="checkbox" name="active" id="id_active" checked>
+                </td>
+            </tr>
+            </tbody>
+        </table>
 
-      <button class="py-4 px-8 bg-teal-500 text-white rounded-xl">Edit</button>
+        <button class="py-4 px-8 bg-teal-500 text-white rounded-xl">Сохранить изменения</button>
     </form>
-  </div>
+</div>
 {% endblock %}

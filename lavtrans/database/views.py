@@ -1,8 +1,10 @@
 import datetime
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from rest_framework import viewsets
 from .serializers import CarSerializer, DriverSerializer
 from .models import Car, Driver
+from .forms import AddCarForm
 from django.db.models import Q
 
 
@@ -42,3 +44,20 @@ def cars(request):
         cars = Car.objects.all()
 
     return render(request, 'database/cars.html', {'cars': cars})
+
+
+def car_edit(request, pk):
+    car = Car.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        form = AddCarForm(request.POST, instance=car)
+        if form.is_valid():
+            form.save()
+
+            messages.success(request, 'Изменения были успешно сохранены.')
+
+            return redirect('cars')
+    else:
+        form = AddCarForm(instance=car)
+
+    return render(request, 'database/edit_car.html', {'form': form})
