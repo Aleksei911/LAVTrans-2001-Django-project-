@@ -110,3 +110,20 @@ def add_driver(request):
         form = AddDriverForm()
 
     return render(request, 'database/drivers/add_driver.html', {'form': form})
+
+
+def driver_edit(request, pk):
+    driver = Driver.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        form = AddDriverForm(request.POST, instance=driver)
+        if form.is_valid():
+            form.save()
+
+            messages.success(request, 'Изменения были успешно сохранены.')
+
+            return redirect('drivers')
+    else:
+        form = AddDriverForm(instance=driver)
+
+    return render(request, 'database/drivers/edit_driver.html', {'form': form})
