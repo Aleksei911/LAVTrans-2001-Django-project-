@@ -8,6 +8,13 @@
     <div class="mb-4 py-6 px-6">
 
         {% if cars %}
+            <div class="mt-4 flex justify-between">
+                <form class="form-inline py-4 px-8 bg-yellow-200 font-semibold w-full" action="{% url 'cars' %}">
+                    <input class="form-control py-1 px-2" type="search" placeholder="Search" aria-label="Search" name="query">
+                    <input type="hidden" name="search_by" value="number">
+                    <button class="btn btn-success py-1 px-8 bg-teal-500 text-white rounded-xl" type="submit">Поиск</button>
+                </form>
+            </div>
             <div class="mt-6 flex justify-between">
                 <p class="py-4 text-center bg-gray-200 font-semibold w-full">Номер ТС</p>
                 <p class="py-4 text-center bg-gray-200 font-semibold w-full">Зелёная карта</p>
@@ -18,13 +25,6 @@
                 <p class="py-4 text-center bg-gray-200 font-semibold w-full">КАСКО</p>
                 <p class="py-4 text-center bg-gray-200 font-semibold w-full">CMR-страховка</p>
                 <p class="py-4 text-center bg-gray-200 font-semibold w-full">Статус</p>
-            </div>
-            <div class="mt-4 flex justify-between">
-                <form class="form-inline py-4 px-8 bg-yellow-200 font-semibold w-full" action="{% url 'cars' %}">
-                    <input class="form-control py-1 px-2" type="search" placeholder="Search" aria-label="Search" name="query">
-                    <input type="hidden" name="search_by" value="number">
-                    <button class="btn btn-success py-1 px-8 bg-teal-500 text-white rounded-xl" type="submit">Поиск</button>
-                </form>
             </div>
             {% for car in cars %}
                 <div class="flex justify-between">
