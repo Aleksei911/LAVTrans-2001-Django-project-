@@ -1,6 +1,6 @@
 from django.urls import include, path
 from rest_framework import routers
-from .views import CarViewSet, DriverViewSet, cars, car_edit, add_car
+from .views import CarViewSet, DriverViewSet, cars, car_edit, add_car, drivers
 
 router = routers.DefaultRouter()
 
@@ -13,4 +13,5 @@ urlpatterns = [
     path('ts/', cars, name='cars'),
     path('add-card/', add_car, name='add_car'),
     path('<int:pk>/edit/', car_edit, name='car_edit'),
+    path('voditeli/', drivers, name='drivers'),
 ]

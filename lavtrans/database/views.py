@@ -43,7 +43,7 @@ def cars(request):
     else:
         cars = Car.objects.all()
 
-    return render(request, 'database/cars.html', {'cars': cars})
+    return render(request, 'database/cars/cars.html', {'cars': cars})
 
 
 def add_car(request):
@@ -60,7 +60,7 @@ def add_car(request):
     else:
         form = AddCarForm()
 
-    return render(request, 'database/add_car.html', {'form': form})
+    return render(request, 'database/cars/add_car.html', {'form': form})
 
 
 def car_edit(request, pk):
@@ -77,4 +77,19 @@ def car_edit(request, pk):
     else:
         form = AddCarForm(instance=car)
 
-    return render(request, 'database/edit_car.html', {'form': form})
+    return render(request, 'database/cars/edit_car.html', {'form': form})
+
+
+def drivers(request):
+    search_by = request.GET.get('search_by')
+    query = request.GET.get('query')
+
+    if query:
+        if search_by == "name":
+            drivers = Driver.objects.filter(name__icontains=query)
+        elif search_by == "last_name":
+            drivers = Driver.objects.filter(last_name__icontains=query)
+    else:
+        drivers = Driver.objects.all()
+
+    return render(request, 'database/drivers/drivers.html', {'drivers': drivers})
