@@ -22,8 +22,8 @@ class Car(models.Model):
 
 
 class Driver(models.Model):
-    name = models.CharField(verbose_name='Имя', max_length=20)
     last_name = models.CharField(verbose_name='Фамилия', max_length=20)
+    name = models.CharField(verbose_name='Имя', max_length=20)
     middle_name = models.CharField(verbose_name='Отчество', max_length=20)
     passport = models.DateField(verbose_name='Паспорт')
     visa = models.DateField(verbose_name='Виза', blank=True, null=True)
@@ -31,7 +31,7 @@ class Driver(models.Model):
     active = models.BooleanField(verbose_name='Отслеживать?', default=True)
 
     def __str__(self):
-        return f'{self.name} {self.last_name}'
+        return f'{self.last_name} {self.name} {self.middle_name}'
 
     class Meta:
         verbose_name = 'Водитель'
