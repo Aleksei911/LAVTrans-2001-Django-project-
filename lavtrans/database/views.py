@@ -4,7 +4,7 @@ from django.contrib import messages
 from rest_framework import viewsets
 from .serializers import CarSerializer, DriverSerializer
 from .models import Car, Driver
-from .forms import AddCarForm
+from .forms import AddCarForm, AddDriverForm
 from django.db.models import Q
 
 
@@ -93,3 +93,20 @@ def drivers(request):
         drivers = Driver.objects.all()
 
     return render(request, 'database/drivers/drivers.html', {'drivers': drivers})
+
+
+def add_driver(request):
+    if request.method == 'POST':
+        form = AddDriverForm(request.POST)
+
+        if form.is_valid():
+            driver = form.save()
+            driver.save()
+
+            messages.success(request, 'Новый водитель был успешно добавлен.')
+
+            return redirect('drivers')
+    else:
+        form = AddDriverForm()
+
+    return render(request, 'database/drivers/add_driver.html', {'form': form})
