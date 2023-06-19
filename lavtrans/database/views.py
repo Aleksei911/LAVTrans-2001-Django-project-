@@ -1,4 +1,5 @@
 import datetime
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from rest_framework import viewsets
@@ -33,6 +34,7 @@ class DriverViewSet(viewsets.ModelViewSet):
     serializer_class = DriverSerializer
 
 
+@login_required
 def cars(request):
     search_by = request.GET.get('search_by')
     query = request.GET.get('query')
@@ -46,6 +48,7 @@ def cars(request):
     return render(request, 'database/cars/cars.html', {'cars': cars})
 
 
+@login_required
 def add_car(request):
     if request.method == 'POST':
         form = AddCarForm(request.POST)
@@ -63,6 +66,7 @@ def add_car(request):
     return render(request, 'database/cars/add_car.html', {'form': form})
 
 
+@login_required
 def car_edit(request, pk):
     car = Car.objects.get(pk=pk)
 
@@ -80,6 +84,7 @@ def car_edit(request, pk):
     return render(request, 'database/cars/edit_car.html', {'form': form})
 
 
+@login_required
 def drivers(request):
     search_by = request.GET.get('search_by')
     query = request.GET.get('query')
@@ -95,6 +100,7 @@ def drivers(request):
     return render(request, 'database/drivers/drivers.html', {'drivers': drivers})
 
 
+@login_required
 def add_driver(request):
     if request.method == 'POST':
         form = AddDriverForm(request.POST)
@@ -112,6 +118,7 @@ def add_driver(request):
     return render(request, 'database/drivers/add_driver.html', {'form': form})
 
 
+@login_required
 def driver_edit(request, pk):
     driver = Driver.objects.get(pk=pk)
 
