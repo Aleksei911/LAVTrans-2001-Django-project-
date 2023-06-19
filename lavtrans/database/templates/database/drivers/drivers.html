@@ -1,4 +1,4 @@
-{% extends 'database/drivers/base_for_drivers.html'%}
+{% extends 'database/drivers/base.html'%}
 
 {% block title %}
 Водители
@@ -8,14 +8,14 @@
     <div class="mb-4 py-6 px-6">
 
         {% if drivers %}
-            <div class="mt-4 flex justify-between">
+            <div class="flex justify-between">
                 <form class="form-inline py-4 px-8 bg-yellow-200 font-semibold w-full" action="{% url 'drivers' %}">
                     <input class="form-control py-1 px-2" type="search" placeholder="Search" aria-label="Search" name="query">
                     <input type="hidden" name="search_by" value="last_name">
                     <button class="btn btn-success py-1 px-8 bg-teal-500 text-white rounded-xl" type="submit">Поиск</button>
                 </form>
             </div>
-            <div class="mt-6 flex justify-between">
+            <div class="mt-2 flex justify-between">
                 <p class="py-4 text-center bg-gray-200 font-semibold w-full">Фамилия</p>
                 <p class="py-4 text-center bg-gray-200 font-semibold w-full">Имя</p>
                 <p class="py-4 text-center bg-gray-200 font-semibold w-full">Отчество</p>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<nav class="bg-gray-800">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div class="relative flex h-16 items-center justify-between">
+            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                <div class="hidden sm:ml-6 sm:block">
+                    <div class="flex space-x-4">
+                        <a href="{% url 'cars' %}"
+                           class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+                           aria-current="page">Транспортные средства</a>
+                        <a href="{% url 'drivers' %}"
+                           class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Водители</a>
+                    </div>
+                </div>
+            </div>
+            <div class="space-x-4">
+                <button class="bg-red-600 text-white rounded-md px-3 py-2 text-sm font-medium"
+                        onclick="location.href='{% url 'logout' %}?next=/cars'">Выйти
+                </button>
+                <a class="bg-yellow-500 text-white rounded-md px-3 py-2 text-sm font-medium">{{ user.username }}</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<nav class="py-6 px-20 flex justify-between bg-teal-500">
+    <a href="{% url 'cars' %}" class="text-white text-xl">Информация по транспортным средствам</a>
+
+    <div class="space-x-4">
+        <a href="{% url 'add_car' %}" class="py-4 px-6 bg-teal-600 rounded-xl text-white">Добавить новое транспортное
+            средство</a>
+    </div>
+</nav>
+
+{% if messages %}
+<div class="py-6 px-6">
+    {% for message in messages %}
+    <div class="py-4 px-4 bg-teal-300 text-white rounded-xl">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
