@@ -10,7 +10,7 @@ router.register(r'Drivers', DriverViewSet)
 urlpatterns = [
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
-    path('cars/', cars, name='cars'),
+    path('', cars, name='cars'),
     path('add-car/', add_car, name='add_car'),
     path('<int:pk>/car-edit/', car_edit, name='car_edit'),
     path('drivers/', drivers, name='drivers'),

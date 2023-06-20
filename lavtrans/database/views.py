@@ -1,5 +1,6 @@
 import datetime
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from rest_framework import viewsets
@@ -58,6 +59,7 @@ def add_car(request):
             car.save()
 
             messages.success(request, 'Новое транспортное средство было успешно добавлено.')
+            print(f"{request.user.username} добавил ТС {car.number}")
 
             return redirect('cars')
     else:
@@ -76,6 +78,10 @@ def car_edit(request, pk):
             form.save()
 
             messages.success(request, 'Изменения были успешно сохранены.')
+            print(f"{request.user.username} внес изменения в ТС {car.number} : зелёнка {car.green_card}, "
+                  f"страховка {car.strahovka}, техосмотр {car.tehosmotr}, таможенное {car.tamogennoye}, "
+                  f"тахограф {car.tahograf}, каско {car.kasko}, смр-страховка {car.cmr_strahovka}, "
+                  f"статус {car.active}")
 
             return redirect('cars')
     else:
@@ -110,6 +116,7 @@ def add_driver(request):
             driver.save()
 
             messages.success(request, 'Новый водитель был успешно добавлен.')
+            print(f"{request.user.username} добавил водителя {driver.last_name} {driver.name} {driver.middle_name}")
 
             return redirect('drivers')
     else:
@@ -128,6 +135,9 @@ def driver_edit(request, pk):
             form.save()
 
             messages.success(request, 'Изменения были успешно сохранены.')
+            print(f"{request.user.username} внес изменения для водителя "
+                  f"{driver.last_name} {driver.name} {driver.middle_name} : паспорт {driver.passport}, "
+                  f"виза {driver.visa}, водительское {driver.driver_card}, статус {driver.active}")
 
             return redirect('drivers')
     else:
