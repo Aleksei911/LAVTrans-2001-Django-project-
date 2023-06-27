@@ -1,5 +1,5 @@
 from django import forms
-from .models import Car, Driver
+from .models import Car, Driver, ImagesInsuranceEvent
 
 
 class AddCarForm(forms.ModelForm):
@@ -13,3 +13,14 @@ class AddDriverForm(forms.ModelForm):
     class Meta:
         model = Driver
         fields = ('name', 'last_name', 'middle_name', 'passport', 'visa', 'driver_card', 'active')
+
+
+class ImageForm(forms.ModelForm):
+    image = forms.ImageField(
+        label='Фото',
+        widget=forms.ClearableFileInput(attrs={'multiple': True}),
+    )
+
+    class Meta:
+        model = ImagesInsuranceEvent
+        fields = ('image',)
