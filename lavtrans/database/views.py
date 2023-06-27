@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from rest_framework import viewsets
 from .serializers import CarSerializer, DriverSerializer
-from .models import Car, Driver
+from .models import Car, Driver, InsuranceEvent, ImagesInsuranceEvent
 from .forms import AddCarForm, AddDriverForm
 from django.db.models import Q
 
@@ -50,6 +50,18 @@ def cars(request):
 
 
 @login_required
+def car_info(request, pk):
+    car = Car.objects.get(pk=pk)
+    events = InsuranceEvent.objects.filter(car=car)
+
+    context = {
+        'car': car,
+        'events': events,
+    }
+    return render(request, 'database/cars/car_detail.html', context)
+
+
+@login_required
 def add_car(request):
     if request.method == 'POST':
         form = AddCarForm(request.POST)
@@ -83,7 +95,7 @@ def car_edit(request, pk):
                   f"тахограф {car.tahograf}, каско {car.kasko}, смр-страховка {car.cmr_strahovka}, "
                   f"статус {car.active}")
 
-            return redirect('cars')
+            return redirect('car_info', pk=pk)
     else:
         form = AddCarForm(instance=car)
 

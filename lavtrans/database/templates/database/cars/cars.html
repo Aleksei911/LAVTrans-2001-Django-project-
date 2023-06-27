@@ -29,7 +29,7 @@
             {% for car in cars %}
                 <div class="flex justify-between">
                     <p class="py-2 text-center w-full">
-                        <a href="{% url 'car_edit' car.id %}"> {{ car.number }} </a>
+                        <a href="{% url 'car_info' car.id %}"> {{ car.number }} </a>
                     </p>
                     <p class="py-2 text-center w-full">{{ car.green_card|date:"d.m.Y" }}</p>
                     <p class="py-2 text-center w-full">{{ car.strahovka|date:"d.m.Y" }}</p>
