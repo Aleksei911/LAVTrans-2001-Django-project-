@@ -78,7 +78,7 @@ class InsuranceEvent(models.Model):
 
 class ImagesInsuranceEvent(models.Model):
     insurance_event = models.ForeignKey('InsuranceEvent', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='database/images', blank=True, null=True, verbose_name='Фото')
+    image = models.ImageField(upload_to='images/', blank=True, null=True, verbose_name='Фото')
 
     def __str__(self):
         return f'{self.insurance_event}'
