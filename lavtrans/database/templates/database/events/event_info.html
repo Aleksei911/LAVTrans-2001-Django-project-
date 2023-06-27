@@ -1,0 +1,142 @@
+{% extends 'database/base.html'%}
+
+{% block title %}
+Подробная информация
+{% endblock %}
+
+{% block content %}
+<div class="py-6 px-6">
+    <h1 class="mb-4 text-xl">Подробная информация по страховому случаю</h1>
+    <table>
+        <tbody>
+        <tr>
+            <th><p class="mr-3 text-left">Номер авто:</p></th>
+            <td>
+                <p>{{ event.car }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3 text-left">Зелёнка:</p></th>
+            <td>
+                <p>{{ event.driver }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3 text-left">Дата подачи в страховую:</p></th>
+            <td>
+                <p>{{ event.date_of_submission | date:'d.m.Y' }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3 text-left">Страховой полис:</p></th>
+            <td>
+                <p>{{ event.polis_number }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3 text-left">Справка с ГАИ?</p></th>
+            <td>
+                {% if event.police_sertificate %}
+                <p>Да</p>
+                {% else %}
+                <p class="bg-red-500">Нет</p>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3 text-left">Способ ремонта:</p></th>
+            <td>
+                <p>{{ event.repair_method }}</p>
+            </td>
+        </tr>
+        {% if event.repair_method == 'Калькуляция' %}
+        <tr>
+            <th><p class="mr-3 text-left">Страховая насчитала по калькуляции:</p></th>
+            <td>
+                <p>{{ event.calculation_sum }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3 text-left">Наши расходы по восстановлению TC:</p></th>
+            <td>
+                <p>{{ event.expenses }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3 text-left">В нашу пользу:</p></th>
+            <td>
+                <p>{{ event.margin }}</p>
+            </td>
+        </tr>
+        {% endif %}
+        {% if event.repair_method == 'Сервис' %}
+        <tr>
+            <th><p class="mr-3 text-left">На какой сервис отправили ТС:</p></th>
+            <td>
+                <p>{{ event.service_name }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3 text-left">Дата отправки на сервис:</p></th>
+            <td>
+                <p>{{ event.service_date | date:'d.m.Y' }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3 text-left">Сумма счета от сервиса:</p></th>
+            <td>
+                <p>{{ event.service_sum }}</p>
+            </td>
+        </tr>
+        {% endif %}
+        <tr>
+            <th><p class="mr-3 text-left">Дата передачи документов по ремонту в страховую:</p></th>
+            <td>
+                <p>{{ event.final_docs | date:'d.m.Y' }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3 text-left">Дата оплаты от страховой:</p></th>
+            <td>
+                <p>{{ event.payment_date | date:'d.m.Y' }}</p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr class="my-4">
+
+    <a class="py-3 px-8 bg-teal-500 text-white rounded-xl">Редактировать</a>
+
+    <hr class="my-4">
+
+    <a class="py-3 px-8 bg-yellow-500 text-white rounded-xl" href="{% url 'car_info' event.car.id %}">Назад</a>
+
+    <hr class="my-4">
+
+    {% if photos %}
+
+    <div class="bg-gray-100">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
+                <h2 class="text-2xl font-bold text-gray-900">Фото</h2>
+
+                <div class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
+                    {% for photo in photos %}
+                    <div class="group relative">
+                        <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
+                            <img src="{{ photo.image.url }}"
+                                 alt="."
+                                 class="h-full w-full object-cover object-center">
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p class="mt-6 px-2">По данному страховому случаю фотографий не найдено...</p>
+    {% endif %}
+</div>
+{% endblock %}

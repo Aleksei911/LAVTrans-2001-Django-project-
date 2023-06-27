@@ -1,4 +1,4 @@
-{% extends 'database/cars/base.html'%}
+{% extends 'database/base.html'%}
 
 {% block title %}
 Подробная информация
@@ -103,7 +103,7 @@
         <p class="py-2 text-center w-full">{{ event.final_docs|date:"d.m.Y" }}</p>
         <p class="py-2 text-center w-full">{{ event.payment_date|date:"d.m.Y" }}</p>
         <p class="py-2 w-full">
-            <a class="ml-8 py-1 px-3 bg-teal-500 text-white rounded-xl">Подробнее</a>
+            <a class="ml-8 py-1 px-3 bg-teal-500 text-white rounded-xl" href="{% url 'event_info' event.id %}">Подробнее</a>
         </p>
     </div>
     {% endfor %}

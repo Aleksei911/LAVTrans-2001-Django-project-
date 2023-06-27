@@ -1,48 +1,56 @@
-{% extends 'database/drivers/base.html'%}
+{% extends 'database/base.html'%}
 
 {% block title %}
 Водители
 {% endblock %}
 
 {% block content %}
-    <div class="mb-4 py-6 px-6">
+<nav class="py-6 px-20 flex justify-between bg-teal-500">
+    <a href="{% url 'drivers' %}" class="text-white text-xl">Информация по водителям</a>
 
-        {% if drivers %}
-            <div class="flex justify-between">
-                <form class="form-inline py-4 px-8 bg-yellow-200 font-semibold w-full" action="{% url 'drivers' %}">
-                    <input class="form-control py-1 px-2" type="search" placeholder="Search" aria-label="Search" name="query">
-                    <input type="hidden" name="search_by" value="last_name">
-                    <button class="btn btn-success py-1 px-8 bg-teal-500 text-white rounded-xl" type="submit">Поиск</button>
-                </form>
-            </div>
-            <div class="mt-2 flex justify-between">
-                <p class="py-4 text-center bg-gray-200 font-semibold w-full">Фамилия</p>
-                <p class="py-4 text-center bg-gray-200 font-semibold w-full">Имя</p>
-                <p class="py-4 text-center bg-gray-200 font-semibold w-full">Отчество</p>
-                <p class="py-4 text-center bg-gray-200 font-semibold w-full">Паспорт</p>
-                <p class="py-4 text-center bg-gray-200 font-semibold w-full">Виза</p>
-                <p class="py-4 text-center bg-gray-200 font-semibold w-full">Водительское удостоверение</p>
-                <p class="py-4 text-center bg-gray-200 font-semibold w-full">Статус</p>
-            </div>
-            {% for driver in drivers %}
-                <div class="flex justify-between">
-                    <p class="py-2 text-center w-full">
-                        <a href="{% url 'driver_edit' driver.id %}"> {{ driver.last_name }} </a>
-                    </p>
-                    <p class="py-2 text-center w-full">{{ driver.name }}</p>
-                    <p class="py-2 text-center w-full">{{ driver.middle_name }}</p>
-                    <p class="py-2 text-center w-full">{{ driver.passport|date:"d.m.Y" }}</p>
-                    <p class="py-2 text-center w-full">{{ driver.visa|date:"d.m.Y" }}</p>
-                    <p class="py-2 text-center w-full">{{ driver.driver_card|date:"d.m.Y" }}</p>
-                    {% if driver.active == True %}
-                        <p class="py-2 text-center w-full">Отслеживается</p>
-                    {% else %}
-                        <p class="py-2 text-center bg-red-500 w-full">Не отслеживается</p>
-                    {% endif %}
-                </div>
-            {% endfor %}
+    <div class="space-x-4">
+        <a href="{% url 'add_driver' %}" class="py-4 px-6 bg-teal-600 rounded-xl text-white">Добавить нового
+            водителя</a>
+    </div>
+</nav>
+<div class="mb-4 py-6 px-6">
+
+    {% if drivers %}
+    <div class="flex justify-between">
+        <form class="form-inline py-4 px-8 bg-yellow-200 font-semibold w-full" action="{% url 'drivers' %}">
+            <input class="form-control py-1 px-2" type="search" placeholder="Search" aria-label="Search" name="query">
+            <input type="hidden" name="search_by" value="last_name">
+            <button class="btn btn-success py-1 px-8 bg-teal-500 text-white rounded-xl" type="submit">Поиск</button>
+        </form>
+    </div>
+    <div class="mt-2 flex justify-between">
+        <p class="py-4 text-center bg-gray-200 font-semibold w-full">Фамилия</p>
+        <p class="py-4 text-center bg-gray-200 font-semibold w-full">Имя</p>
+        <p class="py-4 text-center bg-gray-200 font-semibold w-full">Отчество</p>
+        <p class="py-4 text-center bg-gray-200 font-semibold w-full">Паспорт</p>
+        <p class="py-4 text-center bg-gray-200 font-semibold w-full">Виза</p>
+        <p class="py-4 text-center bg-gray-200 font-semibold w-full">Водительское удостоверение</p>
+        <p class="py-4 text-center bg-gray-200 font-semibold w-full">Статус</p>
+    </div>
+    {% for driver in drivers %}
+    <div class="flex justify-between">
+        <p class="py-2 text-center w-full">
+            <a href="{% url 'driver_edit' driver.id %}"> {{ driver.last_name }} </a>
+        </p>
+        <p class="py-2 text-center w-full">{{ driver.name }}</p>
+        <p class="py-2 text-center w-full">{{ driver.middle_name }}</p>
+        <p class="py-2 text-center w-full">{{ driver.passport|date:"d.m.Y" }}</p>
+        <p class="py-2 text-center w-full">{{ driver.visa|date:"d.m.Y" }}</p>
+        <p class="py-2 text-center w-full">{{ driver.driver_card|date:"d.m.Y" }}</p>
+        {% if driver.active == True %}
+        <p class="py-2 text-center w-full">Отслеживается</p>
         {% else %}
-            <p class="mt-6 px-2">На данный момент ни одного водителя в базу данных не внесено...</p>
+        <p class="py-2 text-center bg-red-500 w-full">Не отслеживается</p>
         {% endif %}
     </div>
+    {% endfor %}
+    {% else %}
+    <p class="mt-6 px-2">На данный момент ни одного водителя в базу данных не внесено...</p>
+    {% endif %}
+</div>
 {% endblock %}

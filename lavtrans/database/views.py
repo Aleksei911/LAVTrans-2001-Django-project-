@@ -156,3 +156,15 @@ def driver_edit(request, pk):
         form = AddDriverForm(instance=driver)
 
     return render(request, 'database/drivers/edit_driver.html', {'form': form})
+
+
+@login_required
+def event_info(request, pk):
+    event = InsuranceEvent.objects.get(pk=pk)
+    photos = ImagesInsuranceEvent.objects.filter(insurance_event=event)
+
+    context = {
+        'event': event,
+        'photos': photos,
+    }
+    return render(request, 'database/events/event_info.html', context)
