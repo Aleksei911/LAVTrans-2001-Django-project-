@@ -6,7 +6,7 @@ from django.contrib import messages
 from rest_framework import viewsets
 from .serializers import CarSerializer, DriverSerializer
 from .models import Car, Driver, InsuranceEvent, ImagesInsuranceEvent
-from .forms import AddCarForm, AddDriverForm
+from .forms import AddCarForm, AddDriverForm, AddEventForm, ImageForm
 from django.db.models import Q
 
 
@@ -168,3 +168,29 @@ def event_info(request, pk):
         'photos': photos,
     }
     return render(request, 'database/events/event_info.html', context)
+
+
+@login_required
+def add_car_event(request):
+    if request.method == 'POST':
+        form = AddEventForm(request.POST)
+        files = request.FILES.getlist('image')
+
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.save()
+
+            for i in files:
+                ImagesInsuranceEvent.objects.create(insurance_event=event, image=i)
+
+            messages.success(request, 'Новый страховой случай был успешно добавлен.')
+            print(f"{request.user.username} добавил страховой случай {event.id} {event.car} {event.driver}")
+
+            return redirect('cars')
+        else:
+            print(form.errors)
+    else:
+        form = AddEventForm()
+        imageform = ImageForm()
+
+    return render(request, 'database/events/add_event.html', {'form': form, 'imageform': imageform})
