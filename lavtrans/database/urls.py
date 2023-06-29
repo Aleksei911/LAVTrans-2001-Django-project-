@@ -19,5 +19,5 @@ urlpatterns = [
     path('add_driver/', add_driver, name='add_driver'),
     path('<int:pk>/driver_edit/', driver_edit, name='driver_edit'),
     path('<int:pk>/event_info/', event_info, name='event_info'),
-    path('add_car_event/', add_car_event, name='add_car_event'),
+    path('<int:pk>/add_car_event/', add_car_event, name='add_car_event'),
 ]

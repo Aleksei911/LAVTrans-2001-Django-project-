@@ -171,13 +171,15 @@ def event_info(request, pk):
 
 
 @login_required
-def add_car_event(request):
+def add_car_event(request, pk):
+    car = Car.objects.get(pk=pk)
     if request.method == 'POST':
         form = AddEventForm(request.POST)
         files = request.FILES.getlist('image')
 
         if form.is_valid():
             event = form.save(commit=False)
+            event.car = car
             event.save()
 
             for i in files:
@@ -193,4 +195,4 @@ def add_car_event(request):
         form = AddEventForm()
         imageform = ImageForm()
 
-    return render(request, 'database/events/add_event.html', {'form': form, 'imageform': imageform})
+    return render(request, 'database/events/add_event.html', {'form': form, 'imageform': imageform, 'car': car})
