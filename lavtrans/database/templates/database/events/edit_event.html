@@ -1,0 +1,107 @@
+{% extends 'database/base.html'%}
+
+{% block title %}
+Редактировать страховой случай
+{% endblock %}
+
+{% block content %}
+<div class="py-6 px-6">
+    <h1 class="mb-4 text-xl">Редактирование информации по страховому случаю</h1>
+
+    <form method="post" action="." enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="border-collapse border border-slate-400">
+            <tbody>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Номер авто:</th>
+                <td class="border border-slate-300">
+                    {{ event.car.number }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Водитель:</th>
+                <td class="border border-slate-300">
+                    {{ form.driver }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Дата подачи в страховую:</th>
+                <td class="border border-slate-300">
+                    <input type="date" name="date_of_submission" value="{{ form.date_of_submission.value | date:'Y-m-d' }}" required="" id="id_date_of_submission">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Страховой полис:</th>
+                <td class="border border-slate-300">
+                    {{ form.polis_number }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Справка с ГАИ?:</th>
+                <td class="border border-slate-300">
+                    {{ form.police_sertificate }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Способ ремонта:</th>
+                <td class="border border-slate-300">
+                    {{ form.repair_method }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Страховая насчитала по калькуляции:</th>
+                <td class="border border-slate-300">
+                    {{ form.calculation_sum }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Наши расходы по восстановлению (Калькуляция):</th>
+                <td class="border border-slate-300">
+                    {{ form.expenses }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">В нашу пользу (Калькуляция):</th>
+                <td class="border border-slate-300">
+                    {{ form.margin }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">На какой сервис отправили ТС:</th>
+                <td class="border border-slate-300">
+                    {{ form.service_name }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Дата отправки на сервис:</th>
+                <td class="border border-slate-300">
+                    <input type="date" name="service_date" value="{{ form.service_date.value | date:'Y-m-d' }}" id="id_service_date">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Сумма счета от сервиса:</th>
+                <td class="border border-slate-300">
+                    {{ form.service_sum }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Дата передачи документов по ремонту в страховую:</th>
+                <td class="border border-slate-300">
+                    <input type="date" name="final_docs" value="{{ form.final_docs.value | date:'Y-m-d' }}" id="id_final_docs">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Дата оплаты от страховой:</th>
+                <td class="border border-slate-300">
+                    <input type="date" name="payment_date" value="{{ form.payment_date.value | date:'Y-m-d' }}" id="id_payment_date">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <button class="mt-4 py-4 px-8 bg-teal-500 text-white rounded-xl">Сохранить изменения</button>
+
+        <hr class="my-4">
+    </form>
+</div>
+{% endblock %}

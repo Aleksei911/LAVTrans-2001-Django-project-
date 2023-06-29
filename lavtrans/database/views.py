@@ -196,3 +196,48 @@ def add_car_event(request, pk):
         imageform = ImageForm()
 
     return render(request, 'database/events/add_event.html', {'form': form, 'imageform': imageform, 'car': car})
+
+
+@login_required
+def event_edit(request, pk):
+    event = InsuranceEvent.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        form = AddEventForm(request.POST, instance=event)
+        if form.is_valid():
+            form.save()
+
+            messages.success(request, 'Изменения были успешно сохранены.')
+            print(f"{request.user.username} внес изменения в страховой случай {event.car} : водитель {event.driver}, "
+                  f"Дата подачи в страховую {event.date_of_submission}, Страховой полис {event.polis_number}, "
+                  f"Справка с ГАИ? {event.police_sertificate}, "
+                  f"Способ ремонта {event.repair_method}, Страховая насчитала по калькуляции {event.calculation_sum}, "
+                  f"Наши расходы по восстановлению (Калькуляция) {event.expenses}, "
+                  f"В нашу пользу (Калькуляция) {event.margin}, На какой сервис отправили ТС {event.service_name}, "
+                  f"Дата отправки на сервис {event.service_date}, Сумма счета от сервиса {event.service_sum}, "
+                  f"Дата передачи документов по ремонту в страховую {event.final_docs}, "
+                  f"Дата оплаты от страховой {event.payment_date}")
+
+            return redirect('event_info', pk=pk)
+    else:
+        form = AddEventForm(instance=event)
+
+    return render(request, 'database/events/edit_event.html', {'form': form, 'event': event})
+
+
+@login_required
+def add_photo(request, pk):
+    event = InsuranceEvent.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        files = request.FILES.getlist('image')
+
+        for file in files:
+            ImagesInsuranceEvent.objects.create(insurance_event=event, image=file)
+
+        messages.success(request, 'Фото были успешно добавлены.')
+
+        return redirect('event_info', pk=pk)
+    else:
+        form = ImageForm()
+    return render(request, 'database/events/add_photo.html', {'form': form, 'event': event})

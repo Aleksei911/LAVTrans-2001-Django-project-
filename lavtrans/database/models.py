@@ -66,7 +66,7 @@ class InsuranceEvent(models.Model):
     service_sum = models.DecimalField(max_digits=20, decimal_places=2, verbose_name='Сумма счета от сервиса',
                                       blank=True, null=True)
     final_docs = models.DateField(verbose_name='Дата передачи документов по ремонту в страховую', blank=True, null=True)
-    payment_date = models.DateField(verbose_name='Дата оплаты от страховой', blank=True, null=True)
+    payment_date = models.DateField(verbose_name='Дата оплаты от страховой', blank=True, null=True, default=None)
 
     def __str__(self):
         return f'{self.car} {self.driver}'

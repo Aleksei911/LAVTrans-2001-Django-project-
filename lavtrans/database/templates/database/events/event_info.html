@@ -106,7 +106,8 @@
 
     <hr class="my-4">
 
-    <a class="py-3 px-8 bg-teal-500 text-white rounded-xl">Редактировать</a>
+    <a class="py-3 px-8 bg-teal-500 text-white rounded-xl" href="{% url 'event_edit' event.id %}">Редактировать</a>
+    <a class="py-3 px-8 bg-teal-500 text-white rounded-xl" href="{% url 'add_photo' event.id %}">Добавить фото</a>
 
     <hr class="my-4">
 
@@ -123,7 +124,7 @@
 
                 <div class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
                     {% for photo in photos %}
-                    <div class="group relative">
+                    <div class="mb-4 group relative">
                         <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
                             <img src="{{ photo.image.url }}"
                                  alt="."
