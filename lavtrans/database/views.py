@@ -119,6 +119,18 @@ def drivers(request):
 
 
 @login_required
+def driver_info(request, pk):
+    driver = Driver.objects.get(pk=pk)
+    events = InsuranceEvent.objects.filter(driver=driver)
+
+    context = {
+        'driver': driver,
+        'events': events,
+    }
+    return render(request, 'database/drivers/driver_detail.html', context)
+
+
+@login_required
 def add_driver(request):
     if request.method == 'POST':
         form = AddDriverForm(request.POST)

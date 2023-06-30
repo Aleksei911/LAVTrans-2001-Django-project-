@@ -1,0 +1,101 @@
+{% extends 'database/base.html'%}
+
+{% block title %}
+Подробная информация
+{% endblock %}
+
+{% block content %}
+<div class="py-6 px-6">
+    <h1 class="mb-4 text-xl">Подробная информация по водителю</h1>
+    <table>
+        <tbody>
+        <tr>
+            <th><p class="mr-3">Фамилия:</p></th>
+            <td>
+                <p>{{ driver.last_name }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Имя:</p></th>
+            <td>
+                <p>{{ driver.name }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Отчество:</p></th>
+            <td>
+                <p>{{ driver.middle_name }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Паспорт:</p></th>
+            <td>
+                <p>{{ driver.passport | date:'d.m.Y' }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Виза:</p></th>
+            <td>
+                <p>{{ driver.visa | date:'d.m.Y' }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Водительское удостоверение:	</p></th>
+            <td>
+                <p>{{ driver.driver_card | date:'d.m.Y' }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Отслеживается?</p></th>
+            <td>
+                {% if driver.active %}
+                <p class="text-center">Да</p>
+                {% else %}
+                <p class="bg-red-500 text-center">Нет</p>
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr class="my-4">
+
+    <a class="py-3 px-8 bg-teal-500 text-white rounded-xl" href="{% url 'driver_edit' driver.id %}">Редактировать</a>
+    <a class="py-3 px-8 bg-teal-500 text-white rounded-xl">Добавить страховой случай</a>
+
+    <hr class="my-4">
+
+    <a class="py-3 px-8 bg-yellow-500 text-white rounded-xl" href="{% url 'drivers' %}">Вернуться ко всем водителям</a>
+</div>
+
+<div class="mb-4 py-6 px-6">
+    <h1 class="text-xl">Страховые случаи</h1>
+
+    {% if events %}
+    <div class="mt-6 flex justify-between">
+        <p class="py-6 bg-gray-200 text-center font-semibold w-full">Транспортное средство</p>
+        <p class="py-6 bg-gray-200 text-center font-semibold w-full">Подали в страховую</p>
+        <p class="py-6 bg-gray-200 text-center font-semibold w-full">Страховой полис</p>
+        <p class="py-6 bg-gray-200 text-center font-semibold w-full">Способ ремонта</p>
+        <p class="py-6 bg-gray-200 text-center font-semibold w-full">Документы по ремонту передали в страховую</p>
+        <p class="py-6 bg-gray-200 text-center font-semibold w-full">Дата оплаты от страховой</p>
+        <p class="py-6 bg-gray-200 text-center font-semibold w-full"></p>
+    </div>
+    {% for event in events %}
+    <div class="flex justify-between">
+        <p class="py-2 text-center w-full">{{ event.car }}</p>
+        <p class="py-2 text-center w-full">{{ event.date_of_submission|date:"d.m.Y" }}</p>
+        <p class="py-2 text-center w-full">{{ event.polis_number }}</p>
+        <p class="py-2 text-center w-full">{{ event.repair_method }}</p>
+        <p class="py-2 text-center w-full">{{ event.final_docs|date:"d.m.Y" }}</p>
+        <p class="py-2 text-center w-full">{{ event.payment_date|date:"d.m.Y" }}</p>
+        <p class="py-2 w-full">
+            <a class="ml-8 py-1 px-3 bg-teal-500 text-white rounded-xl" href="{% url 'event_info' event.id %}">Подробнее</a>
+        </p>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p class="mt-6 px-2">По данному водителю страховых случаев не выявлено...</p>
+    {% endif %}
+</div>
+{% endblock %}

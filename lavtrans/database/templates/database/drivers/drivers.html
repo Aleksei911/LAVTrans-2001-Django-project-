@@ -35,7 +35,7 @@
     {% for driver in drivers %}
     <div class="flex justify-between">
         <p class="py-2 text-center w-full">
-            <a href="{% url 'driver_edit' driver.id %}"> {{ driver.last_name }} </a>
+            <a href="{% url 'driver_info' driver.id %}"> {{ driver.last_name }} </a>
         </p>
         <p class="py-2 text-center w-full">{{ driver.name }}</p>
         <p class="py-2 text-center w-full">{{ driver.middle_name }}</p>
