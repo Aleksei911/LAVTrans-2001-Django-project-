@@ -20,7 +20,7 @@ class AddEventForm(forms.ModelForm):
     class Meta:
         model = InsuranceEvent
         fields = ('driver', 'date_of_submission', 'polis_number',
-                  'police_sertificate', 'repair_method', 'calculation_sum', 'expenses', 'margin', 'service_name',
+                  'police_sertificate', 'repair_method', 'calculation_sum', 'expenses', 'service_name',
                   'service_date', 'service_sum', 'final_docs', 'payment_date')
 
         date_of_submission = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control'}))

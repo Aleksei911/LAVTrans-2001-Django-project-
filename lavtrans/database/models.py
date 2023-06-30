@@ -60,7 +60,7 @@ class InsuranceEvent(models.Model):
     expenses = models.DecimalField(max_digits=20, decimal_places=2,
                                    verbose_name='Наши расходы по восстановлению (Калькуляция)', blank=True, null=True)
     margin = models.DecimalField(max_digits=20, decimal_places=2, verbose_name='В нашу пользу (Калькуляция)',
-                                 blank=True, null=True)
+                                 default=0)
     service_name = models.CharField(max_length=50, verbose_name='На какой сервис отправили ТС', blank=True, null=True)
     service_date = models.DateField(verbose_name='Дата отправки на сервис', blank=True, null=True)
     service_sum = models.DecimalField(max_digits=20, decimal_places=2, verbose_name='Сумма счета от сервиса',
@@ -74,6 +74,15 @@ class InsuranceEvent(models.Model):
     class Meta:
         verbose_name = 'Страховой случай'
         verbose_name_plural = 'Страховые случаи'
+
+    def save(self, *args, **kwargs):
+        calculation = self.calculation_sum
+        expenses = self.expenses
+        if calculation and expenses:
+            self.margin = calculation - expenses
+        else:
+            self.margin = 0
+        super(InsuranceEvent, self).save(*args, **kwargs)
 
 
 class ImagesInsuranceEvent(models.Model):
