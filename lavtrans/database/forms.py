@@ -26,12 +26,23 @@ class AddEventForm(forms.ModelForm):
         date_of_submission = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control'}))
 
 
-class ImageForm(forms.ModelForm):
-    image = forms.ImageField(
-        label='image',
-        widget=forms.ClearableFileInput(attrs={'multiple': True}),
-    )
+class MultipleFileInput(forms.ClearableFileInput):
+    allow_multiple_selected = True
 
-    class Meta:
-        model = ImagesInsuranceEvent
-        fields = ('image',)
+
+class MultipleFileField(forms.FileField):
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault("widget", MultipleFileInput())
+        super().__init__(*args, **kwargs)
+
+    def clean(self, data, initial=None):
+        single_file_clean = super().clean
+        if isinstance(data, (list, tuple)):
+            result = [single_file_clean(d, initial) for d in data]
+        else:
+            result = single_file_clean(data, initial)
+        return result
+
+
+class ImageForm(forms.Form):
+    image = MultipleFileField()
