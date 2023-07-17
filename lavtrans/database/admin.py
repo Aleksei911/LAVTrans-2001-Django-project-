@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Car, Driver, InsuranceEvent, ImagesInsuranceEvent
+from .models import Car, Driver, InsuranceEvent, ImagesInsuranceEvent, Owner, TechPassport, TechPassportScans, \
+    PassportDriver, DriverScans
 
 
 # Register your models here.
@@ -19,11 +20,35 @@ class ImagesInsuranceEventAdmin(admin.ModelAdmin):
     search_fields = ['insurance_event']
 
 
+class TechPassportScansAdmin(admin.ModelAdmin):
+    list_display = ['car']
+    list_filter = ['car']
+    search_fields = ['car']
+
+
+class DriverScansAdmin(admin.ModelAdmin):
+    list_display = ['driver']
+    list_filter = ['driver']
+    search_fields = ['driver']
+
+
 class InsuranceEventAdmin(admin.ModelAdmin):
     list_display = ['car', 'driver']
     inlines = [ImagesInsuranceEventInline]
     list_filter = ['car', 'driver']
     search_fields = ['car', 'driver']
+
+
+class TechPassportAdmin(admin.ModelAdmin):
+    list_display = ['car']
+    list_filter = ['car']
+    search_fields = ['car']
+
+
+class PassportDriverAdmin(admin.ModelAdmin):
+    list_display = ['driver']
+    list_filter = ['driver']
+    search_fields = ['driver']
 
 
 class DriverAdmin(admin.ModelAdmin):
@@ -40,7 +65,18 @@ class CarAdmin(admin.ModelAdmin):
     search_fields = ['number']
 
 
+class OwnerAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    list_filter = ['name']
+    search_fields = ['name']
+
+
 admin.site.register(Car, CarAdmin)
 admin.site.register(Driver, DriverAdmin)
+admin.site.register(Owner, OwnerAdmin)
 admin.site.register(InsuranceEvent, InsuranceEventAdmin)
 admin.site.register(ImagesInsuranceEvent, ImagesInsuranceEventAdmin)
+admin.site.register(TechPassport, TechPassportAdmin)
+admin.site.register(TechPassportScans, TechPassportScansAdmin)
+admin.site.register(PassportDriver, PassportDriverAdmin)
+admin.site.register(DriverScans, DriverScansAdmin)

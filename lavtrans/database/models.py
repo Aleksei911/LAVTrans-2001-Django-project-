@@ -2,8 +2,21 @@ from django.db import models
 
 
 # Create your models here.
+class Owner(models.Model):
+    name = models.CharField(max_length=255, verbose_name='Наименование собственника')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Владелец'
+        verbose_name_plural = 'Владельцы'
+
+
 class Car(models.Model):
     number = models.CharField(verbose_name='Номер авто', max_length=10)
+    model = models.CharField(verbose_name='Модель ТС', max_length=50, default=None, blank=True, null=True)
+    manufacture_year = models.IntegerField(verbose_name='Год выпуска', default=None, blank=True, null=True)
     green_card = models.DateField(verbose_name='Зелёнка', blank=True, null=True)
     strahovka = models.DateField(verbose_name='Страховка', blank=True, null=True)
     tehosmotr = models.DateField(verbose_name='Техосмотр', blank=True, null=True)
@@ -11,6 +24,8 @@ class Car(models.Model):
     tamogennoye = models.DateField(verbose_name='Таможенное', blank=True, null=True)
     kasko = models.DateField(verbose_name='КАСКО', blank=True, null=True)
     cmr_strahovka = models.DateField(verbose_name='CMR-страховка', blank=True, null=True)
+    e100_rb = models.DateField(verbose_name='Е100 РБ', blank=True, null=True, default=None)
+    e100_rf = models.DateField(verbose_name='Е100 РФ', blank=True, null=True, default=None)
     active = models.BooleanField(verbose_name='Отслеживать?', default=True)
 
     def __str__(self):
@@ -19,6 +34,43 @@ class Car(models.Model):
     class Meta:
         verbose_name = 'Транспортное средство'
         verbose_name_plural = 'Транспортные средства'
+
+
+class TechPassport(models.Model):
+    car = models.ForeignKey('Car', on_delete=models.CASCADE)
+    vin = models.CharField(max_length=20, verbose_name='VIN')
+    type_ts = models.CharField(max_length=75, verbose_name='Тип ТС')
+    category = models.CharField(max_length=3, verbose_name='Категория')
+    eco_class = models.IntegerField(verbose_name='Эко класс')
+    color = models.CharField(max_length=30, verbose_name='Цвет')
+    engine_capacity = models.IntegerField(verbose_name='Объем двигателя')
+    weight = models.IntegerField(verbose_name='Масса без нагрузки')
+    max_weight = models.IntegerField(verbose_name='Максимальная масса')
+    manufacturer = models.CharField(max_length=50, verbose_name='Страна производитель')
+    owner = models.ForeignKey('Owner', on_delete=models.CASCADE)
+    price = models.IntegerField(verbose_name='Стоимость')
+    pts = models.CharField(max_length=20, verbose_name='Свидетельство №')
+    pts_date = models.DateField(verbose_name='Свидетельство дата')
+    place_of_registration = models.CharField(max_length=70, verbose_name='Место регистрации')
+
+    def __str__(self):
+        return f'Техпаспорт {self.car}'
+
+    class Meta:
+        verbose_name = 'Техпаспорт'
+        verbose_name_plural = 'Техпаспорта'
+
+
+class TechPassportScans(models.Model):
+    car = models.ForeignKey('Car', on_delete=models.CASCADE)
+    scan = models.ImageField(upload_to=f'images/cars/', blank=True, null=True, verbose_name='Сканы документов')
+
+    def __str__(self):
+        return f'Сканы документов {self.car}'
+
+    class Meta:
+        verbose_name = 'Сканы документов странспортного средства'
+        verbose_name_plural = 'Сканы документов странспортных средств'
 
 
 class Driver(models.Model):
@@ -36,6 +88,37 @@ class Driver(models.Model):
     class Meta:
         verbose_name = 'Водитель'
         verbose_name_plural = 'Водители'
+
+
+class PassportDriver(models.Model):
+    driver = models.ForeignKey('Driver', on_delete=models.CASCADE)
+    date_of_birth = models.DateField(verbose_name='Дата рождения')
+    passport_number = models.CharField(verbose_name='Серия и номер паспорта', max_length=10)
+    date_of_issue = models.DateField(verbose_name='Дата выдачи', blank=True, null=True)
+    identification_number = models.CharField(max_length=15, verbose_name='Идентификационный номер', blank=True,
+                                             null=True)
+    authority = models.CharField(max_length=100, verbose_name='Орган, выдавший паспорт')
+    place_of_residence = models.CharField(verbose_name='Адрес прописки', max_length=255)
+
+    def __str__(self):
+        return f'Паспорт {self.driver}'
+
+    class Meta:
+        verbose_name = 'Паспорт водителя'
+        verbose_name_plural = 'Паспорта водителей'
+
+
+class DriverScans(models.Model):
+    driver = models.ForeignKey('Driver', on_delete=models.CASCADE)
+    scan = models.ImageField(upload_to=f'images/drivers/', blank=True, null=True,
+                             verbose_name='Сканы документов')
+
+    def __str__(self):
+        return f'Сканы документов {self.driver}'
+
+    class Meta:
+        verbose_name = 'Сканы документов водителя'
+        verbose_name_plural = 'Сканы документов водителей'
 
 
 class InsuranceEvent(models.Model):
@@ -87,11 +170,12 @@ class InsuranceEvent(models.Model):
 
 class ImagesInsuranceEvent(models.Model):
     insurance_event = models.ForeignKey('InsuranceEvent', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='images/', blank=True, null=True, verbose_name='Фото')
+    image = models.ImageField(upload_to=f'images/insurances/', blank=True, null=True,
+                              verbose_name='Фото')
 
     def __str__(self):
         return f'{self.insurance_event}'
 
     class Meta:
-        verbose_name = 'Фото'
-        verbose_name_plural = 'Фото'
+        verbose_name = 'Фото страхового случая'
+        verbose_name_plural = 'Фото страховых случаев'
