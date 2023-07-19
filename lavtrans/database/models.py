@@ -39,19 +39,19 @@ class Car(models.Model):
 class TechPassport(models.Model):
     car = models.ForeignKey('Car', on_delete=models.CASCADE)
     vin = models.CharField(max_length=20, verbose_name='VIN')
-    type_ts = models.CharField(max_length=75, verbose_name='Тип ТС')
-    category = models.CharField(max_length=3, verbose_name='Категория')
-    eco_class = models.IntegerField(verbose_name='Эко класс')
-    color = models.CharField(max_length=30, verbose_name='Цвет')
-    engine_capacity = models.IntegerField(verbose_name='Объем двигателя')
-    weight = models.IntegerField(verbose_name='Масса без нагрузки')
-    max_weight = models.IntegerField(verbose_name='Максимальная масса')
-    manufacturer = models.CharField(max_length=50, verbose_name='Страна производитель')
+    type_ts = models.CharField(max_length=75, verbose_name='Тип ТС', blank=True, null=True)
+    category = models.CharField(max_length=3, verbose_name='Категория', blank=True, null=True)
+    eco_class = models.IntegerField(verbose_name='Эко класс', blank=True, null=True)
+    color = models.CharField(max_length=30, verbose_name='Цвет', blank=True, null=True)
+    engine_capacity = models.IntegerField(verbose_name='Объем двигателя', blank=True, null=True)
+    weight = models.IntegerField(verbose_name='Масса без нагрузки', blank=True, null=True)
+    max_weight = models.IntegerField(verbose_name='Максимальная масса', blank=True, null=True)
+    manufacturer = models.CharField(max_length=50, verbose_name='Страна производитель', blank=True, null=True)
     owner = models.ForeignKey('Owner', on_delete=models.CASCADE)
-    price = models.IntegerField(verbose_name='Стоимость')
-    pts = models.CharField(max_length=20, verbose_name='Свидетельство №')
-    pts_date = models.DateField(verbose_name='Свидетельство дата')
-    place_of_registration = models.CharField(max_length=70, verbose_name='Место регистрации')
+    price = models.IntegerField(verbose_name='Стоимость', blank=True, null=True)
+    pts = models.CharField(max_length=20, verbose_name='Свидетельство №', blank=True, null=True)
+    pts_date = models.DateField(verbose_name='Свидетельство дата', blank=True, null=True)
+    place_of_registration = models.CharField(max_length=70, verbose_name='Место регистрации', blank=True, null=True)
 
     def __str__(self):
         return f'Техпаспорт {self.car}'
@@ -92,13 +92,13 @@ class Driver(models.Model):
 
 class PassportDriver(models.Model):
     driver = models.ForeignKey('Driver', on_delete=models.CASCADE)
-    date_of_birth = models.DateField(verbose_name='Дата рождения')
-    passport_number = models.CharField(verbose_name='Серия и номер паспорта', max_length=10)
+    date_of_birth = models.DateField(verbose_name='Дата рождения', blank=True, null=True)
+    passport_number = models.CharField(verbose_name='Серия и номер паспорта', max_length=10, blank=True, null=True)
     date_of_issue = models.DateField(verbose_name='Дата выдачи', blank=True, null=True)
     identification_number = models.CharField(max_length=15, verbose_name='Идентификационный номер', blank=True,
                                              null=True)
-    authority = models.CharField(max_length=100, verbose_name='Орган, выдавший паспорт')
-    place_of_residence = models.CharField(verbose_name='Адрес прописки', max_length=255)
+    authority = models.CharField(max_length=100, verbose_name='Орган, выдавший паспорт', blank=True, null=True)
+    place_of_residence = models.CharField(verbose_name='Адрес прописки', max_length=255, blank=True, null=True)
 
     def __str__(self):
         return f'Паспорт {self.driver}'
@@ -132,7 +132,7 @@ class InsuranceEvent(models.Model):
 
     car = models.ForeignKey('Car', on_delete=models.CASCADE)
     driver = models.ForeignKey('Driver', on_delete=models.CASCADE)
-    date_of_submission = models.DateField(verbose_name='Дата подачи в страховую')
+    date_of_submission = models.DateField(verbose_name='Дата подачи в страховую', blank=True, null=True)
     polis_number = models.CharField(max_length=10, verbose_name='Страховой полис')
     police_sertificate = models.BooleanField(verbose_name='Справка с ГАИ?', default=False)
     repair_method = models.CharField(max_length=13, choices=METHOD, verbose_name='Способ ремонта', blank=True,
