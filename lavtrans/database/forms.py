@@ -1,19 +1,32 @@
 from django import forms
-from django.contrib.admin import widgets
-from .models import Car, Driver, ImagesInsuranceEvent, InsuranceEvent
+from .models import Car, Driver, InsuranceEvent, TechPassport, PassportDriver
 
 
 class AddCarForm(forms.ModelForm):
     class Meta:
         model = Car
-        fields = ('number', 'green_card', 'strahovka', 'tehosmotr',
-                  'tahograf', 'tamogennoye', 'kasko', 'cmr_strahovka', 'active')
+        fields = ('number', 'model', 'manufacture_year', 'green_card', 'strahovka', 'tehosmotr',
+                  'tahograf', 'tamogennoye', 'kasko', 'cmr_strahovka', 'e100_rb', 'e100_rf', 'active')
+
+
+class AddTechPassportForm(forms.ModelForm):
+    class Meta:
+        model = TechPassport
+        fields = ('car', 'vin', 'type_ts', 'category', 'eco_class', 'color', 'engine_capacity',
+                  'weight', 'max_weight', 'manufacturer', 'owner', 'price', 'pts', 'pts_date', 'place_of_registration')
 
 
 class AddDriverForm(forms.ModelForm):
     class Meta:
         model = Driver
         fields = ('name', 'last_name', 'middle_name', 'passport', 'visa', 'driver_card', 'active')
+
+
+class AddPassportDriverForm(forms.ModelForm):
+    class Meta:
+        model = PassportDriver
+        fields = ('driver', 'date_of_birth', 'passport_number', 'date_of_issue', 'identification_number', 'authority',
+                  'place_of_residence')
 
 
 class AddEventForm(forms.ModelForm):
