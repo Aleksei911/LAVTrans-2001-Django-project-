@@ -1,0 +1,121 @@
+{% extends 'database/base.html'%}
+
+{% block title %}
+Добавить данные
+{% endblock %}
+
+{% block content %}
+<div class="py-6 px-6">
+    <h1 class="mb-4 text-xl">Добавить данные</h1>
+
+    <form method="post" action="." enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="border-collapse border border-slate-400">
+            <tbody>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Номер авто:</th>
+                <td class="border border-slate-300">
+                    {{ car.number }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">VIN:</th>
+                <td class="border border-slate-300">
+                    <input type="text" name="vin" maxlength="20" required="" id="id_vin">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Тип ТС:</th>
+                <td class="border border-slate-300">
+                    <input type="text" name="type_ts" maxlength="75" required="" id="id_type_ts">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Категория:</th>
+                <td class="border border-slate-300">
+                    <input type="text" name="category" maxlength="3" required="" id="id_category">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Эко класс:</th>
+                <td class="border border-slate-300">
+                    <input type="number" name="eco_class" step="1" id="id_eco_class">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Цвет:</th>
+                <td class="border border-slate-300">
+                    <input type="text" name="color" maxlength="30" required="" id="id_color">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Объем двигателя:</th>
+                <td class="border border-slate-300">
+                    <input type="number" name="engine_capacity" step="0.1" id="id_engine_capacity">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Масса без нагрузки:</th>
+                <td class="border border-slate-300">
+                    <input type="number" name="weight" step="0.01" id="id_weight">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Максимальная масса:</th>
+                <td class="border border-slate-300">
+                    <input type="number" name="max_weight" step="0.01" id="id_max_weight">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Страна производитель:</th>
+                <td class="border border-slate-300">
+                    <input type="text" name="manufacturer" maxlength="50" required="" id="id_manufacturer">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Владелец:</th>
+                <td class="border border-slate-300">
+                    {{ form.owner }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Стоимость:</th>
+                <td class="border border-slate-300">
+                    <input type="number" name="price" step="0.01" id="id_price">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Свидетельство №:</th>
+                <td class="border border-slate-300">
+                    <input type="text" name="pts" maxlength="20" required="" id="id_pts">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Свидетельство дата:</th>
+                <td class="border border-slate-300">
+                    <input type="date" name="pts_date" id="id_pts_date">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Место регистрации:</th>
+                <td class="border border-slate-300">
+                    <input type="text" name="place_of_registration" maxlength="70" required="" id="id_place_of_registration">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="form-group m-3">
+            <label><strong>Загрузить сканы</strong></label>
+            <p></p>
+
+            <input type="file" name="image" multiple="" accept="image/*" required="" id="id_image"> <br>
+
+        </div>
+
+        <button class="py-4 px-8 bg-teal-500 text-white rounded-xl">Добавить</button>
+
+        <hr class="my-4">
+    </form>
+</div>
+{% endblock %}

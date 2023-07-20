@@ -1,0 +1,141 @@
+{% extends 'database/base.html'%}
+
+{% block title %}
+Документы на ТС
+{% endblock %}
+
+{% block content %}
+<div class="py-6 px-6">
+    <h1 class="mb-4 text-xl">Документы на ТС</h1>
+    <table>
+        <tbody>
+        <tr>
+            <th><p class="mr-3">Номер авто:</p></th>
+            <td>
+                <p>{{ techpassport.car.number }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">VIN:</p></th>
+            <td>
+                <p>{{ techpassport.vin }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Тип ТС:</p></th>
+            <td>
+                <p>{{ techpassport.type_ts }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Категория:</p></th>
+            <td>
+                <p>{{ techpassport.category }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Эко класс:</p></th>
+            <td>
+                <p>{{ techpassport.eco_class }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Цвет:</p></th>
+            <td>
+                <p>{{ techpassport.color }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Объем двигателя:</p></th>
+            <td>
+                <p>{{ techpassport.engine_capacity }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Масса без нагрузки:</p></th>
+            <td>
+                <p>{{ techpassport.weight }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Максимальная масса:</p></th>
+            <td>
+                <p>{{ techpassport.max_weight }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Страна производитель:</p></th>
+            <td>
+                <p>{{ techpassport.manufacturer }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Владелец:</p></th>
+            <td>
+                <p>{{ techpassport.owner }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Стоимость:</p></th>
+            <td>
+                <p>{{ techpassport.price }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Свидетельство №:</p></th>
+            <td>
+                <p>{{ techpassport.pts }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Свидетельство дата:</p></th>
+            <td>
+                <p>{{ techpassport.pts_date | date:'d.m.Y' }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Место регистрации:</p></th>
+            <td>
+                <p>{{ techpassport.place_of_registration }}</p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr class="my-4">
+
+    <a class="py-3 px-8 bg-teal-500 text-white rounded-xl" href="{% url 'car_edit' car.id %}">Редактировать</a>
+    <a class="py-3 px-8 bg-teal-500 text-white rounded-xl" href="{% url 'add_car_event' car.id %}">Добавить сканы документов</a>
+
+    <hr class="my-4">
+
+    <a class="py-3 px-8 bg-yellow-500 text-white rounded-xl" href="{% url 'car_info' techpassport.car.id %}">Назад</a>
+
+    <hr class="my-4">
+
+    {% if scans %}
+
+    <div class="bg-gray-100">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
+                <h2 class="text-2xl font-bold text-gray-900">Документы</h2>
+
+                <div class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
+                    {% for scan in scans %}
+                    <div class="mb-4 group relative">
+                        <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
+                            <img src="{{ scan.scan.url }}"
+                                 alt="."
+                                 class="h-full w-full object-cover object-center">
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p class="mt-6 px-2">По данному транспортному средству документов не найдено...</p>
+    {% endif %}
+</div>
+{% endblock %}
