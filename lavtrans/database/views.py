@@ -5,8 +5,9 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from rest_framework import viewsets
 from .serializers import CarSerializer, DriverSerializer
-from .models import Car, Driver, InsuranceEvent, ImagesInsuranceEvent
-from .forms import AddCarForm, AddDriverForm, AddEventForm, ImageForm
+from .models import Car, Driver, InsuranceEvent, ImagesInsuranceEvent, TechPassport, TechPassportScans, \
+    PassportDriver, DriverScans
+from .forms import AddCarForm, AddDriverForm, AddEventForm, ImageForm, AddTechPassportForm, AddPassportDriverForm
 from django.db.models import Q
 
 
@@ -100,6 +101,46 @@ def car_edit(request, pk):
         form = AddCarForm(instance=car)
 
     return render(request, 'database/cars/edit_car.html', {'form': form})
+
+
+@login_required
+def techpassport_info(request, pk):
+    car = Car.objects.get(pk=pk)
+    techpassport = TechPassport.objects.filter(car=car)
+    scans = TechPassportScans.objects.filter(car=car)
+
+    context = {
+        'techpassport': techpassport,
+        'scans': scans,
+    }
+    return render(request, 'database/cars/techpassport_info.html', context)
+
+
+@login_required
+def add_techpassport(request, pk):
+    car = Car.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = AddTechPassportForm(request.POST)
+        files = request.FILES.getlist('image')
+
+        if form.is_valid():
+            techpassport = form.save(commit=False)
+            techpassport.car = car
+            techpassport.save()
+
+            for i in files:
+                TechPassportScans.objects.create(car=car, scan=i)
+
+            messages.success(request, 'Новые данные были успешно добавлены.')
+
+            return redirect('cars')
+        else:
+            print(form.errors)
+    else:
+        form = AddTechPassportForm()
+        imageform = ImageForm()
+
+    return render(request, 'database/cars/add_techpassport.html', {'form': form, 'imageform': imageform, 'car': car})
 
 
 @login_required
