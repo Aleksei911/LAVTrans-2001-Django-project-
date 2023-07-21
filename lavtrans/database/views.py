@@ -159,6 +159,24 @@ def techpassport_edit(request, pk):
 
 
 @login_required
+def add_techpassport_scans(request, pk):
+    techpassport = TechPassport.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        files = request.FILES.getlist('image')
+
+        for file in files:
+            TechPassportScans.objects.create(techpassport=techpassport, image=file)
+
+        messages.success(request, 'Фото были успешно добавлены.')
+
+        return redirect('techpassport_info', pk=pk)
+    else:
+        form = ImageForm()
+    return render(request, 'database/cars/add_scan.html', {'form': form, 'techpassport': techpassport})
+
+
+@login_required
 def drivers(request):
     search_by = request.GET.get('search_by')
     query = request.GET.get('query')

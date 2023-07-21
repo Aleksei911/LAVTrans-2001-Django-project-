@@ -105,7 +105,7 @@
     <hr class="my-4">
 
     <a class="py-3 px-8 bg-teal-500 text-white rounded-xl" href="{% url 'techpassport_edit' techpassport.id %}">Редактировать</a>
-    <a class="py-3 px-8 bg-teal-500 text-white rounded-xl" href="/">Добавить сканы документов</a>
+    <a class="py-3 px-8 bg-teal-500 text-white rounded-xl" href="{% url 'add_techpassport_scans' techpassport.id %}">Добавить сканы документов</a>
 
     <hr class="my-4">
 
@@ -124,7 +124,7 @@
                     {% for scan in scans %}
                     <div class="mb-4 group relative">
                         <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
-                            <img src="{{ scan.scan.url }}"
+                            <img src="{{ scan.image.url }}"
                                  alt="."
                                  class="h-full w-full object-cover object-center">
                         </div>
