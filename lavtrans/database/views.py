@@ -106,7 +106,7 @@ def car_edit(request, pk):
 @login_required
 def techpassport_info(request, pk):
     car = Car.objects.get(pk=pk)
-    techpassport = TechPassport.objects.filter(car=car)
+    techpassport = TechPassport.objects.get(car=car)
     scans = TechPassportScans.objects.filter(car=car)
 
     context = {

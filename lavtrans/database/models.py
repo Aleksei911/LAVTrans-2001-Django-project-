@@ -37,7 +37,7 @@ class Car(models.Model):
 
 
 class TechPassport(models.Model):
-    car = models.ForeignKey('Car', on_delete=models.CASCADE)
+    car = models.OneToOneField('Car', on_delete=models.CASCADE)
     vin = models.CharField(max_length=20, verbose_name='VIN')
     type_ts = models.CharField(max_length=75, verbose_name='Тип ТС', blank=True, null=True)
     category = models.CharField(max_length=3, verbose_name='Категория', blank=True, null=True)
