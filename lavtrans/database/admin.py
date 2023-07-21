@@ -21,9 +21,9 @@ class ImagesInsuranceEventAdmin(admin.ModelAdmin):
 
 
 class TechPassportScansAdmin(admin.ModelAdmin):
-    list_display = ['car']
-    list_filter = ['car']
-    search_fields = ['car']
+    list_display = ['techpassport']
+    list_filter = ['techpassport']
+    search_fields = ['techpassport']
 
 
 class DriverScansAdmin(admin.ModelAdmin):

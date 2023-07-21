@@ -62,11 +62,11 @@ class TechPassport(models.Model):
 
 
 class TechPassportScans(models.Model):
-    car = models.ForeignKey('Car', on_delete=models.CASCADE)
-    scan = models.ImageField(upload_to=f'images/cars/', blank=True, null=True, verbose_name='Сканы документов')
+    techpassport = models.ForeignKey('TechPassport', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to=f'images/cars/', blank=True, null=True, verbose_name='Сканы документов')
 
     def __str__(self):
-        return f'Сканы документов {self.car}'
+        return f'Сканы документов {self.techpassport[11:]}'
 
     class Meta:
         verbose_name = 'Сканы документов странспортного средства'

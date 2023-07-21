@@ -54,10 +54,12 @@ def cars(request):
 def car_info(request, pk):
     car = Car.objects.get(pk=pk)
     events = InsuranceEvent.objects.filter(car=car)
+    techpassport = TechPassport.objects.filter(car=car)
 
     context = {
         'car': car,
         'events': events,
+        'techpassport': techpassport,
     }
     return render(request, 'database/cars/car_detail.html', context)
 
@@ -107,7 +109,7 @@ def car_edit(request, pk):
 def techpassport_info(request, pk):
     car = Car.objects.get(pk=pk)
     techpassport = TechPassport.objects.get(car=car)
-    scans = TechPassportScans.objects.filter(car=car)
+    scans = TechPassportScans.objects.filter(techpassport=techpassport)
 
     context = {
         'techpassport': techpassport,
@@ -121,15 +123,11 @@ def add_techpassport(request, pk):
     car = Car.objects.get(pk=pk)
     if request.method == 'POST':
         form = AddTechPassportForm(request.POST)
-        files = request.FILES.getlist('image')
 
         if form.is_valid():
             techpassport = form.save(commit=False)
             techpassport.car = car
             techpassport.save()
-
-            for i in files:
-                TechPassportScans.objects.create(car=car, scan=i)
 
             messages.success(request, 'Новые данные были успешно добавлены.')
 
@@ -138,9 +136,8 @@ def add_techpassport(request, pk):
             print(form.errors)
     else:
         form = AddTechPassportForm()
-        imageform = ImageForm()
 
-    return render(request, 'database/cars/add_techpassport.html', {'form': form, 'imageform': imageform, 'car': car})
+    return render(request, 'database/cars/add_techpassport.html', {'form': form, 'car': car})
 
 
 @login_required

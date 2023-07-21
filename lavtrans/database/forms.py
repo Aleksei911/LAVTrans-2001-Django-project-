@@ -12,7 +12,7 @@ class AddCarForm(forms.ModelForm):
 class AddTechPassportForm(forms.ModelForm):
     class Meta:
         model = TechPassport
-        fields = ('car', 'vin', 'type_ts', 'category', 'eco_class', 'color', 'engine_capacity',
+        fields = ('vin', 'type_ts', 'category', 'eco_class', 'color', 'engine_capacity',
                   'weight', 'max_weight', 'manufacturer', 'owner', 'price', 'pts', 'pts_date', 'place_of_registration')
 
 
