@@ -1,0 +1,113 @@
+{% extends 'database/base.html'%}
+
+{% block title %}
+Редактировать данные
+{% endblock %}
+
+{% block content %}
+<div class="py-6 px-6">
+    <h1 class="mb-4 text-xl">Редактировать данные</h1>
+
+    <form method="post" action="." enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="border-collapse border border-slate-400">
+            <tbody>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Номер авто:</th>
+                <td class="border border-slate-300">
+                    {{ techpassport.car.number }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">VIN:</th>
+                <td class="border border-slate-300">
+                    {{ form.vin }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Тип ТС:</th>
+                <td class="border border-slate-300">
+                    {{ form.type_ts }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Категория:</th>
+                <td class="border border-slate-300">
+                    {{ form.category }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Эко класс:</th>
+                <td class="border border-slate-300">
+                    {{ form.eco_class }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Цвет:</th>
+                <td class="border border-slate-300">
+                    {{ form.color }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Объем двигателя:</th>
+                <td class="border border-slate-300">
+                    {{ form.engine_capacity }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Масса без нагрузки:</th>
+                <td class="border border-slate-300">
+                    {{ form.weight }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Максимальная масса:</th>
+                <td class="border border-slate-300">
+                    {{ form.max_weight }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Страна производитель:</th>
+                <td class="border border-slate-300">
+                    {{ form.manufacturer }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Владелец:</th>
+                <td class="border border-slate-300">
+                    {{ form.owner }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Стоимость:</th>
+                <td class="border border-slate-300">
+                    {{ form.price }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Свидетельство №:</th>
+                <td class="border border-slate-300">
+                    {{ form.pts }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Свидетельство дата:</th>
+                <td class="border border-slate-300">
+                    <input type="date" name="pts_date" value="{{ form.pts_date.value | date:'Y-m-d' }}" required="" id="id_pts_date">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Место регистрации:</th>
+                <td class="border border-slate-300">
+                    {{ form.place_of_registration }}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <button class="my-4 py-4 px-8 bg-teal-500 text-white rounded-xl">Сохранить</button>
+
+        <hr class="my-4">
+    </form>
+</div>
+{% endblock %}

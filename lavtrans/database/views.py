@@ -141,6 +141,24 @@ def add_techpassport(request, pk):
 
 
 @login_required
+def techpassport_edit(request, pk):
+    techpassport = TechPassport.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        form = AddTechPassportForm(request.POST, instance=techpassport)
+        if form.is_valid():
+            form.save()
+
+            messages.success(request, 'Изменения были успешно сохранены.')
+
+            return redirect('techpassport_info', pk=pk)
+    else:
+        form = AddTechPassportForm(instance=techpassport)
+
+    return render(request, 'database/cars/edit_techpassport.html', {'form': form, 'techpassport': techpassport})
+
+
+@login_required
 def drivers(request):
     search_by = request.GET.get('search_by')
     query = request.GET.get('query')
