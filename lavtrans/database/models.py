@@ -47,7 +47,7 @@ class TechPassport(models.Model):
     weight = models.IntegerField(verbose_name='Масса без нагрузки', blank=True, null=True)
     max_weight = models.IntegerField(verbose_name='Максимальная масса', blank=True, null=True)
     manufacturer = models.CharField(max_length=50, verbose_name='Страна производитель', blank=True, null=True)
-    owner = models.ForeignKey('Владелец', on_delete=models.CASCADE)
+    owner = models.ForeignKey('Owner', on_delete=models.CASCADE)
     price = models.IntegerField(verbose_name='Стоимость', blank=True, null=True)
     pts = models.CharField(max_length=20, verbose_name='Свидетельство №', blank=True, null=True)
     pts_date = models.DateField(verbose_name='Свидетельство дата', blank=True, null=True)
