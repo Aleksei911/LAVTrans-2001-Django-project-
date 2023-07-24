@@ -1,0 +1,93 @@
+{% extends 'database/base.html'%}
+
+{% block title %}
+Документы на водителя
+{% endblock %}
+
+{% block content %}
+<div class="py-6 px-6">
+    <h1 class="mb-4 text-xl">Документы на водителя</h1>
+    <table>
+        <tbody>
+        <tr>
+            <th><p class="mr-3">Водитель:</p></th>
+            <td>
+                <p>{{ passport.driver }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Дата рождения:</p></th>
+            <td>
+                <p>{{ passport.date_of_birth }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Серия и номер паспорта:</p></th>
+            <td>
+                <p>{{ passport.passport_number }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Дата выдачи:</p></th>
+            <td>
+                <p>{{ passport.date_of_issue }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Идентификационный номер:</p></th>
+            <td>
+                <p>{{ passport.identification_number }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Орган, выдавший паспорт:</p></th>
+            <td>
+                <p>{{ passport.authority }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Адрес прописки:</p></th>
+            <td>
+                <p>{{ passport.place_of_residence }}</p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr class="my-4">
+
+    <a class="py-3 px-8 bg-teal-500 text-white rounded-xl" href="/">Редактировать</a>
+    <a class="py-3 px-8 bg-teal-500 text-white rounded-xl" href="/">Добавить сканы документов</a>
+
+    <hr class="my-4">
+
+    <a class="py-3 px-8 bg-yellow-500 text-white rounded-xl" href="{% url 'driver_info' passport.driver.id %}">Назад</a>
+
+    <hr class="my-4">
+
+    {% if scans %}
+
+    <div class="bg-gray-100">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
+                <h2 class="text-2xl font-bold text-gray-900">Документы</h2>
+
+                <div class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
+                    {% for scan in scans %}
+                    <div class="mb-4 group relative">
+                        <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
+                            <img src="{{ scan.image.url }}"
+                                 alt="."
+                                 class="h-full w-full object-cover object-center">
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p class="mt-6 px-2">По данному транспортному средству документов не найдено...</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -26,4 +26,5 @@ urlpatterns = [
     path('<int:pk>/techpassport_info/', techpassport_info, name='techpassport_info'),
     path('<int:pk>/techpassport_edit/', techpassport_edit, name='techpassport_edit'),
     path('<int:pk>/add_techpassport_scans/', add_techpassport_scans, name='add_techpassport_scans'),
+    path('<int:pk>/passport_info/', passport_driver_info, name='passport_info'),
 ]

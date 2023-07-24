@@ -195,11 +195,13 @@ def drivers(request):
 @login_required
 def driver_info(request, pk):
     driver = Driver.objects.get(pk=pk)
+    passport = PassportDriver.objects.get(driver=driver)
     events = InsuranceEvent.objects.filter(driver=driver)
 
     context = {
         'driver': driver,
         'events': events,
+        'passport': passport,
     }
     return render(request, 'database/drivers/driver_detail.html', context)
 
@@ -237,11 +239,24 @@ def driver_edit(request, pk):
                   f"{driver.last_name} {driver.name} {driver.middle_name} : паспорт {driver.passport}, "
                   f"виза {driver.visa}, водительское {driver.driver_card}, статус {driver.active}")
 
-            return redirect('drivers')
+            return redirect('driver_info', pk=pk)
     else:
         form = AddDriverForm(instance=driver)
 
     return render(request, 'database/drivers/edit_driver.html', {'form': form})
+
+
+@login_required
+def passport_driver_info(request, pk):
+    driver = Driver.objects.get(pk=pk)
+    passport = PassportDriver.objects.get(driver=driver)
+    scans = DriverScans.objects.filter(driver=driver)
+
+    context = {
+        'passport': passport,
+        'scans': scans,
+    }
+    return render(request, 'database/drivers/passport_info.html', context)
 
 
 @login_required
