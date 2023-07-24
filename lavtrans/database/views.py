@@ -260,6 +260,24 @@ def passport_driver_info(request, pk):
 
 
 @login_required
+def passport_driver_edit(request, pk):
+    passport = PassportDriver.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        form = AddPassportDriverForm(request.POST, instance=passport)
+        if form.is_valid():
+            form.save()
+
+            messages.success(request, 'Изменения были успешно сохранены.')
+
+            return redirect('passport_info', pk=pk)
+    else:
+        form = AddPassportDriverForm(instance=passport)
+
+    return render(request, 'database/drivers/edit_passport.html', {'form': form, 'passport': passport})
+
+
+@login_required
 def event_info(request, pk):
     event = InsuranceEvent.objects.get(pk=pk)
     photos = ImagesInsuranceEvent.objects.filter(insurance_event=event)

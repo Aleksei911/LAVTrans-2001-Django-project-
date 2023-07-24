@@ -1,0 +1,65 @@
+{% extends 'database/base.html'%}
+
+{% block title %}
+Редактировать данные
+{% endblock %}
+
+{% block content %}
+<div class="py-6 px-6">
+    <h1 class="mb-4 text-xl">Редактировать данные</h1>
+
+    <form method="post" action="." enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="border-collapse border border-slate-400">
+            <tbody>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Водитель:</th>
+                <td class="border border-slate-300">
+                    {{ passport.driver }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Дата рождения:</th>
+                <td class="border border-slate-300">
+                    <input type="date" name="date_of_birth" value="{{ form.date_of_birth.value | date:'Y-m-d' }}" required="" id="id_date_of_birth">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Серия и номер паспорта:</th>
+                <td class="border border-slate-300">
+                    {{ form.passport_number }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Дата выдачи:</th>
+                <td class="border border-slate-300">
+                    <input type="date" name="date_of_issue" value="{{ form.date_of_issue.value | date:'Y-m-d' }}" required="" id="id_date_of_issue">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Идентификационный номер:</th>
+                <td class="border border-slate-300">
+                    {{ form.identification_number }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Орган, выдавший паспорт:</th>
+                <td class="border border-slate-300">
+                    {{ form.authority }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Адрес прописки:</th>
+                <td class="border border-slate-300">
+                    {{ form.place_of_residence }}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <button class="my-4 py-4 px-8 bg-teal-500 text-white rounded-xl">Сохранить</button>
+
+        <hr class="my-4">
+    </form>
+</div>
+{% endblock %}

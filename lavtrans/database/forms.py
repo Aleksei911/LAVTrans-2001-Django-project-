@@ -25,7 +25,7 @@ class AddDriverForm(forms.ModelForm):
 class AddPassportDriverForm(forms.ModelForm):
     class Meta:
         model = PassportDriver
-        fields = ('driver', 'date_of_birth', 'passport_number', 'date_of_issue', 'identification_number', 'authority',
+        fields = ('date_of_birth', 'passport_number', 'date_of_issue', 'identification_number', 'authority',
                   'place_of_residence')
 
 
