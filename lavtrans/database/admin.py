@@ -27,9 +27,9 @@ class TechPassportScansAdmin(admin.ModelAdmin):
 
 
 class DriverScansAdmin(admin.ModelAdmin):
-    list_display = ['driver']
-    list_filter = ['driver']
-    search_fields = ['driver']
+    list_display = ['passport']
+    list_filter = ['passport']
+    search_fields = ['passport']
 
 
 class InsuranceEventAdmin(admin.ModelAdmin):

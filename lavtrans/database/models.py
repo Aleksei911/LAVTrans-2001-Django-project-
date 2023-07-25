@@ -109,7 +109,7 @@ class PassportDriver(models.Model):
 
 
 class DriverScans(models.Model):
-    driver = models.ForeignKey('Driver', on_delete=models.CASCADE)
+    passport = models.ForeignKey('PassportDriver', on_delete=models.CASCADE)
     image = models.ImageField(upload_to=f'images/drivers/', blank=True, null=True,
                              verbose_name='Сканы документов')
 

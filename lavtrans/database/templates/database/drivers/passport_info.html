@@ -57,7 +57,7 @@
     <hr class="my-4">
 
     <a class="py-3 px-8 bg-teal-500 text-white rounded-xl" href="{% url 'passport_edit' passport.id %}">Редактировать</a>
-    <a class="py-3 px-8 bg-teal-500 text-white rounded-xl" href="/">Добавить сканы документов</a>
+    <a class="py-3 px-8 bg-teal-500 text-white rounded-xl" href="{% url 'add_passport_scans' passport.id %}">Добавить сканы документов</a>
 
     <hr class="my-4">
 

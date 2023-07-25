@@ -250,7 +250,7 @@ def driver_edit(request, pk):
 def passport_driver_info(request, pk):
     driver = Driver.objects.get(pk=pk)
     passport = PassportDriver.objects.get(driver=driver)
-    scans = DriverScans.objects.filter(driver=driver)
+    scans = DriverScans.objects.filter(passport=passport)
 
     context = {
         'passport': passport,
@@ -297,6 +297,24 @@ def passport_driver_edit(request, pk):
         form = AddPassportDriverForm(instance=passport)
 
     return render(request, 'database/drivers/edit_passport.html', {'form': form, 'passport': passport})
+
+
+@login_required
+def add_passport_driver_scans(request, pk):
+    passport = PassportDriver.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        files = request.FILES.getlist('image')
+
+        for file in files:
+            DriverScans.objects.create(passport=passport, image=file)
+
+        messages.success(request, 'Фото были успешно добавлены.')
+
+        return redirect('passport_info', pk=pk)
+    else:
+        form = ImageForm()
+    return render(request, 'database/drivers/add_scan.html', {'form': form, 'passport': passport})
 
 
 @login_required

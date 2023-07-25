@@ -29,4 +29,5 @@ urlpatterns = [
     path('<int:pk>/passport_info/', passport_driver_info, name='passport_info'),
     path('<int:pk>/passport_edit/', passport_driver_edit, name='passport_edit'),
     path('<int:pk>/add_passport/', add_passport_driver, name='add_passport'),
+    path('<int:pk>/add_passport_scans/', add_passport_driver_scans, name='add_passport_scans'),
 ]
