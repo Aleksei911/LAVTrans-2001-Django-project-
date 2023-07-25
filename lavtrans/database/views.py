@@ -131,7 +131,7 @@ def add_techpassport(request, pk):
 
             messages.success(request, 'Новые данные были успешно добавлены.')
 
-            return redirect('cars')
+            return redirect('car_info', pk=pk)
         else:
             print(form.errors)
     else:
@@ -257,6 +257,28 @@ def passport_driver_info(request, pk):
         'scans': scans,
     }
     return render(request, 'database/drivers/passport_info.html', context)
+
+
+@login_required
+def add_passport_driver(request, pk):
+    driver = Driver.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = AddPassportDriverForm(request.POST)
+
+        if form.is_valid():
+            passport = form.save(commit=False)
+            passport.driver = driver
+            passport.save()
+
+            messages.success(request, 'Новые данные были успешно добавлены.')
+
+            return redirect('driver_info', pk=pk)
+        else:
+            print(form.errors)
+    else:
+        form = AddPassportDriverForm()
+
+    return render(request, 'database/drivers/add_passport.html', {'form': form, 'driver': driver})
 
 
 @login_required
