@@ -195,7 +195,7 @@ def drivers(request):
 @login_required
 def driver_info(request, pk):
     driver = Driver.objects.get(pk=pk)
-    passport = PassportDriver.objects.get(driver=driver)
+    passport = PassportDriver.objects.filter(driver=driver)
     events = InsuranceEvent.objects.filter(driver=driver)
 
     context = {

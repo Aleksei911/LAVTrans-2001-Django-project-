@@ -1,0 +1,65 @@
+{% extends 'database/base.html'%}
+
+{% block title %}
+Добавить данные
+{% endblock %}
+
+{% block content %}
+<div class="py-6 px-6">
+    <h1 class="mb-4 text-xl">Добавить данные</h1>
+
+    <form method="post" action="." enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="border-collapse border border-slate-400">
+            <tbody>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Водитель:</th>
+                <td class="border border-slate-300">
+                    {{ driver }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Дата рождения:</th>
+                <td class="border border-slate-300">
+                    <input type="date" name="date_of_birth" id="id_date_of_birth">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Серия и номер паспорта:</th>
+                <td class="border border-slate-300">
+                    <input type="text" name="passport_number" maxlength="10" required="" id="id_passport_number">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Дата выдачи:</th>
+                <td class="border border-slate-300">
+                    <input type="date" name="date_of_issue" id="id_date_of_issue">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Идентификационный номер:</th>
+                <td class="border border-slate-300">
+                    <input type="text" name="identification_number" maxlength="15" required="" id="id_identification_number">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Орган, выдавший паспорт:</th>
+                <td class="border border-slate-300">
+                    <input type="text" name="authority" maxlength="100" required="" id="id_authority">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Адрес прописки:</th>
+                <td class="border border-slate-300">
+                    <input type="text" name="place_of_residence" maxlength="255" required="" id="id_place_of_residence">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <button class="my-4 py-4 px-8 bg-teal-500 text-white rounded-xl">Добавить</button>
+
+        <hr class="my-4">
+    </form>
+</div>
+{% endblock %}

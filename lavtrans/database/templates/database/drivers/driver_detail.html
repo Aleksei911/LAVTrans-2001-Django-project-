@@ -63,7 +63,7 @@
     {% if passport %}
         <a class="py-3 px-8 bg-teal-500 text-white rounded-xl" href="{% url 'passport_info' driver.id %}">Подробнее</a>
     {% else %}
-        <a class="py-3 px-8 bg-teal-500 text-white rounded-xl" href="{% url 'add_techpassport' car.id %}">Добавить подробные данные</a>
+        <a class="py-3 px-8 bg-teal-500 text-white rounded-xl" href="{% url 'add_passport' driver.id %}">Добавить подробные данные</a>
     {% endif %}
 
     <hr class="my-4">
