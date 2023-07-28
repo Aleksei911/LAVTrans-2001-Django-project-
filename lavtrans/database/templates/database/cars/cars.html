@@ -32,6 +32,8 @@
         <p class="py-4 text-center bg-gray-200 font-semibold w-full">Тахограф</p>
         <p class="py-4 text-center bg-gray-200 font-semibold w-full">КАСКО</p>
         <p class="py-4 text-center bg-gray-200 font-semibold w-full">CMR-страховка</p>
+        <p class="py-4 text-center bg-gray-200 font-semibold w-full">Е100 РБ</p>
+        <p class="py-4 text-center bg-gray-200 font-semibold w-full">Е100 РФ</p>
         <p class="py-4 text-center bg-gray-200 font-semibold w-full">Статус</p>
     </div>
     {% for car in cars %}
@@ -46,6 +48,8 @@
         <p class="py-2 text-center w-full">{{ car.tahograf|date:"d.m.Y" }}</p>
         <p class="py-2 text-center w-full">{{ car.kasko|date:"d.m.Y" }}</p>
         <p class="py-2 text-center w-full">{{ car.cmr_strahovka|date:"d.m.Y" }}</p>
+        <p class="py-2 text-center w-full">{{ car.e100_rb|date:"d.m.Y" }}</p>
+        <p class="py-2 text-center w-full">{{ car.e100_rf|date:"d.m.Y" }}</p>
         {% if car.active == True %}
         <p class="py-2 text-center w-full">Отслеживается</p>
         {% else %}
