@@ -151,7 +151,7 @@ def techpassport_edit(request, pk):
 
             messages.success(request, 'Изменения были успешно сохранены.')
 
-            return redirect('techpassport_info', pk=pk)
+            return redirect('techpassport_info', pk=techpassport.car.pk)
     else:
         form = AddTechPassportForm(instance=techpassport)
 
