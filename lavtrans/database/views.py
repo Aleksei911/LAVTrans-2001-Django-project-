@@ -183,6 +183,7 @@ def add_techpassport_scans(request, pk):
 def drivers(request):
     search_by = request.GET.get('search_by')
     query = request.GET.get('query')
+    check_day = datetime.date.today() + datetime.timedelta(days=30)
 
     if query:
         if search_by == "name":
@@ -192,7 +193,7 @@ def drivers(request):
     else:
         drivers = Driver.objects.all()
 
-    return render(request, 'database/drivers/drivers.html', {'drivers': drivers})
+    return render(request, 'database/drivers/drivers.html', {'drivers': drivers, 'check_day': check_day})
 
 
 @login_required

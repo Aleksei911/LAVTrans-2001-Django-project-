@@ -39,9 +39,21 @@
         </p>
         <p class="py-2 text-center w-full">{{ driver.name }}</p>
         <p class="py-2 text-center w-full">{{ driver.middle_name }}</p>
+        {% if driver.passport <= check_day %}
+        <p class="py-2 text-center w-full bg-red-500">{{ driver.passport|date:"d.m.Y" }}</p>
+        {% else %}
         <p class="py-2 text-center w-full">{{ driver.passport|date:"d.m.Y" }}</p>
+        {% endif %}
+        {% if driver.visa <= check_day %}
+        <p class="py-2 text-center w-full bg-red-500">{{ driver.visa|date:"d.m.Y" }}</p>
+        {% else %}
         <p class="py-2 text-center w-full">{{ driver.visa|date:"d.m.Y" }}</p>
+        {% endif %}
+        {% if driver.driver_card <= check_day %}
+        <p class="py-2 text-center w-full bg-red-500">{{ driver.driver_card|date:"d.m.Y" }}</p>
+        {% else %}
         <p class="py-2 text-center w-full">{{ driver.driver_card|date:"d.m.Y" }}</p>
+        {% endif %}
         {% if driver.active == True %}
         <p class="py-2 text-center w-full">Отслеживается</p>
         {% else %}
