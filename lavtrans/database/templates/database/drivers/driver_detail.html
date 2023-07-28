@@ -30,19 +30,31 @@
         <tr>
             <th><p class="mr-3">Паспорт:</p></th>
             <td>
-                <p>{{ driver.passport | date:'d.m.Y' }}</p>
+                {% if driver.passport <= check_day %}
+                <p class="bg-red-500">{{ driver.passport | date:'d.m.Y' }}</p>
+                {% else %}
+                <p>{{ driver.passport|date:"d.m.Y" }}</p>
+                {% endif %}
             </td>
         </tr>
         <tr>
             <th><p class="mr-3">Виза:</p></th>
             <td>
-                <p>{{ driver.visa | date:'d.m.Y' }}</p>
+                {% if driver.visa <= check_day %}
+                <p class="bg-red-500">{{ driver.visa | date:'d.m.Y' }}</p>
+                {% else %}
+                <p>{{ driver.visa|date:"d.m.Y" }}</p>
+                {% endif %}
             </td>
         </tr>
         <tr>
             <th><p class="mr-3">Водительское удостоверение:	</p></th>
             <td>
-                <p>{{ driver.driver_card | date:'d.m.Y' }}</p>
+                {% if driver.driver_card <= check_day %}
+                <p class="bg-red-500">{{ driver.driver_card | date:'d.m.Y' }}</p>
+                {% else %}
+                <p>{{ driver.driver_card|date:"d.m.Y" }}</p>
+                {% endif %}
             </td>
         </tr>
         <tr>

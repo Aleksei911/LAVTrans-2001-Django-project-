@@ -201,11 +201,13 @@ def driver_info(request, pk):
     driver = Driver.objects.get(pk=pk)
     passport = PassportDriver.objects.filter(driver=driver)
     events = InsuranceEvent.objects.filter(driver=driver)
+    check_day = datetime.date.today() + datetime.timedelta(days=30)
 
     context = {
         'driver': driver,
         'events': events,
         'passport': passport,
+        'check_day': check_day,
     }
     return render(request, 'database/drivers/driver_detail.html', context)
 
