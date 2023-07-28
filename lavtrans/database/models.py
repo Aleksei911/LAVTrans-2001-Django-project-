@@ -15,7 +15,7 @@ class Owner(models.Model):
 
 class Car(models.Model):
     number = models.CharField(verbose_name='Номер авто', max_length=10)
-    model = models.CharField(verbose_name='Модель ТС', max_length=50, default=None, blank=True, null=True)
+    model = models.CharField(verbose_name='Марка-модель ТС', max_length=50, default='', blank=True, null=True)
     manufacture_year = models.IntegerField(verbose_name='Год выпуска', default=None, blank=True, null=True)
     green_card = models.DateField(verbose_name='Зелёнка', blank=True, null=True)
     strahovka = models.DateField(verbose_name='Страховка', blank=True, null=True)

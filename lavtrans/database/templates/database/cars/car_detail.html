@@ -16,6 +16,18 @@
             </td>
         </tr>
         <tr>
+            <th><p class="mr-3">Марка-модель ТС:</p></th>
+            <td>
+                <p>{{ car.model|default_if_none:"&nbsp;" }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Год выпуска:</p></th>
+            <td>
+                <p>{{ car.manufacture_year|default_if_none:"&nbsp;" }}</p>
+            </td>
+        </tr>
+        <tr>
             <th><p class="mr-3">Зелёнка:</p></th>
             <td>
                 <p>{{ car.green_card | date:'d.m.Y' }}</p>
@@ -55,6 +67,18 @@
             <th><p class="mr-3">CMR-страховка:</p></th>
             <td>
                 <p>{{ car.cmr_strahovka | date:'d.m.Y' }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Е100 РБ:</p></th>
+            <td>
+                <p>{{ car.e100_rb | date:'d.m.Y' }}</p>
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Е100 РФ:</p></th>
+            <td>
+                <p>{{ car.e100_rf | date:'d.m.Y' }}</p>
             </td>
         </tr>
         <tr>
