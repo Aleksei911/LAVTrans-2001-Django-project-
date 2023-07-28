@@ -30,55 +30,91 @@
         <tr>
             <th><p class="mr-3">Зелёнка:</p></th>
             <td>
+                {% if car.green_card <= check_day %}
+                <p class="bg-red-500">{{ car.green_card | date:'d.m.Y' }}</p>
+                {% else %}
                 <p>{{ car.green_card | date:'d.m.Y' }}</p>
+                {% endif %}
             </td>
         </tr>
         <tr>
             <th><p class="mr-3">Страховка:</p></th>
             <td>
+                {% if car.strahovka <= check_day %}
+                <p class="bg-red-500">{{ car.strahovka | date:'d.m.Y' }}</p>
+                {% else %}
                 <p>{{ car.strahovka | date:'d.m.Y' }}</p>
+                {% endif %}
             </td>
         </tr>
         <tr>
             <th><p class="mr-3">Техосмотр:</p></th>
             <td>
+                {% if car.tehosmotr <= check_day %}
+                <p class="bg-red-500">{{ car.tehosmotr | date:'d.m.Y' }}</p>
+                {% else %}
                 <p>{{ car.tehosmotr | date:'d.m.Y' }}</p>
+                {% endif %}
             </td>
         </tr>
         <tr>
             <th><p class="mr-3">Тахограф:</p></th>
             <td>
+                {% if car.tahograf <= check_day %}
+                <p class="bg-red-500">{{ car.tahograf | date:'d.m.Y' }}</p>
+                {% else %}
                 <p>{{ car.tahograf | date:'d.m.Y' }}</p>
+                {% endif %}
             </td>
         </tr>
         <tr>
             <th><p class="mr-3">Таможенное:</p></th>
             <td>
+                {% if car.tamogennoye <= check_day %}
+                <p class="bg-red-500">{{ car.tamogennoye | date:'d.m.Y' }}</p>
+                {% else %}
                 <p>{{ car.tamogennoye | date:'d.m.Y' }}</p>
+                {% endif %}
             </td>
         </tr>
         <tr>
             <th><p class="mr-3">КАСКО:</p></th>
             <td>
+                {% if car.kasko <= check_day %}
+                <p class="bg-red-500">{{ car.kasko | date:'d.m.Y' }}</p>
+                {% else %}
                 <p>{{ car.kasko | date:'d.m.Y' }}</p>
+                {% endif %}
             </td>
         </tr>
         <tr>
             <th><p class="mr-3">CMR-страховка:</p></th>
             <td>
+                {% if car.cmr_strahovka <= check_day %}
+                <p class="bg-red-500">{{ car.cmr_strahovka | date:'d.m.Y' }}</p>
+                {% else %}
                 <p>{{ car.cmr_strahovka | date:'d.m.Y' }}</p>
+                {% endif %}
             </td>
         </tr>
         <tr>
             <th><p class="mr-3">Е100 РБ:</p></th>
             <td>
+                {% if car.e100_rb <= check_day %}
+                <p class="bg-red-500">{{ car.e100_rb | date:'d.m.Y' }}</p>
+                {% else %}
                 <p>{{ car.e100_rb | date:'d.m.Y' }}</p>
+                {% endif %}
             </td>
         </tr>
         <tr>
             <th><p class="mr-3">Е100 РФ:</p></th>
             <td>
+                {% if car.e100_rf <= check_day %}
+                <p class="bg-red-500">{{ car.e100_rf | date:'d.m.Y' }}</p>
+                {% else %}
                 <p>{{ car.e100_rf | date:'d.m.Y' }}</p>
+                {% endif %}
             </td>
         </tr>
         <tr>

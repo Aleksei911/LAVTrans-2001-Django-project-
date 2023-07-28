@@ -56,11 +56,13 @@ def car_info(request, pk):
     car = Car.objects.get(pk=pk)
     events = InsuranceEvent.objects.filter(car=car)
     techpassport = TechPassport.objects.filter(car=car)
+    check_day = datetime.date.today() + datetime.timedelta(days=20)
 
     context = {
         'car': car,
         'events': events,
         'techpassport': techpassport,
+        'check_day': check_day,
     }
     return render(request, 'database/cars/car_detail.html', context)
 
