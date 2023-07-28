@@ -41,15 +41,51 @@
         <p class="py-2 text-center w-full">
             <a href="{% url 'car_info' car.id %}"> {{ car.number }} </a>
         </p>
-        <p class="py-2 text-center w-full">{{ car.green_card|date:"d.m.Y" }}</p>
+        {% if car.green_card <= check_day %}
+            <p class="py-2 text-center w-full bg-red-500">{{ car.green_card|date:"d.m.Y" }}</p>
+        {% else %}
+            <p class="py-2 text-center w-full">{{ car.green_card|date:"d.m.Y" }}</p>
+        {% endif %}
+        {% if car.strahovka <= check_day %}
+        <p class="py-2 text-center w-full bg-red-500">{{ car.strahovka|date:"d.m.Y" }}</p>
+        {% else %}
         <p class="py-2 text-center w-full">{{ car.strahovka|date:"d.m.Y" }}</p>
+        {% endif %}
+        {% if car.tehosmotr <= check_day %}
+        <p class="py-2 text-center w-full bg-red-500">{{ car.tehosmotr|date:"d.m.Y" }}</p>
+        {% else %}
         <p class="py-2 text-center w-full">{{ car.tehosmotr|date:"d.m.Y" }}</p>
+        {% endif %}
+        {% if car.tamogennoye <= check_day %}
+        <p class="py-2 text-center w-full bg-red-500">{{ car.tamogennoye|date:"d.m.Y" }}</p>
+        {% else %}
         <p class="py-2 text-center w-full">{{ car.tamogennoye|date:"d.m.Y" }}</p>
+        {% endif %}
+        {% if car.tahograf <= check_day %}
+        <p class="py-2 text-center w-full bg-red-500">{{ car.tahograf|date:"d.m.Y" }}</p>
+        {% else %}
         <p class="py-2 text-center w-full">{{ car.tahograf|date:"d.m.Y" }}</p>
+        {% endif %}
+        {% if car.kasko <= check_day %}
+        <p class="py-2 text-center w-full bg-red-500">{{ car.kasko|date:"d.m.Y" }}</p>
+        {% else %}
         <p class="py-2 text-center w-full">{{ car.kasko|date:"d.m.Y" }}</p>
+        {% endif %}
+        {% if car.cmr_strahovka <= check_day %}
+        <p class="py-2 text-center w-full bg-red-500">{{ car.cmr_strahovka|date:"d.m.Y" }}</p>
+        {% else %}
         <p class="py-2 text-center w-full">{{ car.cmr_strahovka|date:"d.m.Y" }}</p>
+        {% endif %}
+        {% if car.e100_rb <= check_day %}
+        <p class="py-2 text-center w-full bg-red-500">{{ car.e100_rb|date:"d.m.Y" }}</p>
+        {% else %}
         <p class="py-2 text-center w-full">{{ car.e100_rb|date:"d.m.Y" }}</p>
+        {% endif %}
+        {% if car.e100_rf <= check_day %}
+        <p class="py-2 text-center w-full bg-red-500">{{ car.e100_rf|date:"d.m.Y" }}</p>
+        {% else %}
         <p class="py-2 text-center w-full">{{ car.e100_rf|date:"d.m.Y" }}</p>
+        {% endif %}
         {% if car.active == True %}
         <p class="py-2 text-center w-full">Отслеживается</p>
         {% else %}

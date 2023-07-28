@@ -40,6 +40,7 @@ class DriverViewSet(viewsets.ModelViewSet):
 def cars(request):
     search_by = request.GET.get('search_by')
     query = request.GET.get('query')
+    check_day = datetime.date.today() + datetime.timedelta(days=20)
 
     if query:
         if search_by == "number":
@@ -47,7 +48,7 @@ def cars(request):
     else:
         cars = Car.objects.all()
 
-    return render(request, 'database/cars/cars.html', {'cars': cars})
+    return render(request, 'database/cars/cars.html', {'cars': cars, 'check_day': check_day})
 
 
 @login_required
