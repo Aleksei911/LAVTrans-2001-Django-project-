@@ -54,6 +54,36 @@
         {% else %}
         <p class="py-2 text-center w-full">{{ driver.driver_card|date:"d.m.Y" }}</p>
         {% endif %}
+        {% if driver.mezhdunarodnik <= check_day %}
+        <p class="py-2 text-center w-full bg-red-500">{{ driver.mezhdunarodnik|date:"d.m.Y" }}</p>
+        {% else %}
+        <p class="py-2 text-center w-full">{{ driver.mezhdunarodnik|date:"d.m.Y" }}</p>
+        {% endif %}
+        {% if driver.chip <= check_day %}
+        <p class="py-2 text-center w-full bg-red-500">{{ driver.chip|date:"d.m.Y" }}</p>
+        {% else %}
+        <p class="py-2 text-center w-full">{{ driver.chip|date:"d.m.Y" }}</p>
+        {% endif %}
+        {% if driver.adr <= check_day %}
+        <p class="py-2 text-center w-full bg-red-500">{{ driver.adr|date:"d.m.Y" }}</p>
+        {% else %}
+        <p class="py-2 text-center w-full">{{ driver.adr|date:"d.m.Y" }}</p>
+        {% endif %}
+        {% if driver.doverennost_rus <= check_day %}
+        <p class="py-2 text-center w-full bg-red-500">{{ driver.doverennost_rus|date:"d.m.Y" }}</p>
+        {% else %}
+        <p class="py-2 text-center w-full">{{ driver.doverennost_rus|date:"d.m.Y" }}</p>
+        {% endif %}
+        {% if driver.doverennost_lt <= check_day %}
+        <p class="py-2 text-center w-full bg-red-500">{{ driver.doverennost_lt|date:"d.m.Y" }}</p>
+        {% else %}
+        <p class="py-2 text-center w-full">{{ driver.doverennost_lt|date:"d.m.Y" }}</p>
+        {% endif %}
+        {% if driver.doverennost_mul <= check_day %}
+        <p class="py-2 text-center w-full bg-red-500">{{ driver.doverennost_mul|date:"d.m.Y" }}</p>
+        {% else %}
+        <p class="py-2 text-center w-full">{{ driver.doverennost_mul|date:"d.m.Y" }}</p>
+        {% endif %}
         {% if driver.active == True %}
         <p class="py-2 text-center w-full">Отслеживается</p>
         {% else %}

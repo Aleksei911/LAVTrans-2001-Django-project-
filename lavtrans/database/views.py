@@ -85,7 +85,6 @@ def add_car(request):
             car.save()
 
             messages.success(request, 'Новое транспортное средство было успешно добавлено.')
-            print(f"{request.user.username} добавил ТС {car.number}")
 
             return redirect('cars')
     else:
@@ -104,10 +103,6 @@ def car_edit(request, pk):
             form.save()
 
             messages.success(request, 'Изменения были успешно сохранены.')
-            print(f"{request.user.username} внес изменения в ТС {car.number} : зелёнка {car.green_card}, "
-                  f"страховка {car.strahovka}, техосмотр {car.tehosmotr}, таможенное {car.tamogennoye}, "
-                  f"тахограф {car.tahograf}, каско {car.kasko}, смр-страховка {car.cmr_strahovka}, "
-                  f"статус {car.active}")
 
             return redirect('car_info', pk=pk)
     else:
@@ -230,7 +225,6 @@ def add_driver(request):
             driver.save()
 
             messages.success(request, 'Новый водитель был успешно добавлен.')
-            print(f"{request.user.username} добавил водителя {driver.last_name} {driver.name} {driver.middle_name}")
 
             return redirect('drivers')
     else:
@@ -249,9 +243,6 @@ def driver_edit(request, pk):
             form.save()
 
             messages.success(request, 'Изменения были успешно сохранены.')
-            print(f"{request.user.username} внес изменения для водителя "
-                  f"{driver.last_name} {driver.name} {driver.middle_name} : паспорт {driver.passport}, "
-                  f"виза {driver.visa}, водительское {driver.driver_card}, статус {driver.active}")
 
             return redirect('driver_info', pk=pk)
     else:
@@ -359,7 +350,6 @@ def add_car_event(request, pk):
                 ImagesInsuranceEvent.objects.create(insurance_event=event, image=i)
 
             messages.success(request, 'Новый страховой случай был успешно добавлен.')
-            print(f"{request.user.username} добавил страховой случай {event.id} {event.car} {event.driver}")
 
             return redirect('cars')
         else:
@@ -381,15 +371,6 @@ def event_edit(request, pk):
             form.save()
 
             messages.success(request, 'Изменения были успешно сохранены.')
-            print(f"{request.user.username} внес изменения в страховой случай {event.car} : водитель {event.driver}, "
-                  f"Дата подачи в страховую {event.date_of_submission}, Страховой полис {event.polis_number}, "
-                  f"Справка с ГАИ? {event.police_sertificate}, "
-                  f"Способ ремонта {event.repair_method}, Страховая насчитала по калькуляции {event.calculation_sum}, "
-                  f"Наши расходы по восстановлению (Калькуляция) {event.expenses}, "
-                  f"В нашу пользу (Калькуляция) {event.margin}, На какой сервис отправили ТС {event.service_name}, "
-                  f"Дата отправки на сервис {event.service_date}, Сумма счета от сервиса {event.service_sum}, "
-                  f"Дата передачи документов по ремонту в страховую {event.final_docs}, "
-                  f"Дата оплаты от страховой {event.payment_date}")
 
             return redirect('event_info', pk=pk)
     else:

@@ -50,6 +50,42 @@
                 </td>
             </tr>
             <tr>
+                <th><label for="id_mezhdunarodnik">Квалификационная карточка водителя:</label></th>
+                <td>
+                    <input type="date" name="mezhdunarodnik" value="{{ form.mezhdunarodnik.value | date:'Y-m-d' }}" id="id_mezhdunarodnik">
+                </td>
+            </tr>
+            <tr>
+                <th><label for="id_chip">Карта водителя (ЧИП):</label></th>
+                <td>
+                    <input type="date" name="chip" value="{{ form.chip.value | date:'Y-m-d' }}" id="id_chip">
+                </td>
+            </tr>
+            <tr>
+                <th><label for="id_adr">Свидетельство ДОПОГ (ADR):</label></th>
+                <td>
+                    <input type="date" name="adr" value="{{ form.adr.value | date:'Y-m-d' }}" id="id_adr">
+                </td>
+            </tr>
+            <tr>
+                <th><label for="id_doverennost_rus">Доверенность ООО ЛАВТРАНС-2001 РУС:</label></th>
+                <td>
+                    <input type="date" name="doverennost_rus" value="{{ form.doverennost_rus.value | date:'Y-m-d' }}" id="id_doverennost_rus">
+                </td>
+            </tr>
+            <tr>
+                <th><label for="id_doverennost_lt">Доверенность ЧТУП ЛАВТранс-2001:</label></th>
+                <td>
+                    <input type="date" name="doverennost_lt" value="{{ form.doverennost_lt.value | date:'Y-m-d' }}" id="id_doverennost_lt">
+                </td>
+            </tr>
+            <tr>
+                <th><label for="id_doverennost_mul">Доверенность ООО МУЛЬТИЛАЙН:</label></th>
+                <td>
+                    <input type="date" name="doverennost_mul" value="{{ form.doverennost_mul.value | date:'Y-m-d' }}" id="id_doverennost_mul">
+                </td>
+            </tr>
+            <tr>
                 <th><label for="id_active">Отслеживать?</label></th>
                 <td>
                     <input type="checkbox" name="active" id="id_active" checked>

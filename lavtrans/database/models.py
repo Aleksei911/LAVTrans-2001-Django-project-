@@ -80,12 +80,14 @@ class Driver(models.Model):
     passport = models.DateField(verbose_name='Паспорт')
     visa = models.DateField(verbose_name='Виза', blank=True, null=True)
     driver_card = models.DateField(verbose_name='Водительское удостоверение')
-    mezhdunarodnik = models.DateField(verbose_name='Квалификационная карточка водителя')
-    chip = models.DateField(verbose_name='Карта водителя (ЧИП)')
-    adr = models.DateField(verbose_name='Свидетельство ДОПОГ (ADR)')
-    doverennost_rus = models.DateField(verbose_name='Доверенность ООО ЛАВТРАНС-2001 РУС')
-    doverennost_lt = models.DateField(verbose_name='Доверенность ЧТУП ЛАВТранс-2001')
-    doverennost_mul = models.DateField(verbose_name='Доверенность ООО МУЛЬТИЛАЙН')
+    mezhdunarodnik = models.DateField(verbose_name='Квалификационная карточка водителя', blank=True, null=True,
+                                      default='')
+    chip = models.DateField(verbose_name='Карта водителя (ЧИП)', blank=True, null=True, default='')
+    adr = models.DateField(verbose_name='Свидетельство ДОПОГ (ADR)', blank=True, null=True, default='')
+    doverennost_rus = models.DateField(verbose_name='Доверенность ООО ЛАВТРАНС-2001 РУС', blank=True, null=True,
+                                       default='')
+    doverennost_lt = models.DateField(verbose_name='Доверенность ЧТУП ЛАВТранс-2001', blank=True, null=True, default='')
+    doverennost_mul = models.DateField(verbose_name='Доверенность ООО МУЛЬТИЛАЙН', blank=True, null=True, default='')
     active = models.BooleanField(verbose_name='Отслеживать?', default=True)
 
     def __str__(self):
@@ -117,7 +119,7 @@ class PassportDriver(models.Model):
 class DriverScans(models.Model):
     passport = models.ForeignKey('PassportDriver', on_delete=models.CASCADE)
     image = models.ImageField(upload_to=f'images/drivers/', blank=True, null=True,
-                             verbose_name='Сканы документов')
+                              verbose_name='Сканы документов')
 
     def __str__(self):
         return f'Сканы документов {self.driver}'

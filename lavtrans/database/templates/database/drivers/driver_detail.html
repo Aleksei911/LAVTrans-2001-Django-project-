@@ -58,6 +58,66 @@
             </td>
         </tr>
         <tr>
+            <th><p class="mr-3">Квалификационная карточка водителя:	</p></th>
+            <td>
+                {% if driver.mezhdunarodnik <= check_day %}
+                <p class="bg-red-500">{{ driver.mezhdunarodnik | date:'d.m.Y' }}</p>
+                {% else %}
+                <p>{{ driver.mezhdunarodnik|date:"d.m.Y" }}</p>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Карта водителя (ЧИП):	</p></th>
+            <td>
+                {% if driver.chip <= check_day %}
+                <p class="bg-red-500">{{ driver.chip | date:'d.m.Y' }}</p>
+                {% else %}
+                <p>{{ driver.chip|date:"d.m.Y" }}</p>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Свидетельство ДОПОГ (ADR):	</p></th>
+            <td>
+                {% if driver.adr <= check_day %}
+                <p class="bg-red-500">{{ driver.adr | date:'d.m.Y' }}</p>
+                {% else %}
+                <p>{{ driver.adr|date:"d.m.Y" }}</p>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Доверенность ООО ЛАВТРАНС-2001 РУС:	</p></th>
+            <td>
+                {% if driver.doverennost_rus <= check_day %}
+                <p class="bg-red-500">{{ driver.doverennost_rus | date:'d.m.Y' }}</p>
+                {% else %}
+                <p>{{ driver.doverennost_rus|date:"d.m.Y" }}</p>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Доверенность ЧТУП ЛАВТранс-2001:	</p></th>
+            <td>
+                {% if driver.doverennost_lt <= check_day %}
+                <p class="bg-red-500">{{ driver.doverennost_lt | date:'d.m.Y' }}</p>
+                {% else %}
+                <p>{{ driver.doverennost_lt|date:"d.m.Y" }}</p>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th><p class="mr-3">Доверенность ООО МУЛЬТИЛАЙН:	</p></th>
+            <td>
+                {% if driver.doverennost_mul <= check_day %}
+                <p class="bg-red-500">{{ driver.doverennost_mul | date:'d.m.Y' }}</p>
+                {% else %}
+                <p>{{ driver.doverennost_mul|date:"d.m.Y" }}</p>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
             <th><p class="mr-3">Отслеживается?</p></th>
             <td>
                 {% if driver.active %}
