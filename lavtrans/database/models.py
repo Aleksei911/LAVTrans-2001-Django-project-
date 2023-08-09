@@ -80,6 +80,10 @@ class Driver(models.Model):
     passport = models.DateField(verbose_name='Паспорт')
     visa = models.DateField(verbose_name='Виза', blank=True, null=True)
     driver_card = models.DateField(verbose_name='Водительское удостоверение')
+    mezhdunarodnik = models.DateField(verbose_name='Квалификационная карточка водителя')
+    chip = models.DateField(verbose_name='Карта водителя (ЧИП)')
+    adr = models.DateField(verbose_name='Свидетельство ДОПОГ (ADR)')
+    doverennost = models.DateField(verbose_name='Доверенность на водителя')
     active = models.BooleanField(verbose_name='Отслеживать?', default=True)
 
     def __str__(self):

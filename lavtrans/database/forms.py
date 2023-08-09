@@ -19,7 +19,8 @@ class AddTechPassportForm(forms.ModelForm):
 class AddDriverForm(forms.ModelForm):
     class Meta:
         model = Driver
-        fields = ('name', 'last_name', 'middle_name', 'passport', 'visa', 'driver_card', 'active')
+        fields = ('name', 'last_name', 'middle_name', 'passport', 'visa', 'driver_card', 'mezhdunarodnik', 'chip',
+                  'adr', 'doverennost', 'active')
 
 
 class AddPassportDriverForm(forms.ModelForm):
