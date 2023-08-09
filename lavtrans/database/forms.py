@@ -20,7 +20,7 @@ class AddDriverForm(forms.ModelForm):
     class Meta:
         model = Driver
         fields = ('name', 'last_name', 'middle_name', 'passport', 'visa', 'driver_card', 'mezhdunarodnik', 'chip',
-                  'adr', 'doverennost', 'active')
+                  'adr', 'doverennost_rus', 'doverennost_lt', 'doverennost_mul', 'active')
 
 
 class AddPassportDriverForm(forms.ModelForm):

@@ -83,7 +83,9 @@ class Driver(models.Model):
     mezhdunarodnik = models.DateField(verbose_name='Квалификационная карточка водителя')
     chip = models.DateField(verbose_name='Карта водителя (ЧИП)')
     adr = models.DateField(verbose_name='Свидетельство ДОПОГ (ADR)')
-    doverennost = models.DateField(verbose_name='Доверенность на водителя')
+    doverennost_rus = models.DateField(verbose_name='Доверенность ООО ЛАВТРАНС-2001 РУС')
+    doverennost_lt = models.DateField(verbose_name='Доверенность ЧТУП ЛАВТранс-2001')
+    doverennost_mul = models.DateField(verbose_name='Доверенность ООО МУЛЬТИЛАЙН')
     active = models.BooleanField(verbose_name='Отслеживать?', default=True)
 
     def __str__(self):
