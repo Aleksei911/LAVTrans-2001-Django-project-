@@ -20,6 +20,8 @@ class CarViewSet(viewsets.ModelViewSet):
         Q(tamogennoye__lte=(datetime.date.today() + datetime.timedelta(days=20))) |
         Q(tahograf__lte=(datetime.date.today() + datetime.timedelta(days=20))) |
         Q(kasko__lte=(datetime.date.today() + datetime.timedelta(days=20))) |
+        Q(e100_rb__lte=(datetime.date.today() + datetime.timedelta(days=20))) |
+        Q(e100_rf__lte=(datetime.date.today() + datetime.timedelta(days=20))) |
         Q(cmr_strahovka__lte=(datetime.date.today() + datetime.timedelta(days=20))),
         active=True
     )
@@ -30,7 +32,13 @@ class DriverViewSet(viewsets.ModelViewSet):
     queryset = Driver.objects.filter(
         Q(passport__lte=(datetime.date.today() + datetime.timedelta(days=30))) |
         Q(visa__lte=(datetime.date.today() + datetime.timedelta(days=30))) |
-        Q(driver_card__lte=(datetime.date.today() + datetime.timedelta(days=30))),
+        Q(driver_card__lte=(datetime.date.today() + datetime.timedelta(days=30))) |
+        Q(mezhdunarodnik__lte=(datetime.date.today() + datetime.timedelta(days=30))) |
+        Q(chip__lte=(datetime.date.today() + datetime.timedelta(days=30))) |
+        Q(adr__lte=(datetime.date.today() + datetime.timedelta(days=30))) |
+        Q(doverennost_rus__lte=(datetime.date.today() + datetime.timedelta(days=30))) |
+        Q(doverennost_lt__lte=(datetime.date.today() + datetime.timedelta(days=30))) |
+        Q(doverennost_mul__lte=(datetime.date.today() + datetime.timedelta(days=30))),
         active=True
     )
     serializer_class = DriverSerializer
