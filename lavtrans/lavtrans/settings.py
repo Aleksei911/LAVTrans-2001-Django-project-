@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
     'database.apps.DatabaseConfig',
+    'delivery.apps.DeliveryConfig',
     'rest_framework',
     'taskmanager.apps.TaskmanagerConfig',
 ]
