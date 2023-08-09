@@ -81,13 +81,13 @@ class Driver(models.Model):
     visa = models.DateField(verbose_name='Виза', blank=True, null=True)
     driver_card = models.DateField(verbose_name='Водительское удостоверение')
     mezhdunarodnik = models.DateField(verbose_name='Квалификационная карточка водителя', blank=True, null=True,
-                                      default='')
-    chip = models.DateField(verbose_name='Карта водителя (ЧИП)', blank=True, null=True, default='')
-    adr = models.DateField(verbose_name='Свидетельство ДОПОГ (ADR)', blank=True, null=True, default='')
+                                      default=None)
+    chip = models.DateField(verbose_name='Карта водителя (ЧИП)', blank=True, null=True, default=None)
+    adr = models.DateField(verbose_name='Свидетельство ДОПОГ (ADR)', blank=True, null=True, default=None)
     doverennost_rus = models.DateField(verbose_name='Доверенность ООО ЛАВТРАНС-2001 РУС', blank=True, null=True,
-                                       default='')
-    doverennost_lt = models.DateField(verbose_name='Доверенность ЧТУП ЛАВТранс-2001', blank=True, null=True, default='')
-    doverennost_mul = models.DateField(verbose_name='Доверенность ООО МУЛЬТИЛАЙН', blank=True, null=True, default='')
+                                       default=None)
+    doverennost_lt = models.DateField(verbose_name='Доверенность ЧТУП ЛАВТранс-2001', blank=True, null=True, default=None)
+    doverennost_mul = models.DateField(verbose_name='Доверенность ООО МУЛЬТИЛАЙН', blank=True, null=True, default=None)
     active = models.BooleanField(verbose_name='Отслеживать?', default=True)
 
     def __str__(self):
