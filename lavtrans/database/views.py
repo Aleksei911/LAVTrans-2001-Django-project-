@@ -11,7 +11,6 @@ from .forms import AddCarForm, AddDriverForm, AddEventForm, ImageForm, AddTechPa
 from django.db.models import Q
 
 
-# Create your views here.
 class CarViewSet(viewsets.ModelViewSet):
     queryset = Car.objects.filter(
         Q(tehosmotr__lte=(datetime.date.today() + datetime.timedelta(days=20))) |
