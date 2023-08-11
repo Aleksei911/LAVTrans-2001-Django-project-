@@ -41,6 +41,7 @@ class Delivery(models.Model):
     waybill_number = models.CharField(max_length=5, verbose_name='Номер путевого листа', null=True, blank=True)
     waybill_date = models.DateField(verbose_name='Дата путевого листа', null=True, blank=True)
     customer = models.CharField(max_length=50, verbose_name='Заказчик', null=True, blank=True)
+    customer_contact = models.CharField(max_length=255, verbose_name='Контактное лицо', null=True, blank=True)
     application_number = models.CharField(max_length=15, verbose_name='Номер заявки', null=True, blank=True)
     application_date = models.DateField(verbose_name='Дата заявки', null=True, blank=True)
     route = models.CharField(max_length=255, verbose_name='МАРШРУТ (ЗАГРУЗКА -ТАМОЖНИ +ДОВОЗ)', null=True, blank=True)
@@ -58,6 +59,9 @@ class Delivery(models.Model):
     electronic_seal = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True,
                                           verbose_name='Стоимость электронной пломбы (BYN)')
     prostoi = models.IntegerField(verbose_name='Количество дней простоя', blank=True, null=True)
+    rate_for_prostoi = models.IntegerField(verbose_name='Ставка за день простоя', blank=True, null=True)
+    prostoi_currency = models.CharField(max_length=4, choices=CURRENCY, verbose_name='Денежная единица для простоя',
+                                        blank=True, null=True)
     score_number = models.CharField(max_length=10, blank=True, null=True, verbose_name='Номер счёта')
     score_date = models.DateField(verbose_name='Дата выставления счёта', null=True, blank=True)
     payment_term = models.IntegerField(verbose_name="Срок оплаты (Банковских дней)", blank=True, null=True)
