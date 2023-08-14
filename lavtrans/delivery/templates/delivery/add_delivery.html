@@ -1,0 +1,174 @@
+{% extends 'base.html'%}
+
+{% block title %}
+Добавить перевозку
+{% endblock %}
+
+{% block content %}
+<div class="py-6 px-6">
+    <h1 class="mb-4 text-xl">Добавить перевозку</h1>
+
+    <form method="post" action=".">
+        {% csrf_token %}
+
+        <table>
+            <tbody>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Дата загрузки:</th>
+                <td class="border border-slate-300">
+                    <input type="date" name="date_of_delivery" id="id_date_of_delivery">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Авто на загрузке:</th>
+                <td class="border border-slate-300">
+                    {{ form.car }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Водитель на загрузке:</th>
+                <td class="border border-slate-300">
+                    {{ form.driver }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Перевозчик:</th>
+                <td class="border border-slate-300">
+                    {{ form.transporter }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Авто после перецепки:</th>
+                <td class="border border-slate-300">
+                    {{ form.next_car }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Водитель после перецепки:</th>
+                <td class="border border-slate-300">
+                    {{ form.next_driver }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Перевозчик после перецепки:</th>
+                <td class="border border-slate-300">
+                    {{ form.next_transporter }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Номер путевого листа:</th>
+                <td class="border border-slate-300">
+                    <input type="text" name="waybill_number" maxlength="5" id="id_waybill_number">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Дата путевого листа:</th>
+                <td class="border border-slate-300">
+                    <input type="date" name="waybill_date" id="id_waybill_date">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Заказчик:</th>
+                <td class="border border-slate-300">
+                    <input type="text" name="customer" maxlength="50" id="id_customer">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Контактное лицо от Заказчика:</th>
+                <td class="border border-slate-300">
+                    <input type="text" name="customer_contact" maxlength="255" id="id_customer_contact">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Номер заявки:</th>
+                <td class="border border-slate-300">
+                    <input type="text" name="application_number" maxlength="15" id="id_application_number">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Дата заявки:</th>
+                <td class="border border-slate-300">
+                    <input type="date" name="application_date" id="id_application_date">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">МАРШРУТ (ЗАГРУЗКА -ТАМОЖНИ +ДОВОЗ):</th>
+                <td class="border border-slate-300">
+                    <input type="text" name="route" maxlength="255" id="id_route">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Ставка:</th>
+                <td class="border border-slate-300">
+                    <input type="number" name="rate" step="0.01" id="id_rate"> {{ form.rate_currency }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Количество литров топлива продано:</th>
+                <td class="border border-slate-300">
+                    <input type="number" name="liters" step="1" id="id_liters">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Получили за топливо (EUR):</th>
+                <td class="border border-slate-300">
+                    <input type="number" name="liters_amount" step="0.01" id="id_liters_amount">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Выезд из накопителя (EUR):</th>
+                <td class="border border-slate-300">
+                    <input type="number" name="storage" step="1" id="id_storage">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Стоимость таможенного оформления:</th>
+                <td class="border border-slate-300">
+                    <input type="number" name="customs_clearance" step="0.01" id="id_customs_clearance">  {{ form.customs_currency }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Стоимость электронной пломбы (BYN):</th>
+                <td class="border border-slate-300">
+                    <input type="number" name="electronic_seal" step="0.01" id="id_electronic_seal">  {{ form.customs_currency }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Количество дней простоя:</th>
+                <td class="border border-slate-300">
+                    <input type="number" name="prostoi" step="1" id="id_prostoi">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Ставка за день простоя:</th>
+                <td class="border border-slate-300">
+                    <input type="number" name="rate_for_prostoi" step="0.01" id="id_rate_for_prostoi">  {{ form.prostoi_currency }}
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Номер счёта:</th>
+                <td class="border border-slate-300">
+                    <input type="text" name="score_number" maxlength="10" id="id_score_number">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Дата выставления счёта:</th>
+                <td class="border border-slate-300">
+                    <input type="date" name="score_date" id="id_score_date">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Срок оплаты (Банковских дней):</th>
+                <td class="border border-slate-300">
+                    <input type="number" name="payment_term" step="1" id="id_payment_term">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <hr class="my-4">
+
+        <button class="py-4 px-8 bg-teal-500 text-white rounded-xl">Добавить</button>
+    </form>
+</div>
+{% endblock %}
