@@ -35,3 +35,13 @@ def add_delivery(request):
         form = AddDeliveryForm()
 
     return render(request, 'delivery/add_delivery.html', {'form': form})
+
+
+@login_required
+def delivery_info(request, pk):
+    delivery = Delivery.objects.get(pk=pk)
+
+    context = {
+        'delivery': delivery,
+    }
+    return render(request, 'delivery/delivery_info.html', context)

@@ -46,7 +46,7 @@
         <p class="py-2 text-center w-full">{{ delivery.score_number|default_if_none:"&nbsp;" }}</p>
         <p class="py-2 text-center w-full">{{ delivery.payment_term|default_if_none:"&nbsp;" }}</p>
         <p class="py-2 w-full">
-            <a class="ml-8 py-1 px-3 bg-teal-500 text-white rounded-xl" href="/">Подробнее</a>
+            <a class="ml-8 py-1 px-3 bg-teal-500 text-white rounded-xl" href="{% url 'delivery_info' delivery.id %}">Подробнее</a>
         </p>
     </div>
     {% endfor %}
