@@ -100,7 +100,7 @@
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Ставка:</th>
                 <td class="border border-slate-300">
-                    {{ form.rate }} {{ form.rate_currency }}
+                    <span class="border border-slate-300">{{ form.rate }}</span> {{ form.rate_currency }}
                 </td>
             </tr>
             <tr>
@@ -124,13 +124,13 @@
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Стоимость таможенного оформления:</th>
                 <td class="border border-slate-300">
-                    {{ form.customs_clearance }} {{ form.customs_currency }}
+                    <span class="border border-slate-300">{{ form.customs_clearance }}</span> {{ form.customs_currency }}
                 </td>
             </tr>
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Стоимость электронной пломбы (BYN):</th>
                 <td class="border border-slate-300">
-                    {{ form.electronic_seal }} {{ form.customs_currency }}
+                    {{ form.electronic_seal }}
                 </td>
             </tr>
             <tr>
@@ -142,7 +142,7 @@
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Ставка за день простоя:</th>
                 <td class="border border-slate-300">
-                    {{ form.rate_for_prostoi }} {{ form.prostoi_currency }}
+                    <span class="border border-slate-300">{{ form.rate_for_prostoi }}</span> {{ form.prostoi_currency }}
                 </td>
             </tr>
             <tr>

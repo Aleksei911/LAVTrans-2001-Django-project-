@@ -12,5 +12,22 @@ class AddDeliveryForm(forms.ModelForm):
                   'prostoi', 'rate_for_prostoi', 'prostoi_currency', 'score_number', 'score_date',
                   'payment_term')
         widgets = {
-            'route': forms.Textarea(attrs={'rows': 3})
+            'route': forms.Textarea(attrs={'rows': 3}),
+            'waybill_number': forms.TextInput(attrs={'style': 'width: 310px;'}),
+            'car': forms.Select(attrs={'style': 'width: 310px;'}),
+            'driver': forms.Select(attrs={'style': 'width: 310px;'}),
+            'transporter': forms.Select(attrs={'style': 'width: 310px;'}),
+            'next_car': forms.Select(attrs={'style': 'width: 310px;'}),
+            'next_driver': forms.Select(attrs={'style': 'width: 310px;'}),
+            'next_transporter': forms.Select(attrs={'style': 'width: 310px;'}),
+            'customer': forms.TextInput(attrs={'style': 'width: 310px;'}),
+            'customer_contact': forms.TextInput(attrs={'style': 'width: 310px;'}),
+            'application_number': forms.TextInput(attrs={'style': 'width: 310px;'}),
+            'liters': forms.NumberInput(attrs={'style': 'width: 310px;'}),
+            'liters_amount': forms.NumberInput(attrs={'style': 'width: 310px;'}),
+            'storage': forms.NumberInput(attrs={'style': 'width: 310px;'}),
+            'prostoi': forms.NumberInput(attrs={'style': 'width: 310px;'}),
+            'score_number': forms.TextInput(attrs={'style': 'width: 310px;'}),
+            'payment_term': forms.NumberInput(attrs={'style': 'width: 310px;'}),
+            'electronic_seal': forms.NumberInput(attrs={'style': 'width: 310px;'}),
         }
