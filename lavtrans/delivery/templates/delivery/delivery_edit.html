@@ -16,7 +16,7 @@
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Дата загрузки:</th>
                 <td class="border border-slate-300">
-                    <input type="date" name="date_of_delivery" value="{{ form.date_of_delivery }}" id="id_date_of_delivery">
+                    <input type="date" name="date_of_delivery" value="{{ form.date_of_delivery.value | date:'Y-m-d' }}" id="date_of_delivery">
                 </td>
             </tr>
             <tr>
@@ -58,109 +58,109 @@
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Номер путевого листа:</th>
                 <td class="border border-slate-300">
-                    <input type="text" name="waybill_number" value="{{ form.waybill_number }}" maxlength="5" id="id_waybill_number">
+                    {{ form.waybill_number }}
                 </td>
             </tr>
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Дата путевого листа:</th>
                 <td class="border border-slate-300">
-                    <input type="date" name="waybill_date" value="{{ form.waybill_date }}" id="id_waybill_date">
+                    <input type="date" name="waybill_date" value="{{ form.waybill_date.value | date:'Y-m-d' }}" id="waybill_date">
                 </td>
             </tr>
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Заказчик:</th>
                 <td class="border border-slate-300">
-                    <input type="text" name="customer" value="{{ form.customer }}" maxlength="50" id="id_customer">
+                    {{ form.customer }}
                 </td>
             </tr>
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Контактное лицо от Заказчика:</th>
                 <td class="border border-slate-300">
-                    <input type="text" name="customer_contact" value="{{ form.customer_contact }}" maxlength="255" id="id_customer_contact">
+                    {{ form.customer_contact }}
                 </td>
             </tr>
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Номер заявки:</th>
                 <td class="border border-slate-300">
-                    <input type="text" name="application_number" value="{{ form.application_number }}" maxlength="15" id="id_application_number">
+                    {{ form.application_number }}
                 </td>
             </tr>
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Дата заявки:</th>
                 <td class="border border-slate-300">
-                    <input type="date" name="application_date" value="{{ form.application_date }}" id="id_application_date">
+                    <input type="date" name="application_date" value="{{ form.application_date.value | date:'Y-m-d' }}" id="application_date">
                 </td>
             </tr>
             <tr>
                 <th class="mr-3 text-left border border-slate-300">МАРШРУТ (ЗАГРУЗКА -ТАМОЖНИ +ДОВОЗ):</th>
                 <td class="border border-slate-300">
-                    <input type="text" name="route" value="{{ form.route }}" maxlength="255" id="id_route">
+                    {{ form.route }}
                 </td>
             </tr>
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Ставка:</th>
                 <td class="border border-slate-300">
-                    <input type="number" name="rate" value="{{ form.rate }}" step="0.01" id="id_rate"> {{ form.rate_currency }}
+                    {{ form.rate }} {{ form.rate_currency }}
                 </td>
             </tr>
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Количество литров топлива продано:</th>
                 <td class="border border-slate-300">
-                    <input type="number" name="liters" value="{{ form.liters }}" step="1" id="id_liters">
+                    {{ form.liters }}
                 </td>
             </tr>
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Получили за топливо (EUR):</th>
                 <td class="border border-slate-300">
-                    <input type="number" name="liters_amount" value="{{ form.liters_amount }}" step="0.01" id="id_liters_amount">
+                    {{ form.liters_amount }}
                 </td>
             </tr>
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Выезд из накопителя (EUR):</th>
                 <td class="border border-slate-300">
-                    <input type="number" name="storage" value="{{ form.storage }}" step="1" id="id_storage">
+                    {{ form.storage }}
                 </td>
             </tr>
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Стоимость таможенного оформления:</th>
                 <td class="border border-slate-300">
-                    <input type="number" name="customs_clearance" value="{{ form.customs_clearance }}" step="0.01" id="id_customs_clearance">  {{ form.customs_currency }}
+                    {{ form.customs_clearance }} {{ form.customs_currency }}
                 </td>
             </tr>
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Стоимость электронной пломбы (BYN):</th>
                 <td class="border border-slate-300">
-                    <input type="number" name="electronic_seal" value="{{ form.electronic_seal }}" step="0.01" id="id_electronic_seal">  {{ form.customs_currency }}
+                    {{ form.electronic_seal }} {{ form.customs_currency }}
                 </td>
             </tr>
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Количество дней простоя:</th>
                 <td class="border border-slate-300">
-                    <input type="number" name="prostoi" value="{{ form.prostoi }}" step="1" id="id_prostoi">
+                    {{ form.prostoi }}
                 </td>
             </tr>
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Ставка за день простоя:</th>
                 <td class="border border-slate-300">
-                    <input type="number" name="rate_for_prostoi" value="{{ form.rate_for_prostoi }}" step="0.01" id="id_rate_for_prostoi">  {{ form.prostoi_currency }}
+                    {{ form.rate_for_prostoi }} {{ form.prostoi_currency }}
                 </td>
             </tr>
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Номер счёта:</th>
                 <td class="border border-slate-300">
-                    <input type="text" name="score_number" value="{{ form.score_number }}" maxlength="10" id="id_score_number">
+                    {{ form.score_number }}
                 </td>
             </tr>
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Дата выставления счёта:</th>
                 <td class="border border-slate-300">
-                    <input type="date" name="score_date" value="{{ form.score_date }}" id="id_score_date">
+                    <input type="date" name="score_date" value="{{ form.score_date.value | date:'Y-m-d' }}" id="score_date">
                 </td>
             </tr>
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Срок оплаты (Банковских дней):</th>
                 <td class="border border-slate-300">
-                    <input type="number" name="payment_term" value="{{ form.payment_term }}" step="1" id="id_payment_term">
+                    {{ form.payment_term }}
                 </td>
             </tr>
             </tbody>
