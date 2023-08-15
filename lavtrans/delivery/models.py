@@ -44,7 +44,7 @@ class Delivery(models.Model):
     customer_contact = models.CharField(max_length=255, verbose_name='Контактное лицо', null=True, blank=True)
     application_number = models.CharField(max_length=15, verbose_name='Номер заявки', null=True, blank=True)
     application_date = models.DateField(verbose_name='Дата заявки', null=True, blank=True)
-    route = models.TextField( verbose_name='МАРШРУТ (ЗАГРУЗКА -ТАМОЖНИ +ДОВОЗ)', null=True, blank=True)
+    route = models.TextField(verbose_name='МАРШРУТ (ЗАГРУЗКА -ТАМОЖНИ +ДОВОЗ)', null=True, blank=True)
     rate = models.DecimalField(max_digits=11, decimal_places=2, verbose_name='Ставка', blank=True, null=True)
     rate_currency = models.CharField(max_length=4, choices=CURRENCY, verbose_name='Денежная единица для ставки',
                                      blank=True, null=True)

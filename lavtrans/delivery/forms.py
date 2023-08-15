@@ -11,3 +11,6 @@ class AddDeliveryForm(forms.ModelForm):
                   'liters_amount', 'storage', 'customs_clearance', 'customs_currency', 'electronic_seal',
                   'prostoi', 'rate_for_prostoi', 'prostoi_currency', 'score_number', 'score_date',
                   'payment_term')
+        widgets = {
+            'route': forms.Textarea(attrs={'rows': 3})
+        }
