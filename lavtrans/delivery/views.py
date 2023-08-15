@@ -45,3 +45,21 @@ def delivery_info(request, pk):
         'delivery': delivery,
     }
     return render(request, 'delivery/delivery_info.html', context)
+
+
+@login_required
+def delivery_edit(request, pk):
+    delivery = Delivery.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        form = AddDeliveryForm(request.POST, instance=delivery)
+        if form.is_valid():
+            form.save()
+
+            messages.success(request, 'Изменения были успешно сохранены.')
+
+            return redirect('delivery_info', pk=pk)
+    else:
+        form = AddDeliveryForm(instance=delivery)
+
+    return render(request, 'delivery/delivery_edit.html', {'form': form})
