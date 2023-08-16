@@ -18,7 +18,7 @@
     {% if cars %}
     <div class="flex justify-between">
         <form class="form-inline py-4 px-8 bg-yellow-200 font-semibold w-full" action="{% url 'cars' %}">
-            <input class="form-control py-1 px-2" type="search" placeholder="Search" aria-label="Search" name="query">
+            <input class="form-control py-1 px-2" type="search" placeholder="Номер ТС" aria-label="Search" name="query">
             <input type="hidden" name="search_by" value="number">
             <button class="btn btn-success py-1 px-8 bg-teal-500 text-white rounded-xl" type="submit">Поиск</button>
         </form>
