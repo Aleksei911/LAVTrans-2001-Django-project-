@@ -14,79 +14,79 @@
         <table>
             <tbody>
             <tr>
-                <th><label for="id_last_name">Фамилия:</label></th>
+                <th class="text-left"><label for="id_last_name">Фамилия:</label></th>
                 <td>
-                    <input type="text" name="last_name" value="{{ form.last_name.value }}" maxlength="20" required="" id="id_last_name">
+                    <input class="border border-slate-300" type="text" name="last_name" value="{{ form.last_name.value }}" maxlength="20" required="" id="id_last_name">
                 </td>
             </tr>
             <tr>
-                <th><label for="id_name">Имя:</label></th>
+                <th class="text-left"><label for="id_name">Имя:</label></th>
                 <td>
-                    <input type="text" name="name" value="{{ form.name.value }}" maxlength="20" required="" id="id_name">
+                    <input class="border border-slate-300" type="text" name="name" value="{{ form.name.value }}" maxlength="20" required="" id="id_name">
                 </td>
             </tr>
             <tr>
-                <th><label for="id_middle_name">Отчество:</label></th>
+                <th class="text-left"><label for="id_middle_name">Отчество:</label></th>
                 <td>
-                    <input type="text" name="middle_name" value="{{ form.middle_name.value }}" maxlength="20" required="" id="id_middle_name">
+                    <input class="border border-slate-300" type="text" name="middle_name" value="{{ form.middle_name.value }}" maxlength="20" required="" id="id_middle_name">
                 </td>
             </tr>
             <tr>
-                <th><label for="id_passport">Паспорт:</label></th>
+                <th class="text-left"><label for="id_passport">Паспорт:</label></th>
                 <td>
                     <input type="date" name="passport" value="{{ form.passport.value | date:'Y-m-d' }}" id="id_passport">
                 </td>
             </tr>
             <tr>
-                <th><label for="id_visa">Виза:</label></th>
+                <th class="text-left"><label for="id_visa">Виза:</label></th>
                 <td>
                     <input type="date" name="visa" value="{{ form.visa.value | date:'Y-m-d' }}" id="id_visa">
                 </td>
             </tr>
             <tr>
-                <th><label for="id_driver_card">Водительское удостоверение:</label></th>
+                <th class="text-left"><label for="id_driver_card">Водительское удостоверение:</label></th>
                 <td>
                     <input type="date" name="driver_card" value="{{ form.driver_card.value | date:'Y-m-d' }}" id="id_driver_card">
                 </td>
             </tr>
             <tr>
-                <th><label for="id_mezhdunarodnik">Квалификационная карточка водителя:</label></th>
+                <th class="text-left"><label for="id_mezhdunarodnik">Квалификационная карточка водителя:</label></th>
                 <td>
                     <input type="date" name="mezhdunarodnik" value="{{ form.mezhdunarodnik.value | date:'Y-m-d' }}" id="id_mezhdunarodnik">
                 </td>
             </tr>
             <tr>
-                <th><label for="id_chip">Карта водителя (ЧИП):</label></th>
+                <th class="text-left"><label for="id_chip">Карта водителя (ЧИП):</label></th>
                 <td>
                     <input type="date" name="chip" value="{{ form.chip.value | date:'Y-m-d' }}" id="id_chip">
                 </td>
             </tr>
             <tr>
-                <th><label for="id_adr">Свидетельство ДОПОГ (ADR):</label></th>
+                <th class="text-left"><label for="id_adr">Свидетельство ДОПОГ (ADR):</label></th>
                 <td>
                     <input type="date" name="adr" value="{{ form.adr.value | date:'Y-m-d' }}" id="id_adr">
                 </td>
             </tr>
             <tr>
-                <th><label for="id_doverennost_rus">Доверенность ООО ЛАВТРАНС-2001 РУС:</label></th>
+                <th class="text-left"><label for="id_doverennost_rus">Доверенность ООО ЛАВТРАНС-2001 РУС:</label></th>
                 <td>
                     <input type="date" name="doverennost_rus" value="{{ form.doverennost_rus.value | date:'Y-m-d' }}" id="id_doverennost_rus">
                 </td>
             </tr>
             <tr>
-                <th><label for="id_doverennost_lt">Доверенность ЧТУП ЛАВТранс-2001:</label></th>
+                <th class="text-left"><label for="id_doverennost_lt">Доверенность ЧТУП ЛАВТранс-2001:</label></th>
                 <td>
                     <input type="date" name="doverennost_lt" value="{{ form.doverennost_lt.value | date:'Y-m-d' }}" id="id_doverennost_lt">
                 </td>
             </tr>
             <tr>
-                <th><label for="id_doverennost_mul">Доверенность ООО МУЛЬТИЛАЙН:</label></th>
+                <th class="text-left"><label for="id_doverennost_mul">Доверенность ООО МУЛЬТИЛАЙН:</label></th>
                 <td>
                     <input type="date" name="doverennost_mul" value="{{ form.doverennost_mul.value | date:'Y-m-d' }}" id="id_doverennost_mul">
                 </td>
             </tr>
             <tr>
-                <th><label for="id_active">Отслеживать?</label></th>
+                <th class="text-left"><label for="id_active">Отслеживать?</label></th>
                 <td>
                     <input type="checkbox" name="active" id="id_active" checked>
                 </td>

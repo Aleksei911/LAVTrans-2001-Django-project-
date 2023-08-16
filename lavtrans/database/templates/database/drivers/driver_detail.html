@@ -10,25 +10,25 @@
     <table>
         <tbody>
         <tr>
-            <th><p class="mr-3">Фамилия:</p></th>
+            <th class="text-left"><p class="mr-3">Фамилия:</p></th>
             <td>
                 <p>{{ driver.last_name }}</p>
             </td>
         </tr>
         <tr>
-            <th><p class="mr-3">Имя:</p></th>
+            <th class="text-left"><p class="mr-3">Имя:</p></th>
             <td>
                 <p>{{ driver.name }}</p>
             </td>
         </tr>
         <tr>
-            <th><p class="mr-3">Отчество:</p></th>
+            <th class="text-left"><p class="mr-3">Отчество:</p></th>
             <td>
                 <p>{{ driver.middle_name }}</p>
             </td>
         </tr>
         <tr>
-            <th><p class="mr-3">Паспорт:</p></th>
+            <th class="text-left"><p class="mr-3">Паспорт:</p></th>
             <td>
                 {% if driver.passport <= check_day %}
                 <p class="bg-red-500">{{ driver.passport | date:'d.m.Y' }}</p>
@@ -38,7 +38,7 @@
             </td>
         </tr>
         <tr>
-            <th><p class="mr-3">Виза:</p></th>
+            <th class="text-left"><p class="mr-3">Виза:</p></th>
             <td>
                 {% if driver.visa <= check_day %}
                 <p class="bg-red-500">{{ driver.visa | date:'d.m.Y' }}</p>
@@ -48,7 +48,7 @@
             </td>
         </tr>
         <tr>
-            <th><p class="mr-3">Водительское удостоверение:	</p></th>
+            <th class="text-left"><p class="mr-3">Водительское удостоверение:	</p></th>
             <td>
                 {% if driver.driver_card <= check_day %}
                 <p class="bg-red-500">{{ driver.driver_card | date:'d.m.Y' }}</p>
@@ -58,7 +58,7 @@
             </td>
         </tr>
         <tr>
-            <th><p class="mr-3">Квалификационная карточка водителя:	</p></th>
+            <th class="text-left"><p class="mr-3">Квалификационная карточка водителя:	</p></th>
             <td>
                 {% if driver.mezhdunarodnik <= check_day %}
                 <p class="bg-red-500">{{ driver.mezhdunarodnik | date:'d.m.Y' }}</p>
@@ -68,7 +68,7 @@
             </td>
         </tr>
         <tr>
-            <th><p class="mr-3">Карта водителя (ЧИП):	</p></th>
+            <th class="text-left"><p class="mr-3">Карта водителя (ЧИП):	</p></th>
             <td>
                 {% if driver.chip <= check_day %}
                 <p class="bg-red-500">{{ driver.chip | date:'d.m.Y' }}</p>
@@ -78,7 +78,7 @@
             </td>
         </tr>
         <tr>
-            <th><p class="mr-3">Свидетельство ДОПОГ (ADR):	</p></th>
+            <th class="text-left"><p class="mr-3">Свидетельство ДОПОГ (ADR):	</p></th>
             <td>
                 {% if driver.adr <= check_day %}
                 <p class="bg-red-500">{{ driver.adr | date:'d.m.Y' }}</p>
@@ -88,7 +88,7 @@
             </td>
         </tr>
         <tr>
-            <th><p class="mr-3">Доверенность ООО ЛАВТРАНС-2001 РУС:	</p></th>
+            <th class="text-left"><p class="mr-3">Доверенность ООО ЛАВТРАНС-2001 РУС:	</p></th>
             <td>
                 {% if driver.doverennost_rus <= check_day %}
                 <p class="bg-red-500">{{ driver.doverennost_rus | date:'d.m.Y' }}</p>
@@ -98,7 +98,7 @@
             </td>
         </tr>
         <tr>
-            <th><p class="mr-3">Доверенность ЧТУП ЛАВТранс-2001:	</p></th>
+            <th class="text-left"><p class="mr-3">Доверенность ЧТУП ЛАВТранс-2001:	</p></th>
             <td>
                 {% if driver.doverennost_lt <= check_day %}
                 <p class="bg-red-500">{{ driver.doverennost_lt | date:'d.m.Y' }}</p>
@@ -108,7 +108,7 @@
             </td>
         </tr>
         <tr>
-            <th><p class="mr-3">Доверенность ООО МУЛЬТИЛАЙН:	</p></th>
+            <th class="text-left"><p class="mr-3">Доверенность ООО МУЛЬТИЛАЙН:	</p></th>
             <td>
                 {% if driver.doverennost_mul <= check_day %}
                 <p class="bg-red-500">{{ driver.doverennost_mul | date:'d.m.Y' }}</p>
@@ -118,7 +118,7 @@
             </td>
         </tr>
         <tr>
-            <th><p class="mr-3">Отслеживается?</p></th>
+            <th class="text-left"><p class="mr-3">Отслеживается?</p></th>
             <td>
                 {% if driver.active %}
                 <p class="text-center">Да</p>

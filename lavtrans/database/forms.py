@@ -14,6 +14,9 @@ class AddTechPassportForm(forms.ModelForm):
         model = TechPassport
         fields = ('vin', 'type_ts', 'category', 'eco_class', 'color', 'engine_capacity',
                   'weight', 'max_weight', 'manufacturer', 'owner', 'price', 'pts', 'pts_date', 'place_of_registration')
+        widgets = {
+            'owner': forms.Select(attrs={'style': 'width: 180px;'}),
+        }
 
 
 class AddDriverForm(forms.ModelForm):
@@ -28,6 +31,12 @@ class AddPassportDriverForm(forms.ModelForm):
         model = PassportDriver
         fields = ('date_of_birth', 'passport_number', 'date_of_issue', 'identification_number', 'authority',
                   'place_of_residence')
+        widgets = {
+            'passport_number': forms.TextInput(attrs={'style': 'width: 270px;'}),
+            'identification_number': forms.TextInput(attrs={'style': 'width: 270px;'}),
+            'authority': forms.TextInput(attrs={'style': 'width: 270px;'}),
+            'place_of_residence': forms.Textarea(attrs={'cols': 34, 'rows': 2}),
+        }
 
 
 class AddEventForm(forms.ModelForm):
@@ -38,6 +47,14 @@ class AddEventForm(forms.ModelForm):
                   'service_date', 'service_sum', 'final_docs', 'payment_date')
 
         date_of_submission = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control'}))
+        widgets = {
+            'polis_number': forms.TextInput(attrs={'style': 'width: 290px;'}),
+            'repair_method': forms.Select(attrs={'style': 'width: 290px;'}),
+            'calculation_sum': forms.NumberInput(attrs={'style': 'width: 290px;'}),
+            'expenses': forms.NumberInput(attrs={'style': 'width: 290px;'}),
+            'service_name': forms.TextInput(attrs={'style': 'width: 290px;'}),
+            'service_sum': forms.NumberInput(attrs={'style': 'width: 290px;'}),
+        }
 
 
 class MultipleFileInput(forms.ClearableFileInput):

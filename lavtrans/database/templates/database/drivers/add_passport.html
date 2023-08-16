@@ -27,7 +27,7 @@
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Серия и номер паспорта:</th>
                 <td class="border border-slate-300">
-                    <input type="text" name="passport_number" maxlength="10" required="" id="id_passport_number">
+                    {{ form.passport_number }}
                 </td>
             </tr>
             <tr>
@@ -39,19 +39,19 @@
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Идентификационный номер:</th>
                 <td class="border border-slate-300">
-                    <input type="text" name="identification_number" maxlength="15" required="" id="id_identification_number">
+                    {{ form.identification_number }}
                 </td>
             </tr>
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Орган, выдавший паспорт:</th>
                 <td class="border border-slate-300">
-                    <input type="text" name="authority" maxlength="100" required="" id="id_authority">
+                    {{ form.authority }}
                 </td>
             </tr>
             <tr>
                 <th class="mr-3 text-left border border-slate-300">Адрес прописки:</th>
                 <td class="border border-slate-300">
-                    <input type="text" name="place_of_residence" maxlength="255" required="" id="id_place_of_residence">
+                    {{ form.place_of_residence }}
                 </td>
             </tr>
             </tbody>
