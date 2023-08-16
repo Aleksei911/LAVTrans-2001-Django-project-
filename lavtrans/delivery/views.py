@@ -13,6 +13,10 @@ def all_deliveries(request):
     if query:
         if search_by == "car":
             deliveries = Delivery.objects.filter(car__number__icontains=query)
+        elif search_by == "next_car":
+            deliveries = Delivery.objects.filter(next_car__number__icontains=query)
+        elif search_by == "customer":
+            deliveries = Delivery.objects.filter(customer__icontains=query)
     else:
         deliveries = Delivery.objects.all()
 
