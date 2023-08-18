@@ -39,7 +39,7 @@
         <p class="py-4 text-center bg-gray-200 font-semibold w-full">Заказчик</p>
         <p class="py-4 text-center bg-gray-200 font-semibold w-full">МАРШРУТ (ЗАГРУЗКА -ТАМОЖНИ +ДОВОЗ)</p>
         <p class="py-4 text-center bg-gray-200 font-semibold w-full">Ставка</p>
-        <p class="py-4 text-center bg-gray-200 font-semibold w-full">Количество дней простоя</p>
+        <p class="py-4 text-center bg-gray-200 font-semibold w-full">Литров топлива продано</p>
         <p class="py-4 text-center bg-gray-200 font-semibold w-full">Номер счёта</p>
         <p class="py-4 text-center bg-gray-200 font-semibold w-full">Срок оплаты (Банковских дней)</p>
         <p class="py-4 text-center bg-gray-200 font-semibold w-full"></p>
@@ -52,8 +52,16 @@
         <p class="py-2 text-center w-full">{{ delivery.customer|default_if_none:"&nbsp;" }}</p>
         <p class="py-2 text-center w-full">{{ delivery.route|default_if_none:"&nbsp;" }}</p>
         <p class="py-2 text-center w-full">{{ delivery.rate|default_if_none:"&nbsp;" }} {{ delivery.rate_currency|default_if_none:"&nbsp;" }}</p>
-        <p class="py-2 text-center w-full">{{ delivery.prostoi|default_if_none:"&nbsp;" }}</p>
-        <p class="py-2 text-center w-full">{{ delivery.score_number|default_if_none:"&nbsp;" }}</p>
+        {% if delivery.liters %}
+        <p class="py-2 text-center w-full">{{ delivery.liters|default_if_none:"&nbsp;" }} л.</p>
+        {% else %}
+        <p class="py-2 text-center w-full"></p>
+        {% endif %}
+        {% if delivery.score_number and delivery.date_of_delivery %}
+        <p class="py-2 text-center w-full"><b>{{ delivery.score_number|default_if_none:"&nbsp;" }}</b> от {{ delivery.date_of_delivery | date:'d.m.Y' }}</p>
+        {% else %}
+        <p class="py-2 text-center w-full"></p>
+        {% endif %}
         <p class="py-2 text-center w-full">{{ delivery.payment_term|default_if_none:"&nbsp;" }}</p>
         <p class="py-2 w-full">
             <a class="ml-8 py-1 px-3 bg-teal-500 text-white rounded-xl" href="{% url 'delivery_info' delivery.id %}">Подробнее</a>
