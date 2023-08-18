@@ -53,7 +53,7 @@ def cars(request):
         if search_by == "number":
             cars = Car.objects.filter(number__icontains=query)
     else:
-        cars = Car.objects.all()
+        cars = Car.objects.order_by()
 
     return render(request, 'database/cars/cars.html', {'cars': cars, 'check_day': check_day})
 
@@ -61,7 +61,7 @@ def cars(request):
 @login_required
 def car_info(request, pk):
     car = Car.objects.get(pk=pk)
-    events = InsuranceEvent.objects.filter(car=car)
+    events = InsuranceEvent.objects.filter(car=car).order_by('-date_of_submission')
     techpassport = TechPassport.objects.filter(car=car)
     check_day = datetime.date.today() + datetime.timedelta(days=20)
 
@@ -86,6 +86,8 @@ def add_car(request):
             messages.success(request, 'Новое транспортное средство было успешно добавлено.')
 
             return redirect('cars')
+        else:
+            print(form.errors)
     else:
         form = AddCarForm()
 
@@ -104,6 +106,8 @@ def car_edit(request, pk):
             messages.success(request, 'Изменения были успешно сохранены.')
 
             return redirect('car_info', pk=pk)
+        else:
+            print(form.errors)
     else:
         form = AddCarForm(instance=car)
 
@@ -157,6 +161,8 @@ def techpassport_edit(request, pk):
             messages.success(request, 'Изменения были успешно сохранены.')
 
             return redirect('techpassport_info', pk=techpassport.car.pk)
+        else:
+            print(form.errors)
     else:
         form = AddTechPassportForm(instance=techpassport)
 
@@ -193,7 +199,7 @@ def drivers(request):
         elif search_by == "last_name":
             drivers = Driver.objects.filter(last_name__icontains=query)
     else:
-        drivers = Driver.objects.all()
+        drivers = Driver.objects.order_by('last_name')
 
     return render(request, 'database/drivers/drivers.html', {'drivers': drivers, 'check_day': check_day})
 
@@ -202,7 +208,7 @@ def drivers(request):
 def driver_info(request, pk):
     driver = Driver.objects.get(pk=pk)
     passport = PassportDriver.objects.filter(driver=driver)
-    events = InsuranceEvent.objects.filter(driver=driver)
+    events = InsuranceEvent.objects.filter(driver=driver).order_by('-date_of_submission')
     check_day = datetime.date.today() + datetime.timedelta(days=30)
 
     context = {
@@ -226,6 +232,8 @@ def add_driver(request):
             messages.success(request, 'Новый водитель был успешно добавлен.')
 
             return redirect('drivers')
+        else:
+            print(form.errors)
     else:
         form = AddDriverForm()
 
@@ -244,6 +252,8 @@ def driver_edit(request, pk):
             messages.success(request, 'Изменения были успешно сохранены.')
 
             return redirect('driver_info', pk=pk)
+        else:
+            print(form.errors)
     else:
         form = AddDriverForm(instance=driver)
 
@@ -297,6 +307,8 @@ def passport_driver_edit(request, pk):
             messages.success(request, 'Изменения были успешно сохранены.')
 
             return redirect('passport_info', pk=pk)
+        else:
+            print(form.errors)
     else:
         form = AddPassportDriverForm(instance=passport)
 
@@ -350,7 +362,7 @@ def add_car_event(request, pk):
 
             messages.success(request, 'Новый страховой случай был успешно добавлен.')
 
-            return redirect('cars')
+            return redirect('car_info', pk=pk)
         else:
             print(form.errors)
     else:
@@ -372,6 +384,8 @@ def event_edit(request, pk):
             messages.success(request, 'Изменения были успешно сохранены.')
 
             return redirect('event_info', pk=pk)
+        else:
+            print(form.errors)
     else:
         form = AddEventForm(instance=event)
 
