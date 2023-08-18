@@ -18,7 +18,7 @@ def all_deliveries(request):
         elif search_by == "customer":
             deliveries = Delivery.objects.filter(customer__icontains=query)
     else:
-        deliveries = Delivery.objects.all()
+        deliveries = Delivery.objects.order_by('-date_of_delivery')
 
     return render(request, 'delivery/delivery.html', {'deliveries': deliveries})
 
@@ -35,6 +35,8 @@ def add_delivery(request):
             messages.success(request, 'Данные о новой перевозке были успешно добавлены.')
 
             return redirect('delivery')
+        else:
+            print(form.errors)
     else:
         form = AddDeliveryForm()
 
@@ -63,6 +65,8 @@ def delivery_edit(request, pk):
             messages.success(request, 'Изменения были успешно сохранены.')
 
             return redirect('delivery_info', pk=pk)
+        else:
+            print(form.errors)
     else:
         form = AddDeliveryForm(instance=delivery)
 
