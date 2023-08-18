@@ -24,67 +24,67 @@
         <tr>
             <th><p class="mr-3">Тип ТС:</p></th>
             <td>
-                <p>{{ techpassport.type_ts }}</p>
+                <p>{{ techpassport.type_ts|default_if_none:"&nbsp;" }}</p>
             </td>
         </tr>
         <tr>
             <th><p class="mr-3">Категория:</p></th>
             <td>
-                <p>{{ techpassport.category }}</p>
+                <p>{{ techpassport.category|default_if_none:"&nbsp;" }}</p>
             </td>
         </tr>
         <tr>
             <th><p class="mr-3">Эко класс:</p></th>
             <td>
-                <p>{{ techpassport.eco_class }}</p>
+                <p>{{ techpassport.eco_class|default_if_none:"&nbsp;" }}</p>
             </td>
         </tr>
         <tr>
             <th><p class="mr-3">Цвет:</p></th>
             <td>
-                <p>{{ techpassport.color }}</p>
+                <p>{{ techpassport.color|default_if_none:"&nbsp;" }}</p>
             </td>
         </tr>
         <tr>
             <th><p class="mr-3">Объем двигателя:</p></th>
             <td>
-                <p>{{ techpassport.engine_capacity }}</p>
+                <p>{{ techpassport.engine_capacity|default_if_none:"&nbsp;" }}</p>
             </td>
         </tr>
         <tr>
             <th><p class="mr-3">Масса без нагрузки:</p></th>
             <td>
-                <p>{{ techpassport.weight }}</p>
+                <p>{{ techpassport.weight|default_if_none:"&nbsp;" }}</p>
             </td>
         </tr>
         <tr>
             <th><p class="mr-3">Максимальная масса:</p></th>
             <td>
-                <p>{{ techpassport.max_weight }}</p>
+                <p>{{ techpassport.max_weight|default_if_none:"&nbsp;" }}</p>
             </td>
         </tr>
         <tr>
             <th><p class="mr-3">Страна производитель:</p></th>
             <td>
-                <p>{{ techpassport.manufacturer }}</p>
+                <p>{{ techpassport.manufacturer|default_if_none:"&nbsp;" }}</p>
             </td>
         </tr>
         <tr>
             <th><p class="mr-3">Владелец:</p></th>
             <td>
-                <p>{{ techpassport.owner }}</p>
+                <p>{{ techpassport.owner|default_if_none:"&nbsp;" }}</p>
             </td>
         </tr>
         <tr>
             <th><p class="mr-3">Стоимость:</p></th>
             <td>
-                <p>{{ techpassport.price }}</p>
+                <p>{{ techpassport.price|default_if_none:"&nbsp;" }}</p>
             </td>
         </tr>
         <tr>
             <th><p class="mr-3">Свидетельство №:</p></th>
             <td>
-                <p>{{ techpassport.pts }}</p>
+                <p>{{ techpassport.pts|default_if_none:"&nbsp;" }}</p>
             </td>
         </tr>
         <tr>
@@ -96,7 +96,7 @@
         <tr>
             <th><p class="mr-3">Место регистрации:</p></th>
             <td>
-                <p>{{ techpassport.place_of_registration }}</p>
+                <p>{{ techpassport.place_of_registration|default_if_none:"&nbsp;" }}</p>
             </td>
         </tr>
         </tbody>

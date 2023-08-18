@@ -168,7 +168,7 @@
             <a href="{% url 'car_info' car.id %}"> {{ event.date_of_submission|date:"d.m.Y" }}</a>
         </p>
         <p class="py-2 text-center w-full">{{ event.polis_number }}</p>
-        <p class="py-2 text-center w-full">{{ event.repair_method }}</p>
+        <p class="py-2 text-center w-full">{{ event.repair_method|default_if_none:"&nbsp;" }}</p>
         <p class="py-2 text-center w-full">{{ event.final_docs|date:"d.m.Y" }}</p>
         <p class="py-2 text-center w-full">{{ event.payment_date|date:"d.m.Y" }}</p>
         <p class="py-2 w-full">

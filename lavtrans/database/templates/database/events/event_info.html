@@ -46,7 +46,7 @@
         <tr>
             <th><p class="mr-3 text-left">Способ ремонта:</p></th>
             <td>
-                <p>{{ event.repair_method }}</p>
+                <p>{{ event.repair_method|default_if_none:"&nbsp;" }}</p>
             </td>
         </tr>
         {% if event.repair_method == 'Калькуляция' %}

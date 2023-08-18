@@ -24,31 +24,31 @@
         <tr>
             <th class="text-left"><p class="mr-3">Серия и номер паспорта:</p></th>
             <td>
-                <p>{{ passport.passport_number }}</p>
+                <p>{{ passport.passport_number|default_if_none:"&nbsp;" }}</p>
             </td>
         </tr>
         <tr>
             <th class="text-left"><p class="mr-3">Дата выдачи:</p></th>
             <td>
-                <p>{{ passport.date_of_issue }}</p>
+                <p>{{ passport.date_of_issue|default_if_none:"&nbsp;" }}</p>
             </td>
         </tr>
         <tr>
             <th class="text-left"><p class="mr-3">Идентификационный номер:</p></th>
             <td>
-                <p>{{ passport.identification_number }}</p>
+                <p>{{ passport.identification_number|default_if_none:"&nbsp;" }}</p>
             </td>
         </tr>
         <tr>
             <th class="text-left"><p class="mr-3">Орган, выдавший паспорт:</p></th>
             <td>
-                <p>{{ passport.authority }}</p>
+                <p>{{ passport.authority|default_if_none:"&nbsp;" }}</p>
             </td>
         </tr>
         <tr>
             <th class="text-left"><p class="mr-3">Адрес прописки:</p></th>
             <td>
-                <p>{{ passport.place_of_residence }}</p>
+                <p>{{ passport.place_of_residence|default_if_none:"&nbsp;" }}</p>
             </td>
         </tr>
         </tbody>
