@@ -122,7 +122,7 @@ class DriverScans(models.Model):
                               verbose_name='Сканы документов')
 
     def __str__(self):
-        return f'Сканы документов {self.driver}'
+        return f'Сканы документов {self.passport.driver}'
 
     class Meta:
         verbose_name = 'Сканы документов водителя'

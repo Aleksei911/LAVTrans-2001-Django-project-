@@ -1,6 +1,5 @@
 import datetime
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from rest_framework import viewsets
@@ -12,35 +11,43 @@ from django.db.models import Q
 
 
 class CarViewSet(viewsets.ModelViewSet):
-    queryset = Car.objects.filter(
-        Q(tehosmotr__lte=(datetime.date.today() + datetime.timedelta(days=20))) |
-        Q(green_card__lte=(datetime.date.today() + datetime.timedelta(days=20))) |
-        Q(strahovka__lte=(datetime.date.today() + datetime.timedelta(days=20))) |
-        Q(tamogennoye__lte=(datetime.date.today() + datetime.timedelta(days=20))) |
-        Q(tahograf__lte=(datetime.date.today() + datetime.timedelta(days=20))) |
-        Q(kasko__lte=(datetime.date.today() + datetime.timedelta(days=20))) |
-        Q(e100_rb__lte=(datetime.date.today() + datetime.timedelta(days=20))) |
-        Q(e100_rf__lte=(datetime.date.today() + datetime.timedelta(days=20))) |
-        Q(cmr_strahovka__lte=(datetime.date.today() + datetime.timedelta(days=20))),
-        active=True
-    )
+    queryset = Car.objects.all()
     serializer_class = CarSerializer
+
+    def get_queryset(self):
+        check_day = datetime.date.today() + datetime.timedelta(days=20)
+        return self.queryset.filter(
+            Q(tehosmotr__lte=check_day) |
+            Q(green_card__lte=check_day) |
+            Q(strahovka__lte=check_day) |
+            Q(tamogennoye__lte=check_day) |
+            Q(tahograf__lte=check_day) |
+            Q(kasko__lte=check_day) |
+            Q(e100_rb__lte=check_day) |
+            Q(e100_rf__lte=check_day) |
+            Q(cmr_strahovka__lte=check_day),
+            active=True
+        )
 
 
 class DriverViewSet(viewsets.ModelViewSet):
-    queryset = Driver.objects.filter(
-        Q(passport__lte=(datetime.date.today() + datetime.timedelta(days=30))) |
-        Q(visa__lte=(datetime.date.today() + datetime.timedelta(days=30))) |
-        Q(driver_card__lte=(datetime.date.today() + datetime.timedelta(days=30))) |
-        Q(mezhdunarodnik__lte=(datetime.date.today() + datetime.timedelta(days=30))) |
-        Q(chip__lte=(datetime.date.today() + datetime.timedelta(days=30))) |
-        Q(adr__lte=(datetime.date.today() + datetime.timedelta(days=30))) |
-        Q(doverennost_rus__lte=(datetime.date.today() + datetime.timedelta(days=30))) |
-        Q(doverennost_lt__lte=(datetime.date.today() + datetime.timedelta(days=30))) |
-        Q(doverennost_mul__lte=(datetime.date.today() + datetime.timedelta(days=30))),
-        active=True
-    )
+    queryset = Driver.objects.all()
     serializer_class = DriverSerializer
+
+    def get_queryset(self):
+        check_day = datetime.date.today() + datetime.timedelta(days=30)
+        return self.queryset.filter(
+            Q(passport__lte=check_day) |
+            Q(visa__lte=check_day) |
+            Q(driver_card__lte=check_day) |
+            Q(mezhdunarodnik__lte=check_day) |
+            Q(chip__lte=check_day) |
+            Q(adr__lte=check_day) |
+            Q(doverennost_rus__lte=check_day) |
+            Q(doverennost_lt__lte=check_day) |
+            Q(doverennost_mul__lte=check_day),
+            active=True
+        )
 
 
 @login_required

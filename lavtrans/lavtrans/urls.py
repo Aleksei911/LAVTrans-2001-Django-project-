@@ -25,7 +25,8 @@ urlpatterns = [
     # path('task/', include('taskmanager.urls')),
     path('', include('database.urls')),
     path('delivery/', include('delivery.urls')),
-    path('accounts/', include('django.contrib.auth.urls'))
+    path('accounts/', include('django.contrib.auth.urls')),
+    path("__debug__/", include("debug_toolbar.urls")),
 ]
 
 if settings.DEBUG:
