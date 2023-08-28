@@ -188,6 +188,8 @@
         </div>
         <div class="self-start">
 
+            {% if back_delivery %}
+
             <h1 class="mb-4 text-xl">Информация по обратке</h1>
 
             <table>
@@ -268,6 +270,13 @@
                 </tr>
                 </tbody>
             </table>
+
+            {% else %}
+
+            <div></div>
+
+            {% endif %}
+
         </div>
     </div>
 

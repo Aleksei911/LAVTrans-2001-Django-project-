@@ -52,7 +52,7 @@ def add_delivery(request):
 @login_required
 def delivery_info(request, pk):
     delivery = Delivery.objects.get(pk=pk)
-    back_delivery = DeliveryBack.objects.get(delivery=delivery)
+    back_delivery = DeliveryBack.objects.filter(delivery=delivery).first()
 
     context = {
         'delivery': delivery,
