@@ -64,6 +64,8 @@ class Delivery(models.Model):
                                         blank=True, null=True)
     score_number = models.CharField(max_length=10, blank=True, null=True, verbose_name='Номер счёта')
     score_date = models.DateField(verbose_name='Дата выставления счёта', null=True, blank=True)
+    score_total = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True, default=None,
+                                      verbose_name='Итоговая сумма счёта')
     payment_term = models.IntegerField(verbose_name="Срок оплаты (Банковских дней)", blank=True, null=True)
 
     def __str__(self):
@@ -72,3 +74,37 @@ class Delivery(models.Model):
     class Meta:
         verbose_name = 'Перевозка'
         verbose_name_plural = 'Перевозки'
+
+
+class DeliveryBack(models.Model):
+
+    EUR = 'EUR'
+    BYN = 'BYN'
+    USD = 'USD'
+    RUB = 'RUB'
+
+    CURRENCY = [
+        (EUR, 'EUR'),
+        (BYN, 'BYN'),
+        (USD, 'USD'),
+        (RUB, 'RUB'),
+    ]
+
+    delivery = models.ForeignKey('Delivery', on_delete=models.CASCADE)
+    customer = models.CharField(max_length=50, verbose_name='Заказчик', null=True, blank=True)
+    customer_contact = models.CharField(max_length=255, verbose_name='Контактное лицо', null=True, blank=True)
+    application_number = models.CharField(max_length=15, verbose_name='Номер заявки', null=True, blank=True)
+    application_date = models.DateField(verbose_name='Дата заявки', null=True, blank=True)
+    route = models.TextField(verbose_name='МАРШРУТ (ЗАГРУЗКА -ТАМОЖНИ +ДОВОЗ)', null=True, blank=True)
+    rate = models.DecimalField(max_digits=11, decimal_places=2, verbose_name='Ставка', blank=True, null=True)
+    rate_currency = models.CharField(max_length=4, choices=CURRENCY, verbose_name='Денежная единица для ставки',
+                                     blank=True, null=True)
+    prostoi = models.IntegerField(verbose_name='Количество дней простоя', blank=True, null=True)
+    rate_for_prostoi = models.IntegerField(verbose_name='Ставка за день простоя', blank=True, null=True)
+    prostoi_currency = models.CharField(max_length=4, choices=CURRENCY, verbose_name='Денежная единица для простоя',
+                                        blank=True, null=True)
+    score_number = models.CharField(max_length=10, blank=True, null=True, verbose_name='Номер счёта')
+    score_date = models.DateField(verbose_name='Дата выставления счёта', null=True, blank=True)
+    score_total = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True, default=None,
+                                      verbose_name='Итоговая сумма счёта')
+    payment_term = models.IntegerField(verbose_name="Срок оплаты (Банковских дней)", blank=True, null=True)
