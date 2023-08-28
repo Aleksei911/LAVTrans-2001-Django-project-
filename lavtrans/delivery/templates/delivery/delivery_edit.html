@@ -10,10 +10,9 @@
     <form method="post" action=".">
         {% csrf_token %}
 
-        <h1 class="mb-4 text-xl">Редактировать перевозку</h1>
-
         <div class="grid grid-cols-2 gap-4 place-content-between">
             <div class="self-start">
+                <h1 class="mb-4 text-xl">Редактировать перевозку</h1>
         <table>
             <tbody>
             <tr>
@@ -158,6 +157,12 @@
                 <th class="mr-3 text-left border border-slate-300">Дата выставления счёта:</th>
                 <td class="border border-slate-300">
                     <input type="date" name="score_date" value="{{ form.score_date.value | date:'Y-m-d' }}" id="score_date">
+                </td>
+            </tr>
+            <tr>
+                <th class="mr-3 text-left border border-slate-300">Итоговая сумма счёта:</th>
+                <td class="border border-slate-300">
+                    <span class="border border-slate-300">{{ form.score_total }}</span> {{ form.score_currency }}
                 </td>
             </tr>
             <tr>

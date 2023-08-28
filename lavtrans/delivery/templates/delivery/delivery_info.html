@@ -170,6 +170,12 @@
             </td>
         </tr>
         <tr>
+            <th><p class="mr-3 text-left">Итоговая сумма счёта:</p></th>
+            <td>
+                <p>{{ delivery.score_total|default_if_none:"&nbsp;" }} {{ delivery.score_currency|default_if_none:"&nbsp;" }}</p>
+            </td>
+        </tr>
+        <tr>
             <th><p class="mr-3 text-left">Срок оплаты (Банковских дней):</p></th>
             <td>
                 <p>{{ delivery.payment_term|default_if_none:"&nbsp;" }}</p>
