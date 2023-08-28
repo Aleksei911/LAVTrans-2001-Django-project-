@@ -52,9 +52,11 @@ def add_delivery(request):
 @login_required
 def delivery_info(request, pk):
     delivery = Delivery.objects.get(pk=pk)
+    back_delivery = DeliveryBack.objects.get(delivery=delivery)
 
     context = {
         'delivery': delivery,
+        'back_delivery': back_delivery,
     }
     return render(request, 'delivery/delivery_info.html', context)
 
@@ -62,7 +64,7 @@ def delivery_info(request, pk):
 @login_required
 def delivery_edit(request, pk):
     delivery = Delivery.objects.get(pk=pk)
-    back_delivery = DeliveryBack.objects.filter(delivery=delivery).first()
+    back_delivery = DeliveryBack.objects.get(delivery=delivery)
 
     if request.method == 'POST':
         form = AddDeliveryForm(request.POST, instance=delivery)

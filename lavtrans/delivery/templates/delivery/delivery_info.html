@@ -6,190 +6,279 @@
 
 {% block content %}
 <div class="py-6 px-6">
-    <h1 class="mb-4 text-xl">Подробная информация о перевозке</h1>
-    <table>
-        <tbody>
-        <tr>
-            <th><p class="mr-3 text-left">Дата загрузки:</p></th>
-            <td>
-                <p>{{ delivery.date_of_delivery | date:'d.m.Y' }}</p>
-            </td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">Авто на загрузке:</p></th>
-            <td>
-                <p>{{ delivery.car|default_if_none:"&nbsp;" }}</p>
-            </td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">Водитель на загрузке:</p></th>
-            <td>
-                <p>{{ delivery.driver|default_if_none:"&nbsp;" }}</p>
-            </td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">Перевозчик:</p></th>
-            <td>
-                <p>{{ delivery.transporter|default_if_none:"&nbsp;" }}</p>
-            </td>
-        </tr>
-        <tr>
-            <td class="py-2"></td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">Авто после перецепки:</p></th>
-            <td>
-                <p>{{ delivery.next_car|default_if_none:"&nbsp;" }}</p>
-            </td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">Водитель после перецепки:</p></th>
-            <td>
-                <p>{{ delivery.next_driver|default_if_none:"&nbsp;" }}</p>
-            </td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">Перевозчик после перецепки:</p></th>
-            <td>
-                <p>{{ delivery.next_transporter|default_if_none:"&nbsp;" }}</p>
-            </td>
-        </tr>
-        <tr>
-            <td class="py-2"></td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">Путевой лист:</p></th>
-            <td>
-                {% if delivery.waybill_number and delivery.date_of_delivery %}
-                <p><b>{{ delivery.waybill_number }}</b> от {{ delivery.date_of_delivery | date:'d.m.Y' }}</p>
-                {% else %}
-                <p></p>
-                {% endif %}
-            </td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">Заказчик:</p></th>
-            <td>
-                <p>{{ delivery.customer|default_if_none:"&nbsp;" }}</p>
-            </td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">Контактное лицо от Заказчика:</p></th>
-            <td>
-                <p>{{ delivery.customer_contact|default_if_none:"&nbsp;" }}</p>
-            </td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">Заявка:</p></th>
-            <td>
-                {% if delivery.application_number and delivery.application_date %}
-                <p><b>{{ delivery.application_number|default_if_none:"&nbsp;" }}</b> от {{ delivery.application_date | date:'d.m.Y' }}</p>
-                {% else %}
-                <p></p>
-                {% endif %}
-            </td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">МАРШРУТ (ЗАГРУЗКА -ТАМОЖНИ +ДОВОЗ):</p></th>
-            <td>
-                <p>{{ delivery.route|default_if_none:"&nbsp;" }}</p>
-            </td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">Ставка:</p></th>
-            <td>
-                <p>{{ delivery.rate|default_if_none:"&nbsp;" }} {{ delivery.rate_currency|default_if_none:"&nbsp;" }}</p>
-            </td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">Литров топлива продано:</p></th>
-            <td>
-                {% if delivery.liters %}
-                <p>{{ delivery.liters|default_if_none:"&nbsp;" }} л.</p>
-                {% else %}
-                <p></p>
-                {% endif %}
-            </td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">Получили за топливо:</p></th>
-            <td>
-                {% if delivery.liters_amount %}
-                <p>{{ delivery.liters_amount|default_if_none:"&nbsp;" }} EUR</p>
-                {% else %}
-                <p></p>
-                {% endif %}
-            </td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">Выезд из накопителя:</p></th>
-            <td>
-                {% if delivery.storage %}
-                <p>{{ delivery.storage|default_if_none:"&nbsp;" }} EUR</p>
-                {% else %}
-                <p></p>
-                {% endif %}
-            </td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">Стоимость таможенного оформления:</p></th>
-            <td>
-                <p>{{ delivery.customs_clearance|default_if_none:"&nbsp;" }} {{ delivery.customs_currency|default_if_none:"&nbsp;" }}</p>
-            </td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">Стоимость электронной пломбы:</p></th>
-            <td>
-                {% if delivery.electronic_seal %}
-                <p>{{ delivery.electronic_seal|default_if_none:"&nbsp;" }} BYN</p>
-                {% else %}
-                <p></p>
-                {% endif %}
-            </td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">Количество дней простоя:</p></th>
-            <td>
-                <p>{{ delivery.prostoi|default_if_none:"&nbsp;" }}</p>
-            </td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">Ставка за день простоя:</p></th>
-            <td>
-                <p>{{ delivery.rate_for_prostoi|default_if_none:"&nbsp;" }} {{ delivery.prostoi_currency|default_if_none:"&nbsp;" }}</p>
-            </td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">Счёт:</p></th>
-            <td>
-                {% if delivery.score_number and delivery.date_of_delivery %}
-                <p><b>{{ delivery.score_number|default_if_none:"&nbsp;" }}</b> от {{ delivery.date_of_delivery | date:'d.m.Y' }}</p>
-                {% else %}
-                <p></p>
-                {% endif %}
-            </td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">Итоговая сумма счёта:</p></th>
-            <td>
-                <p>{{ delivery.score_total|default_if_none:"&nbsp;" }} {{ delivery.score_currency|default_if_none:"&nbsp;" }}</p>
-            </td>
-        </tr>
-        <tr>
-            <th><p class="mr-3 text-left">Срок оплаты (Банковских дней):</p></th>
-            <td>
-                <p>{{ delivery.payment_term|default_if_none:"&nbsp;" }}</p>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="grid grid-cols-2 gap-4 place-content-between">
+        <div class="self-start">
+            <h1 class="mb-4 text-xl">Подробная информация о перевозке</h1>
+            <table>
+                <tbody>
+                <tr>
+                    <th><p class="mr-3 text-left">Дата загрузки:</p></th>
+                    <td>
+                        <p>{{ delivery.date_of_delivery | date:'d.m.Y' }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Авто на загрузке:</p></th>
+                    <td>
+                        <p>{{ delivery.car|default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Водитель на загрузке:</p></th>
+                    <td>
+                        <p>{{ delivery.driver|default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Перевозчик:</p></th>
+                    <td>
+                        <p>{{ delivery.transporter|default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2"></td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Авто после перецепки:</p></th>
+                    <td>
+                        <p>{{ delivery.next_car|default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Водитель после перецепки:</p></th>
+                    <td>
+                        <p>{{ delivery.next_driver|default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Перевозчик после перецепки:</p></th>
+                    <td>
+                        <p>{{ delivery.next_transporter|default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2"></td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Путевой лист:</p></th>
+                    <td>
+                        {% if delivery.waybill_number and delivery.date_of_delivery %}
+                        <p><b>{{ delivery.waybill_number }}</b> от {{ delivery.date_of_delivery | date:'d.m.Y' }}</p>
+                        {% else %}
+                        <p></p>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Заказчик:</p></th>
+                    <td>
+                        <p>{{ delivery.customer|default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Контактное лицо от Заказчика:</p></th>
+                    <td>
+                        <p>{{ delivery.customer_contact|default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Заявка:</p></th>
+                    <td>
+                        {% if delivery.application_number and delivery.application_date %}
+                        <p><b>{{ delivery.application_number|default_if_none:"&nbsp;" }}</b> от {{ delivery.application_date | date:'d.m.Y' }}</p>
+                        {% else %}
+                        <p></p>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">МАРШРУТ (ЗАГРУЗКА -ТАМОЖНИ +ДОВОЗ):</p></th>
+                    <td>
+                        <p>{{ delivery.route|default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Ставка:</p></th>
+                    <td>
+                        <p>{{ delivery.rate|default_if_none:"&nbsp;" }} {{ delivery.rate_currency|default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Литров топлива продано:</p></th>
+                    <td>
+                        {% if delivery.liters %}
+                        <p>{{ delivery.liters|default_if_none:"&nbsp;" }} л.</p>
+                        {% else %}
+                        <p></p>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Получили за топливо:</p></th>
+                    <td>
+                        {% if delivery.liters_amount %}
+                        <p>{{ delivery.liters_amount|default_if_none:"&nbsp;" }} EUR</p>
+                        {% else %}
+                        <p></p>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Выезд из накопителя:</p></th>
+                    <td>
+                        {% if delivery.storage %}
+                        <p>{{ delivery.storage|default_if_none:"&nbsp;" }} EUR</p>
+                        {% else %}
+                        <p></p>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Стоимость таможенного оформления:</p></th>
+                    <td>
+                        <p>{{ delivery.customs_clearance|default_if_none:"&nbsp;" }} {{ delivery.customs_currency|default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Стоимость электронной пломбы:</p></th>
+                    <td>
+                        {% if delivery.electronic_seal %}
+                        <p>{{ delivery.electronic_seal|default_if_none:"&nbsp;" }} BYN</p>
+                        {% else %}
+                        <p></p>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Количество дней простоя:</p></th>
+                    <td>
+                        <p>{{ delivery.prostoi|default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Ставка за день простоя:</p></th>
+                    <td>
+                        <p>{{ delivery.rate_for_prostoi|default_if_none:"&nbsp;" }} {{ delivery.prostoi_currency|default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Счёт:</p></th>
+                    <td>
+                        {% if delivery.score_number and delivery.score_date %}
+                        <p><b>{{ delivery.score_number|default_if_none:"&nbsp;" }}</b> от {{ delivery.score_date | date:'d.m.Y' }}</p>
+                        {% else %}
+                        <p></p>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Итоговая сумма счёта:</p></th>
+                    <td>
+                        <p>{{ delivery.score_total|default_if_none:"&nbsp;" }} {{ delivery.score_currency|default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Срок оплаты (Банковских дней):</p></th>
+                    <td>
+                        <p>{{ delivery.payment_term|default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="self-start">
+
+            <h1 class="mb-4 text-xl">Информация по обратке</h1>
+
+            <table>
+                <tbody>
+                <tr>
+                    <th><p class="mr-3 text-left">Дата загрузки:</p></th>
+                    <td>
+                        <p>{{ back_delivery.date_of_back_delivery | date:'d.m.Y' }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Заказчик:</p></th>
+                    <td>
+                        <p>{{ back_delivery.back_customer | default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Контактное лицо от Заказчика:</p></th>
+                    <td>
+                        <p>{{ back_delivery.back_customer_contact | default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Заявка:</p></th>
+                    <td>
+                        {% if back_delivery.back_application_number and back_delivery.back_application_date %}
+                        <p><b>{{ back_delivery.back_application_number|default_if_none:"&nbsp;" }}</b> от {{ back_delivery.back_application_date | date:'d.m.Y' }}</p>
+                        {% else %}
+                        <p></p>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">МАРШРУТ:</p></th>
+                    <td>
+                        <p>{{ back_delivery.back_route|default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Ставка:</p></th>
+                    <td>
+                        <p>{{ back_delivery.back_rate|default_if_none:"&nbsp;" }} {{ back_delivery.back_rate_currency|default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Количество дней простоя:</p></th>
+                    <td>
+                        <p>{{ back_delivery.back_prostoi|default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Ставка за день простоя:</p></th>
+                    <td>
+                        <p>{{ back_delivery.back_rate_for_prostoi|default_if_none:"&nbsp;" }} {{ back_delivery.back_prostoi_currency|default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Счёт:</p></th>
+                    <td>
+                        {% if back_delivery.back_score_number and back_delivery.back_score_date %}
+                        <p><b>{{ back_delivery.back_score_number|default_if_none:"&nbsp;" }}</b> от {{ back_delivery.back_score_date | date:'d.m.Y' }}</p>
+                        {% else %}
+                        <p></p>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Итоговая сумма счёта:</p></th>
+                    <td>
+                        <p>{{ back_delivery.back_score_total|default_if_none:"&nbsp;" }} {{ back_delivery.back_score_currency|default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p class="mr-3 text-left">Срок оплаты (Банковских дней):</p></th>
+                    <td>
+                        <p>{{ back_delivery.back_payment_term|default_if_none:"&nbsp;" }}</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     <hr class="my-4">
 
-    <a class="py-3 px-8 bg-teal-500 text-white rounded-xl" href="{% url 'delivery_edit' delivery.id %}">Редактировать</a>
+    <a class="py-3 px-8 bg-teal-500 text-white rounded-xl"
+       href="{% url 'delivery_edit' delivery.id %}">Редактировать</a>
 
     <hr class="my-4">
 
-    <a class="py-3 px-8 bg-yellow-500 text-white rounded-xl" href="{% url 'delivery' %}">Вернуться ко всем перевозкам</a>
+    <a class="py-3 px-8 bg-yellow-500 text-white rounded-xl" href="{% url 'delivery' %}">Вернуться ко всем
+        перевозкам</a>
 </div>
 {% endblock %}
