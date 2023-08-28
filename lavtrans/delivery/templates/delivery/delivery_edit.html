@@ -6,11 +6,14 @@
 
 {% block content %}
 <div class="py-6 px-6">
-    <h1 class="mb-4 text-xl">Редактировать перевозку</h1>
 
     <form method="post" action=".">
         {% csrf_token %}
 
+        <h1 class="mb-4 text-xl">Редактировать перевозку</h1>
+
+        <div class="grid grid-cols-2 gap-4 place-content-between">
+            <div class="self-start">
         <table>
             <tbody>
             <tr>
@@ -165,6 +168,95 @@
             </tr>
             </tbody>
         </table>
+            </div>
+        <div class="self-start">
+
+            <h1 class="mb-4 text-xl">Информация по обратке</h1>
+
+                <table>
+                    <tbody>
+                    <tr>
+                        <th class="mr-3 text-left border border-slate-300">Дата загрузки:</th>
+                        <td class="border border-slate-300">
+                            <input type="date" name="date_of_back_delivery" value="{{ back_form.date_of_back_delivery.value | date:'Y-m-d' }}" id="date_of_back_delivery">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="mr-3 text-left border border-slate-300">Заказчик:</th>
+                        <td class="border border-slate-300">
+                            {{ back_form.back_customer }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="mr-3 text-left border border-slate-300">Контактное лицо от Заказчика:</th>
+                        <td class="border border-slate-300">
+                            {{ back_form.back_customer_contact }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="mr-3 text-left border border-slate-300">Номер заявки:</th>
+                        <td class="border border-slate-300">
+                            {{ back_form.back_application_number }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="mr-3 text-left border border-slate-300">Дата заявки:</th>
+                        <td class="border border-slate-300">
+                            <input type="date" name="back_application_date" value="{{ back_form.back_application_date.value | date:'Y-m-d' }}" id="back_application_date">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="mr-3 text-left border border-slate-300">МАРШРУТ:</th>
+                        <td class="border border-slate-300">
+                            {{ back_form.back_route }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="mr-3 text-left border border-slate-300">Ставка:</th>
+                        <td class="border border-slate-300">
+                            <span class="border border-slate-300">{{ back_form.back_rate }}</span> {{ back_form.back_rate_currency }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="mr-3 text-left border border-slate-300">Количество дней простоя:</th>
+                        <td class="border border-slate-300">
+                            {{ back_form.back_prostoi }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="mr-3 text-left border border-slate-300">Ставка за день простоя:</th>
+                        <td class="border border-slate-300">
+                            <span class="border border-slate-300">{{ back_form.back_rate_for_prostoi }}</span> {{ back_form.back_prostoi_currency }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="mr-3 text-left border border-slate-300">Номер счёта:</th>
+                        <td class="border border-slate-300">
+                            {{ back_form.back_score_number }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="mr-3 text-left border border-slate-300">Дата выставления счёта:</th>
+                        <td class="border border-slate-300">
+                            <input type="date" name="back_score_date" value="{{ back_form.back_score_date.value | date:'Y-m-d' }}" id="back_score_date">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="mr-3 text-left border border-slate-300">Итоговая сумма счёта:</th>
+                        <td class="border border-slate-300">
+                            <span class="border border-slate-300">{{ back_form.back_score_total }}</span> {{ back_form.back_score_currency }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="mr-3 text-left border border-slate-300">Срок оплаты (Банковских дней):</th>
+                        <td class="border border-slate-300">
+                            {{ back_form.back_payment_term }}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
 
         <hr class="my-4">
 
